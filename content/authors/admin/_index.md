@@ -26,7 +26,7 @@ interests:
 
 education:
   courses:
-  - course: PhD in Computer Scienve
+  - course: PhD in Computer Science
     institution: University of Texas at Arlington
     year: 2019-Present
   - course: BSc in Electronis and Telecommunication Engineering
