@@ -15,7 +15,7 @@ authors = ["Md Shamsul Arifin MOZUMDER", "Sifat Afroj MOON", "Jewel NANDY", "Md 
 # 4 = Report
 # 5 = Book
 # 6 = Book section
-publication_types = ["0"]
+publication_types = ["2"]
 
 # Publication name and optional abbreviated version.
 publication = "US Patent Application"
