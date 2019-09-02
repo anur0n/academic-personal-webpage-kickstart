@@ -34,7 +34,7 @@ date_format = "Jan 2006"
   location = "Dhaka, Bangladesh"
   date_start = "2012-08-30"
   date_end = "2019-08-07"
-  description = """
+  description = ""
   Responsibilities include:
   
   * project and team management
@@ -42,7 +42,6 @@ date_format = "Jan 2006"
   * architectural implementation and feature development
   * R&D on new ideas
   * collaborating with overseas teams (Onshore, offshore)
-  """
 
 [[experience]]
   title = "Software Engineer"
