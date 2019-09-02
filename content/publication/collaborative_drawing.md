@@ -37,11 +37,11 @@ abstract = "An electronic device and a method for collaborative drawing in which
 #   Simply enter your project's filename without extension.
 #   E.g. `projects = ["deep-learning"]` references `content/project/deep-learning.md`.
 #   Otherwise, set `projects = []`.
-projects = []
+# projects = []
 
 # Tags (optional).
 #   Set `tags = []` for no tags, or use the form `tags = ["A Tag", "Another Tag"]` for one or more tags.
-tags = ["Information Visualization"]
+# tags = ["Information Visualization"]
 
 # Links (optional).
 url_pdf = ""
