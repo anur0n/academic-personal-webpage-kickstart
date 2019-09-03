@@ -33,6 +33,12 @@ subtitle = ""
   #description = "80%"
   
 [[feature]]
+  icon = "database"
+  icon_pack = "fab"
+  name = "MySQL"
+  #description = "80%"
+  
+[[feature]]
   #icon = "C/C++"
   #icon_pack = "fab"
   name = "C/C++"
@@ -43,6 +49,12 @@ subtitle = ""
   #icon = "OpenGL"
   #icon_pack = "fab"
   name = "OpenGL"
+  #description = "80%"
+  
+[[feature]]
+  #icon = "OpenCL"
+  #icon_pack = "fab"
+  name = "OpenCL"
   #description = "80%"
 
 +++
