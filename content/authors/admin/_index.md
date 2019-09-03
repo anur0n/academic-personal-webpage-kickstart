@@ -22,6 +22,7 @@ bio: My research interests include Artificial Intelligence, Computer Vision.
 
 interests:
 - Artificial General Intelligence
+- Machine Learning
 - Intelligent Systems
 
 education:
