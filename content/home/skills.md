@@ -39,21 +39,21 @@ subtitle = ""
   #description = "80%"
   
 [[feature]]
-  #icon = "C/C++"
-  #icon_pack = "fab"
+  #icon = "badge"
+  #icon_pack = "fas"
   name = "C/C++"
   #description = "80%"
   
 
 [[feature]]
   #icon = "badge"
-  #icon_pack = "fab"
+  #icon_pack = "fas"
   name = "OpenGL"
   #description = "80%"
   
 [[feature]]
   #icon = "badge"
-  #icon_pack = "fab"
+  #icon_pack = "fas"
   name = "OpenCL"
   #description = "80%"
 
