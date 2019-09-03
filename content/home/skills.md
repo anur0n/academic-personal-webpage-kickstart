@@ -46,13 +46,13 @@ subtitle = ""
   
 
 [[feature]]
-  #icon = "OpenGL"
+  #icon = "badge"
   #icon_pack = "fab"
   name = "OpenGL"
   #description = "80%"
   
 [[feature]]
-  #icon = "OpenCL"
+  #icon = "badge"
   #icon_pack = "fab"
   name = "OpenCL"
   #description = "80%"
