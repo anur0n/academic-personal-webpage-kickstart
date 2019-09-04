@@ -1,6 +1,7 @@
 +++
 
 title = "Bitmap Engine (Artecture)"
+tags = ["Bitmap Engine (Artecture)"]
 featured = true
 +++
 
