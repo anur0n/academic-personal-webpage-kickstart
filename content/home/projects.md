@@ -21,13 +21,13 @@ subtitle = ""
   # Default filter index (e.g. 0 corresponds to the first `[[filter_button]]` instance below).
   filter_default = 0
   
-   [[content.filter_button]]
-     name = "All"
-     tag = "*"
+   # [[content.filter_button]]
+   #   name = "All"
+   #   tag = "*"
 
-   [[content.filter_button]]
-     name = "Smart things (Samsung Connect)"
-     tag = "smart things"
+   # [[content.filter_button]]
+   #   name = "Smart things (Samsung Connect)"
+   #   tag = "smart things"
      
    # [[content.filter_button]]
    #  name = "Samsung Social Platform for iOS"
@@ -37,8 +37,8 @@ subtitle = ""
    #  name = "Bitmap Engine (Artecture)"
    #  tag = "Bitmap Engine (Artecture)"
    
-   [[content.project]]
-     title = "Smart Things"
+   # [[content.project]]
+   #   title = "Smart Things"
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
