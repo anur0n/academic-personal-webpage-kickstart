@@ -25,9 +25,9 @@ subtitle = ""
    #   name = "All"
    #   tag = "*"
 
-   # [[content.filter_button]]
-   #  name = "Smart things (Samsung Connect)"
-   #  tag = "Smart things (Samsung Connect)"
+   [[content.filter_button]]
+     name = "Smart things (Samsung Connect)"
+     tag = "smart things"
      
    # [[content.filter_button]]
    #  name = "Samsung Social Platform for iOS"
