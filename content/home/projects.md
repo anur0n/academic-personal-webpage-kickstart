@@ -37,7 +37,7 @@ subtitle = ""
    #  name = "Bitmap Engine (Artecture)"
    #  tag = "Bitmap Engine (Artecture)"
    
-   [project]
+   [[content.project]]
      title = "Smart Things"
 
 [design]
