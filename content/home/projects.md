@@ -36,6 +36,9 @@ subtitle = ""
    # [[content.filter_button]]
    #  name = "Bitmap Engine (Artecture)"
    #  tag = "Bitmap Engine (Artecture)"
+   
+   [project]
+     title = "Smart Things"
 
 [design]
   # Choose how many columns the section has. Valid values: 1 or 2.
