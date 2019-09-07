@@ -1,6 +1,7 @@
 ---
 title: Artecture
-# summary: An example of linking directly to an external project website using `external_link`.
+summary: Bitmap engine is a bitmap based 2D drawing engine which is used to develop canvas based drawing/art
+application. The Artecture app is available in playstore.
 tags:
 - Drawing
 - Artecture
