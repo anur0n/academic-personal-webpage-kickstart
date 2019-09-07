@@ -5,7 +5,7 @@ authors:
 - Sifat Afroj Moon
 - Jewel Nandy
 - Md Ashaduzzaman Rubel Mondol
-- Samsad Ul ISLAM
+- Samsad Ul Islam
 date: "2017-05-04T00:00:00Z"
 doi: ""
 
