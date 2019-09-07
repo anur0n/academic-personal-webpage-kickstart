@@ -1,9 +1,11 @@
 ---
 title: Smart Things
-# summary: An example of linking directly to an external project website using `external_link`.
+summary: IoT based application to control and monitor IoT enabled devices through iotivity framework developed first for Galaxy S8 in Android Platform.
+
 tags:
 - smart
 - things
+- IoT
 date: "2019-09-05T00:00:00Z"
 
 # Optional external URL for project (replaces project detail page).
