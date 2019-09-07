@@ -1,7 +1,6 @@
 ---
 title: Artecture
-summary: Bitmap engine is a bitmap based 2D drawing engine which is used to develop canvas based drawing/art
-application. The Artecture app is available in playstore.
+summary: Bitmap engine is a bitmap based 2D drawing engine which is used to develop canvas based drawing/art application. The Artecture app is available in playstore.
 tags:
 - Drawing
 - Artecture
