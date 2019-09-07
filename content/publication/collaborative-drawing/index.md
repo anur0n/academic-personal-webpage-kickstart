@@ -1,5 +1,5 @@
 ---
-title: "Collaborative drawing method and electronic device therefor"
+title: Collaborative drawing method and electronic device therefor
 authors:
 - Md Shamsul Arifin Mozumder
 - Sifat Afroj Moon
