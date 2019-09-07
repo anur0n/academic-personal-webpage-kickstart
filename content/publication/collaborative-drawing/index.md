@@ -1,10 +1,10 @@
 ---
 title: "Collaborative drawing method and electronic device therefor"
 authors:
-- Md Shamsul Arifin MOZUMDER
-- Sifat Afroj MOON
-- Jewel NANDY
-- Md Ashaduzzaman Rubel MONDOL
+- Md Shamsul Arifin Mozumder
+- Sifat Afroj Moon
+- Jewel Nandy
+- Md Ashaduzzaman Rubel Mondol
 - Samsad Ul ISLAM
 date: "2017-05-04T00:00:00Z"
 doi: ""
