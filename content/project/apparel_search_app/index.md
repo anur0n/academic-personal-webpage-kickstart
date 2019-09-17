@@ -20,5 +20,7 @@ With instant, easy and 24/7 accessibility to internet people are becoming more a
 - It will classify a product’s category based on short description
 - It will provide search features with image, where user will put an image and it will show related products.
 
+[Download Proposal doc](https://docs.google.com/document/d/1ZVAFFHlCBG1l4Wd82mfjS3JDPAvexHeDbZjU5qMNQEw/edit?usp=sharing).
+
 {{< gallery title = "Initial designs">}}
  
