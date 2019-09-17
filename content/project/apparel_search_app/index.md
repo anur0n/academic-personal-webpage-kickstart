@@ -21,6 +21,6 @@ With instant, easy and 24/7 accessibility to internet people are becoming more a
 - It will classify a product’s category based on short description
 - It will provide search features with image, where user will put an image and it will show related products.
 
-{{< figure src="https://raw.githubusercontent.com/gcushen/hugo-academic/master/academic.png" >}}
+{{< figure src="static/img/fashion_1.png" >}}
 
  
