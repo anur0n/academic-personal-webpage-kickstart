@@ -1,6 +1,6 @@
 ---
-title: Apparel Search App
-summary: 
+title: Fashion Store
+summary: A simple web based application for searching and browsing lifestyle products. Users can search with text and image. 
 tags:
 date: "2019-09-15T00:00:00Z"
 
