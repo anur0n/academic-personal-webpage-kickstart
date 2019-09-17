@@ -7,11 +7,11 @@ date: "2019-09-15T00:00:00Z"
 # Optional external URL for project (replaces project detail page).
 # external_link: https://play.google.com/store/apps/details?id=com.samsung.android.sdrawing&hl=en_US
 
-[[gallery_item]]
+gallery_item:
   album : "datamining"
   image : "fashion_1.png"
 
-[[gallery_item]]
+gallery_item:
   album : "datamining"
   image : "fashion_3.png"
 
