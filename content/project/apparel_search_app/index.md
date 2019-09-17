@@ -20,6 +20,8 @@ With instant, easy and 24/7 accessibility to internet people are becoming more a
 - It will classify a product’s category based on short description
 - It will provide search features with image, where user will put an image and it will show related products.
 
-{{< gallery >}}
+{{< gallery title = "Initial designs">}}
 
+
+{{< gallery2 title = "Initial designs2">}}
  
