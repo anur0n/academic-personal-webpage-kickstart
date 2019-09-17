@@ -7,14 +7,6 @@ date: "2019-09-15T00:00:00Z"
 # Optional external URL for project (replaces project detail page).
 # external_link: https://play.google.com/store/apps/details?id=com.samsung.android.sdrawing&hl=en_US
 
-gallery:
-  album : "datamining"
-  image : "fashion_1.png"
-
-gallery:
-  album : "datamining"
-  image : "fashion_3.png"
-
 # image:
   # caption: Photo by Toa Heftiba on Unsplash
   # focal_point: Smart
@@ -28,6 +20,6 @@ With instant, easy and 24/7 accessibility to internet people are becoming more a
 - It will classify a product’s category based on short description
 - It will provide search features with image, where user will put an image and it will show related products.
 
-{{< gallery album="datamining" >}}
+{{< gallery >}}
 
  
