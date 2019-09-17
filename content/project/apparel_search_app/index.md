@@ -13,10 +13,9 @@ date: "2019-09-15T00:00:00Z"
   # focal_point: Smart
 ---
 
-Why this app:
 With instant, easy and 24/7 accessibility to internet people are becoming more and more dependent on the e-commerce. E-commerce is on the rise and growing very fast. With this application, people can browse through various lifestyle products easily. Also this app will provide opportunity to search for similar products based on photos, which will be very convenient. Say if one likes one product somewhere, s/he can take a photo and search for similar products in this store.
 
-## Features:
+# Features:
 - Search for a product with text query like ‘Blue check casual shirt for men’
 - Based on the query it will show list of items that matches
 - It will classify a product’s category based on short description
