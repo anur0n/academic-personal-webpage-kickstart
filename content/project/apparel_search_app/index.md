@@ -12,13 +12,15 @@ date: "2019-09-15T00:00:00Z"
   # focal_point: Smart
 ---
 
-With instant, easy and 24/7 accessibility to internet people are becoming more and more dependent on the e-commerce. E-commerce is on the rise and growing very fast. With this application, people can browse through various lifestyle products easily. Also this app will provide opportunity to search for similar products based on photos, which will be very convenient. Say if one likes one product somewhere, s/he can take a photo and search for similar products in this store.
+With instant, easy and 24/7 accessibility to internet people are becoming more and more dependent on the e-commerce. E-commerce is on the rise and growing very fast. With this application, people can browse through various lifestyle products easily. 
+There will also be an option for image search which will be very convenient. User can type in something and app will show related images.
+
 
 ### Features:
 - Search for a product with text query like ‘Blue check casual shirt for men’
 - Based on the query it will show list of items that matches
 - It will classify a product’s category based on short description
-- It will provide search features with image, where user will put an image and it will show related products.
+- It will provide search features for image.
 
 [Download Proposal doc](https://docs.google.com/document/d/1ZVAFFHlCBG1l4Wd82mfjS3JDPAvexHeDbZjU5qMNQEw/edit?usp=sharing).
 
