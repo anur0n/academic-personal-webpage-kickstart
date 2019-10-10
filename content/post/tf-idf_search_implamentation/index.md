@@ -1,7 +1,7 @@
 
 +++
 title = "Implementing search engine using TF-IDF"
-summary = "A guide on implementing a search engine using TF-IDF"
+summary = "Describes How I implemented a simple search engine using TF-IDF to search Lifestyle products"
 +++
 <body>A good search engine need not be sophisticated, it is better to start simple to understand the workings of a good search engine.
 Of-course the first thing we need is a good dataset for raw textual data for oyr mining purpose. I have used the 
