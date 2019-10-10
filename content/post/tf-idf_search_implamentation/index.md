@@ -1,8 +1,8 @@
 
 +++
 title = "Implementing search engine using TF-IDF"
+summary = "A guide on implementing a search engine using TF-IDF"
 +++
-<h1>**Search Engine with Python**</h1>
 <body>A good search engine need not be sophisticated, it is better to start simple to understand the workings of a good search engine.
 Of-course the first thing we need is a good dataset for raw textual data for oyr mining purpose. I have used the 
 kaggle [data-set](https://www.kaggle.com/jessicali9530/kuc-hackathon-winter-2018/home) which consists of patient reviews on medications.
@@ -116,14 +116,11 @@ The custom Inverted Index yields results dractically faster
 
 <h4> Contributions: </h4>
 
-1. Implemented my own Inverted index from scratch using numpy and pandas.
+1. Applied **nltk's _WordNetLemmatizer_**
 
-2. Created A way to quickly retrive the posting lists for similarity calculation.
+2. Applied **nltk's stopwords** to reduce terms (In the reference there was manual stopword list which had very few words)
 
-3. Improving efficiency by dropping words that appear too many times from the vocabulary.
-
-4. Used **nltk's** **_WordNetLemmatizer_** for feature selection.
-
+3. Applied cosine similarity
 
 <h5> Referrences</h5>
 
