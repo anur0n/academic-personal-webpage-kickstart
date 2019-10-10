@@ -47,7 +47,6 @@ def getTerms(self, doc):
 ## Creating the index
 We will now create the index of our dataset using Inverted Index, TF(Term frequency) and IDF(Inverse Document Frequency)
 
------------------------------------------------
 ### Inverted Index
 An inverted index is a data structure that we build while parsing the documents that we are going to answer the search queries on. Given a query, we use the index to return the list of documents relevant for this query. The inverted index contains mappings from terms (words) to the documents that those terms appear in. Each vocabulary term is a key in the index whose value is its postings list. A term’s postings list is the list of documents that the term appears in.
 
@@ -81,7 +80,7 @@ $$ tf\mbox{-}idf\_{t,d} = tf\_{t,d} \cdot idf_t $$
 ### Cosine Similarity
 The similarity score between two vectors in a vector space is the the angle between them. If two documents are similar they will be close to each other in the vector space, having a small angle in between. This is called **Cosine Similarity**. To calculate cosine similarity We take the dot product of the vectors and the result is the cosine value of the angle between them.
 
-### Handling Query
+## Handling Query
 If we compute the cosine similarity between the query vector and all the document vectors, sort them in descending order, and select the documents with top similarity, we will obtain an ordered list of relevant documents to this query.
 
 
@@ -165,7 +164,7 @@ def writeIndexToFile(self):
 
 
 
-### Contributions
+## Contributions
 
 1. Applied **nltk's WordNetLemmatizer**
 
@@ -174,7 +173,7 @@ def writeIndexToFile(self):
 3. Applied cosine similarity.
 
 
-### Challenges faced
+## Challenges faced
 
 1. My data set had two version one was large(12GB), and another one was small (~300MB). But the smaller one didn't have the description of the products. While hosting in **pythonAnywhere** it only provides 512MB storage, while larger data set was **12GB** in size. To overcome this challenge, I parsed the large data set's json files for each product to extract the description and merged with smaller data set.
 
@@ -182,7 +181,7 @@ def writeIndexToFile(self):
 I used caching this to load the **index** whenever a client request is performed first time after the backend is live. So during every next request, the **index** will remain loaded in memory.
 
 
-### Stemming and Lemmatization (With vs Without)
+## Stemming and Lemmatization (With vs Without)
 * Without lemmatization and stemming my search engine was not returning any result for queries that doesn't exactly match the data sets. Like for '_Narrowed_', there was no result, although there was products with '_narrow_' term in the description.
 
 * Also without these pre-processing, there were around 15% more terms in the index, which increased the **index** file size by **50%**!!
@@ -197,4 +196,4 @@ I used caching this to load the **index** whenever a client request is performed
 
 
 
-**[Source codes](https://github.com/anur0n/FashionStoreSearch)**
+#### **[Source codes](https://github.com/anur0n/FashionStoreSearch)**
