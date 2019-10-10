@@ -67,7 +67,7 @@ We can use a vector to represent the document in bag of words model, since the o
 
 While using term frequencies if we use pure occurrence counts, longer documents will be favored more. Consider two documents with exactly the same content but one being twice longer by concatenating with itself.  The tf weights of each word in the longer document will be twice the shorter one, although they essentially have the same content. To remedy this effect, we length normalize term frequencies. So, the term frequency of a term t in document D now becomes:
 
-$$ {tf_t}_d = \dfrac{{N_t}_d}}{||D||}$$
+$$ {tf_t}_d = \dfrac{{N_t}_d}{||D||} $$
 
 ||D|| is known as the Euclidean norm and is calculated by taking the square of each value in the document vector, summing them up, and taking the square root of the sum. After normalizing the document vector, the entries are the final term frequencies of the corresponding terms. The document vector is also a unit vector, having a length of 1 in the vector space.
 
