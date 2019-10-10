@@ -4,7 +4,7 @@ title = "Implementing search engine using TF-IDF"
 summary = "Describes How I implemented a simple search engine using TF-IDF to search Lifestyle products"
 +++
  
-Searching for something is an inevitable part now. So, let's see, the basics of implementing a search engine. Here we will search for Life Style products which will based on [this](https://www.kaggle.com/paramaggarwal/fashion-product-images-small) data set which contains information on thousands of life style products. First, we will see _How to create **Index** and **rank** the results we get from the search_
+Searching for something is an inevitable part now. So, let's see, the basics of implementing a search engine. Here we will search for Life Style products which will based on [this](https://www.kaggle.com/paramaggarwal/fashion-product-images-small) data set which contains information on thousands of life style products. We will see _How to create **Index** and **rank** the results we get from the search_
 
 But before that let's talk about the pre-processing of our data.
 
@@ -79,16 +79,19 @@ We have defined both tf and idf, and now we can combine these to produce the ult
 $$ tf\mbox{-}idf\_{t,d} = tf\_{t,d} \cdot idf_t $$
 
 ### Cosine Similarity
-The similarity score between two vectors in a vector space is the the angle between them. If two documents are similar they will be close to each other in the vector space, having a small angle in between. This is called **Cosine Similarity**. To calculate cosine similarity We take the dot product of the vectors and the result is the cosine value of the angle between them. If we compute the cosine similarity between the query vector and all the document vectors, sort them in descending order, and select the documents with top similarity, we will obtain an ordered list of relevant documents to this query.
+The similarity score between two vectors in a vector space is the the angle between them. If two documents are similar they will be close to each other in the vector space, having a small angle in between. This is called **Cosine Similarity**. To calculate cosine similarity We take the dot product of the vectors and the result is the cosine value of the angle between them.
+
+### Handling Query
+If we compute the cosine similarity between the query vector and all the document vectors, sort them in descending order, and select the documents with top similarity, we will obtain an ordered list of relevant documents to this query.
 
 
-To Summarize in these steps in sudo code:
+To Summarize these steps in sudo code:
 
   Term frequency calculation:
   <pre>
   term-tf-doc = number of times term appears in doc / ||number of words in doc||
   </pre>
-  Inverse document frequency for a word calculation:
+  Inverse document frequency for a term calculation:
   <pre>
   term-idf = 1 + log(total number of docs in the dataset / number of docs term occurs in)
   </pre>
@@ -162,63 +165,16 @@ def writeIndexToFile(self):
 
 
 
-
-
-
------------------------------------------------
-
-**<h2>Query processing and calculating similarity</h2>**
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-Finally we use the input box we created in our application's search page to retrive user search query and make it undergo the same 
-pre-processing as our reviews, converting to lower case, stop word removal and lemmatization.
-We calculate the weights of words in the query using only term frequency. Now we retrieve the **top 10** reviews from the posting lists of each word in the search query. 
-If a review appears in the top-10 elements of every query word, calculate cosine similarity score. 
-
-$$ {sim(q,r)} = \\vec{q} \\cdot \\vec{d} = \\sum_{t\ \\text{in both q and r}} w\_{t,q} \\times w\_{t,r}.$$
-
-Where **'q'** is the search query and **'r'** is a review vector. If  a review doesn't appear in the top-k elements of some query words, use the weight in the 10th element as the upper-bound on weight in vector. Hence, we can calculate the upper-bound score for using the query word's actual and upper-bound weights with respect to vector, as follows. 
-
-$$ \\overline{sim(q,r)} = \\sum_{t\\in T_1} w\_{t,q} \\times w\_{t,r}.$$
-
-$$  + \sum_{t\\in T_2} w\_{t,q} \\times \\overline{w\_{t,r}}.$$
-
-
-In the above equation, first part has query words whose top-k elements contain review. Second part includes query words whose top-k elements do not contain the review. The weight in the 10-th element of word's postings list is used here. 
-
-$$ \\overline{sim(q,r)} = \\sum_{t\\in q} w\_{t,q} \\times \\overline{w\_{t,r}}.$$
-
-* We choose k as 20, this acts as a hyperparameter forthe search. Set k to be 20 as trial and error shows that this is optimal value.
-
-* Let query be "My stomach hurts", After preprocessing the the vector representation will be ['stomach','hurt']
-
-* Below we show how to algorithm calculate similarity of query.
-<pre>
-  word-weight-query = number of times word appears in the query / number of words in query
-
-
-  1. retrive top 20 of posting list for each word in query
-  2. find the list of all reviews. 
-  3. for every review:
-  4.   for every word:
-  5.     if word exsists in the review:
-  6.        score += word-weight-review * word-weight-query 
-  7.     else:
-  8.        score += word-weight-review20 * word-weight-query
-
-</pre>
-
-<h4> Contributions </h4>
+### Contributions
 
 1. Applied **nltk's WordNetLemmatizer**
 
-2. Applied **nltk's stopwords** to reduce terms (In the reference there was manual stopword list which had very few words)
+2. Applied **nltk's stopwords** to reduce terms (In the reference there was manual stopword list which had around 70 less words)
 
 3. Applied cosine similarity.
 
 
-<h2> Challenges faced </h2>
+### Challenges faced
 
 1. My data set had two version one was large(12GB), and another one was small (~300MB). But the smaller one didn't have the description of the products. While hosting in **pythonAnywhere** it only provides 512MB storage, while larger data set was **12GB** in size. To overcome this challenge, I parsed the large data set's json files for each product to extract the description and merged with smaller data set.
 
@@ -226,17 +182,17 @@ $$ \\overline{sim(q,r)} = \\sum_{t\\in q} w\_{t,q} \\times \\overline{w\_{t,r}}.
 I used caching this to load the **index** whenever a client request is performed first time after the backend is live. So during every next request, the **index** will remain loaded in memory.
 
 
-<h3>Inverted Index vs Term Document Matrix</h3>
-The term document matrix was generated with gensim library
-* The retrive time for a search result was abot 10 seconds.
-The custom Inverted Index yields results dractically faster
-* The query retrive time was about 0.05 seconds
+### Stemming and Lemmatization (With vs Without)
+* Without lemmatization and stemming my search engine was not returning any result for queries that doesn't exactly match the data sets. Like for '_Narrowed_', there was no result, although there was products with '_narrow_' term in the description.
+
+* Also without these pre-processing, there were around 15% more terms in the index, which increased the **index** file size by **50%**!!
 
 
-<h5> Referrences</h5>
+#### Referrences
 
 *  http://www.ardendertat.com/2011/05/30/how-to-implement-a-search-engine-part-1-create-index/
 *  https://stackabuse.com/python-for-nlp-creating-tf-idf-model-from-scratch/
 
-</b>
 
+
+**[Source codes](https://github.com/anur0n/FashionStoreSearch)**
