@@ -3,13 +3,12 @@
 title = "Implementing search engine using TF-IDF"
 summary = "Describes How I implemented a simple search engine using TF-IDF to search Lifestyle products"
 +++
-<body>A good search engine need not be sophisticated, it is better to start simple to understand the workings of a good search engine.
-Of-course the first thing we need is a good dataset for raw textual data for oyr mining purpose. I have used the 
-kaggle [data-set](https://www.kaggle.com/jessicali9530/kuc-hackathon-winter-2018/home) which consists of patient reviews on medications.
-This is in  _**csv**_  format so we use **pandas** dataframe to load it into python.
+ 
+Searching for something is an inevitable part now. So, let's see, the basics of implementing a search engine. Here we will search for Life Style products which will based on [this](https://www.kaggle.com/paramaggarwal/fashion-product-images-small) data set which contains information on thousands of life style products. First, we will see 'How to create an **Index**' to search. Then we will see, how to **rank** the results we get from the search.
 
-</body>
-<h2>**Data Preprocessing:**</h2>
+But before that let's talk about the pre-processing of our data.
+
+<h2>**Data Pre-processing**</h2>
 To make things easy we are going to match search with only the reviews available.The first challenge we face is data preprocessing.
 In our raw data set (test and train data combine) there are about **215,000** records. Upon inspection there are unsueable rows with 
 incomplete "condition" and "Drug name" columns. After dropping those we are left with **213,892** rows.
