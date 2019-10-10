@@ -103,17 +103,6 @@ $$ \\overline{sim(q,r)} = \\sum_{t\\in q} w\_{t,q} \\times \\overline{w\_{t,r}}.
 
 </pre>
 
-<h2> Challenges faced </h2>
-
-1.  Implementing the count of words in each word. Used the concept of positional indexing.
-2.  Getting the posting list for each word. It was computationally expensive to sort every posting list and keep them stored prior to the query similarity calculation. Sort only the posting list being retrived while calculating the similarity.
-
-<h3>Inverted Index vs Term Document Matrix</h3>
-The term document matrix was generated with gensim library
-* The retrive time for a search result was abot 10 seconds.
-The custom Inverted Index yields results dractically faster
-* The query retrive time was about 0.05 seconds
-
 <h4> Contributions: </h4>
 
 1. Applied **nltk's WordNetLemmatizer**
@@ -121,6 +110,22 @@ The custom Inverted Index yields results dractically faster
 2. Applied **nltk's stopwords** to reduce terms (In the reference there was manual stopword list which had very few words)
 
 3. Applied cosine similarity
+
+
+<h2> Challenges faced </h2>
+
+1. My data set had two version one was large(12GB), and another one was small (~300MB). But the smaller one didn't have the description of the products. While hosting in **pythonAnywhere** it only provides 512MB storage, while larger data set was **12GB** in size. To overcome this challenge, I parsed the large data set's json files for each product to extract the description and merged with smaller data set.
+
+2. When the code was hosted in **pythonAnywhere**, there was no starting entry point for the client request. I have precalculated the **index** file(Containing TF, IDF, Postings for all terms and documents). After that I was loading the **index** file in memory, so that when a new query request comes, the results can be returned quickly. But as there was no starting entry point for initial code to run, there was no way to load the **index** _Ahead-of-Time_. 
+I used caching this to load the **index** whenever a client request is performed first time after the backend is live. So during every next request, the **index** will remain loaded in memory.
+
+
+<h3>Inverted Index vs Term Document Matrix</h3>
+The term document matrix was generated with gensim library
+* The retrive time for a search result was abot 10 seconds.
+The custom Inverted Index yields results dractically faster
+* The query retrive time was about 0.05 seconds
+
 
 <h5> Referrences</h5>
 
