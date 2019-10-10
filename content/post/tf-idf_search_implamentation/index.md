@@ -8,7 +8,7 @@ Searching for something is an inevitable part now. So, let's see, the basics of 
 
 But before that let's talk about the pre-processing of our data.
 
-<h2>Data Pre-processing</h2>
+## Data Pre-processing
 The data set I choose had a csv file with products in the row. It had some small attributes in each column. To search over the properties and product description I combined all the properties and the description in one column. There were some rows with empty description filed. I removed those products.
 
 
