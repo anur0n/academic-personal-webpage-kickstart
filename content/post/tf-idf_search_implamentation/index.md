@@ -71,12 +71,12 @@ $$ {tf_t}_d = \dfrac{{N_t}_d}{||D||} $$
 ### Inverse Document Frequency – idf
 We can’t only use term frequencies to calculate the weight of a term in the document, because tf considers all terms equally important. However, some terms occur more rarely and they are more discriminative than others. The idf of a term is the number of documents in the corpus divided by the document frequency of a term.
 
-$$ idf_t = 1 + log\dfrac{N}{df_t}  
+$$ idf_t = 1 + log\dfrac{N}{df_t} $$
 
 ### Tf-idf scoring
 We have defined both tf and idf, and now we can combine these to produce the ultimate score of a term t in document d. We represent the document as a vector, with each entry being the tf-idf weight of the corresponding term in the document. The tf-idf weight of a term t in document d is simply the multiplication of its tf by its idf:
 
-$$ tf\mbox{-}idf_{t,d} = tf_{t,d} \cdot idf_t $$
+$$ tf\mbox{-}id{f_t}_d = {tf_t}_d \cdot idf_t $$
 
 ### Cosine Similarity
 The similarity score between two vectors in a vector space is the the angle between them. If two documents are similar they will be close to each other in the vector space, having a small angle in between. This is called **Cosine Similarity**. To calculate cosine similarity We take the dot product of the vectors and the result is the cosine value of the angle between them. If we compute the cosine similarity between the query vector and all the document vectors, sort them in descending order, and select the documents with top similarity, we will obtain an ordered list of relevant documents to this query.
