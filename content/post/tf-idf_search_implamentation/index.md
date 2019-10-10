@@ -48,16 +48,16 @@ def getTerms(self, doc):
 We will now create the index of our dataset using Inverted Index, TF(Term frequency) and IDF(Inverse Document Frequency)
 
 -----------------------------------------------
-Inverted Index
+### Inverted Index
 An inverted index is a data structure that we build while parsing the documents that we are going to answer the search queries on. Given a query, we use the index to return the list of documents relevant for this query. The inverted index contains mappings from terms (words) to the documents that those terms appear in. Each vocabulary term is a key in the index whose value is its postings list. A term’s postings list is the list of documents that the term appears in.
 
 
-TF-IDF
+### TF-IDF
 Tf-idf is a weighting scheme that assigns each term in a document a weight based on its term frequency (tf) and inverse document frequency (idf).  The terms with higher weight scores are considered to be more important. It’s one of the most popular weighting schemes in Information Retrieval.
 
 
-Term Frequency – tf
-Let’s first define how term frequency is calculated for a term t in document d. It is basically the number of occurrences of the term in the document.
+### Term Frequency – tf
+Term Frequency is calculated for a term t in document d. It is basically the number of occurrences of the term in the document.
 
 $$ {tf_t}_d = {N_t}_d $$
 
@@ -67,7 +67,7 @@ We can use a vector to represent the document in bag of words model, since the o
 
 While using term frequencies if we use pure occurrence counts, longer documents will be favored more. Consider two documents with exactly the same content but one being twice longer by concatenating with itself.  The tf weights of each word in the longer document will be twice the shorter one, although they essentially have the same content. To remedy this effect, we length normalize term frequencies. So, the term frequency of a term t in document D now becomes:
 
-$$ {tf_t}_d} = \dfrac{N_{td}}{||D||}$$
+$$ {tf_t}_d = \dfrac{{N_t}_d}}{||D||}$$
 
 ||D|| is known as the Euclidean norm and is calculated by taking the square of each value in the document vector, summing them up, and taking the square root of the sum. After normalizing the document vector, the entries are the final term frequencies of the corresponding terms. The document vector is also a unit vector, having a length of 1 in the vector space.
 
