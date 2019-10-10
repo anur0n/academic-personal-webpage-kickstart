@@ -81,6 +81,23 @@ $$ tf\mbox{-}id{f_t}_d = {tf_t}_d \cdot idf_t $$
 ### Cosine Similarity
 The similarity score between two vectors in a vector space is the the angle between them. If two documents are similar they will be close to each other in the vector space, having a small angle in between. This is called **Cosine Similarity**. To calculate cosine similarity We take the dot product of the vectors and the result is the cosine value of the angle between them. If we compute the cosine similarity between the query vector and all the document vectors, sort them in descending order, and select the documents with top similarity, we will obtain an ordered list of relevant documents to this query.
 
+
+To Summarize in these steps in sudo code:
+
+  Term frequency calculation:
+  <pre>
+  term-tf-doc = number of times term appears in doc / ||number of words in doc||
+  </pre>
+  Inverse document frequency for a word calculation:
+  <pre>
+  term-idf = 1 + log(total number of docs in the dataset / number of docs term occurs in)
+  </pre>
+  TF-IDF calculation:
+  <pre>
+  term-doc-score = term-tf-doc * term-idf
+  </pre>
+
+
 Following is the code used to prepare the index with TF-IDF
 
 
@@ -149,25 +166,6 @@ def writeIndexToFile(self):
 
 
 -----------------------------------------------
-
-
-<h3> Calculating the tf-idf weights for each word </h3>
-<body>
-  1. After construction of the first stage of the vocabulary we now calculate the weights of each word.
-  2. Term frequency of a word is given with respect to each review it appears in:
-  <pre>
-  word1-tf-review1 = number of times word1 appears in review1 / number of words in review1
-  </pre>
-  3. Inverse document frequency for a word is defined by:
-  <pre>
-  word1-idf = total number of reviews in the dataset / number of reviews word1 occurs in
-  </pre>
-  4. The weight of a word in a reviewis given by:
-  <pre>
-  word1-weight-review1 = (1+ log(word1-tf-review1)) / (word1-idf)
-  </pre>
-  
-</body>
 
 **<h2>Query processing and calculating similarity</h2>**
 
