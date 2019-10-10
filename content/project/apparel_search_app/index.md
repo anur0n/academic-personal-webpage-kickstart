@@ -25,4 +25,6 @@ There will also be an option for image search which will be very convenient. Use
 [Download Proposal doc](https://docs.google.com/document/d/1ZVAFFHlCBG1l4Wd82mfjS3JDPAvexHeDbZjU5qMNQEw/edit?usp=sharing).
 
 {{< gallery title = "Initial designs">}}
+
+Read [How to implement a search engine](https://ashaduzzaman-rubel.netlify.com/post/tf-idf_search_implamentation/)
  
