@@ -4,11 +4,44 @@ title = "Implementing search engine using TF-IDF"
 summary = "Describes How I implemented a simple search engine using TF-IDF to search Lifestyle products"
 +++
  
-Searching for something is an inevitable part now. So, let's see, the basics of implementing a search engine. Here we will search for Life Style products which will based on [this](https://www.kaggle.com/paramaggarwal/fashion-product-images-small) data set which contains information on thousands of life style products. First, we will see 'How to create an **Index**' to search. Then we will see, how to **rank** the results we get from the search.
+Searching for something is an inevitable part now. So, let's see, the basics of implementing a search engine. Here we will search for Life Style products which will based on [this](https://www.kaggle.com/paramaggarwal/fashion-product-images-small) data set which contains information on thousands of life style products. First, we will see _How to create **Index** and **rank** the results we get from the search_
 
 But before that let's talk about the pre-processing of our data.
 
-<h2>**Data Pre-processing**</h2>
+<h2>Data Pre-processing</h2>
+The data set I choose had a csv file with products in the row. It had some small attributes in each column. To search over the properties and product description I combined all the properties and the description in one column. There were some rows with empty description filed. I removed those products.
+
+Next, I removed the most common words which itself doesn't carry any significance like 'a', 'an', 'to', 'for'. These are called stopwords. Next we will use [Lemmatization](https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html) (Finding the root word of a term) and [Stemming](https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html) (Trimming the last part of a word based on set of rule) to find similar words.
+
+Following code applies these techniques:
+
+```
+import nltk
+nltk.download('stopwords')
+nltk.download('wordnet')
+
+from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer
+from nltk.stem import WordNetLemmatizer
+
+def prepareParams(self):
+  self.stopwords = set(stopwords.words('english'))
+  self.dataFile = STYLE_WITH_DESC_N_TITLE
+  self.indexFile = INVERTED_IDX_FILE
+  self.stemmer = PorterStemmer()
+  self.lemmatizer = WordNetLemmatizer()
+  
+def getTerms(self, doc):
+  doc = doc.lower()
+  doc = re.sub(r'[^a-z0-9 ]',' ',doc) #put spaces instead of non-alphanumeric characters
+  terms = doc.split()
+
+  terms = [term for term in terms if term not in self.stopwords]
+  terms = [self.lemmatizer.lemmatize(term) for term in terms]
+  terms = [self.stemmer.stem(term) for term in terms]
+  return terms
+
+```
 To make things easy we are going to match search with only the reviews available.The first challenge we face is data preprocessing.
 In our raw data set (test and train data combine) there are about **215,000** records. Upon inspection there are unsueable rows with 
 incomplete "condition" and "Drug name" columns. After dropping those we are left with **213,892** rows.
@@ -102,13 +135,13 @@ $$ \\overline{sim(q,r)} = \\sum_{t\\in q} w\_{t,q} \\times \\overline{w\_{t,r}}.
 
 </pre>
 
-<h4> Contributions: </h4>
+<h4> Contributions </h4>
 
 1. Applied **nltk's WordNetLemmatizer**
 
 2. Applied **nltk's stopwords** to reduce terms (In the reference there was manual stopword list which had very few words)
 
-3. Applied cosine similarity
+3. Applied cosine similarity.
 
 
 <h2> Challenges faced </h2>
