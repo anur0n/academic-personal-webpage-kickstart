@@ -44,7 +44,7 @@ def getTerms(self, doc):
 
 ```
 
-<h2>Creating the index</h2>
+## Creating the index
 We will now create the index of our dataset using Inverted Index, TF(Term frequency) and IDF(Inverse Document Frequency)
 
 -----------------------------------------------
