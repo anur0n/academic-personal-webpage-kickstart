@@ -22,6 +22,8 @@ There will also be an option for image search which will be very convenient. Use
 - It will classify a product’s category based on short description
 - It will provide search features for image.
 
+**[Check the store](http://anur0narm.pythonanywhere.com/)**
+
 [Download Proposal doc](https://docs.google.com/document/d/1ZVAFFHlCBG1l4Wd82mfjS3JDPAvexHeDbZjU5qMNQEw/edit?usp=sharing).
 
 {{< gallery title = "Initial designs">}}
