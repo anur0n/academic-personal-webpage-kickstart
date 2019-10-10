@@ -116,7 +116,7 @@ The custom Inverted Index yields results dractically faster
 
 <h4> Contributions: </h4>
 
-1. Applied **nltk's _WordNetLemmatizer_**
+1. Applied **nltk's WordNetLemmatizer**
 
 2. Applied **nltk's stopwords** to reduce terms (In the reference there was manual stopword list which had very few words)
 
