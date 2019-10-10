@@ -1,7 +1,7 @@
 
 +++
 title = "Implementing search engine using TF-IDF"
-summary = "Describes How I implemented a simple search engine using TF-IDF to search Lifestyle products"
+summary = "How I implemented a simple search engine using TF-IDF to search Lifestyle products"
 +++
  
 Searching for something is an inevitable part now. So, let's see, the basics of implementing a search engine. Here we will search for Life Style products which will based on [this](https://www.kaggle.com/paramaggarwal/fashion-product-images-small) data set which contains information on thousands of life style products. We will see _How to create **Index** and **rank** the results we get from the search_
@@ -192,6 +192,8 @@ I used caching this to load the **index** whenever a client request is performed
 
 *  http://www.ardendertat.com/2011/05/30/how-to-implement-a-search-engine-part-1-create-index/
 *  https://stackabuse.com/python-for-nlp-creating-tf-idf-model-from-scratch/
+
+
 
 
 
