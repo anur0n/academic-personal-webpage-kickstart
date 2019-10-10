@@ -59,13 +59,13 @@ Tf-idf is a weighting scheme that assigns each term in a document a weight based
 ### Term Frequency – tf
 Term Frequency is calculated for a term t in document d. It is basically the number of occurrences of the term in the document.
 
-$$ {tf_t}_d = {N_t}_d $$
+$$ tf\_{t,d} = N\_{t,d} $$
 
 A term appears more in the document it becomes more important, which is logical. However, there is a drawback, by using term frequencies we lose positional information. The ordering of terms doesn’t matter, instead the number of occurrences becomes important. This is known as the bag of words model.
 
 While using term frequencies if we use pure occurrence counts, longer documents will be favored more. So, we length normalize term frequencies. So, the term frequency of a term t in document D now becomes:
 
-$$ {tf_t}_d = \dfrac{{N_t}_d}{||D||} $$
+$$ tf\_{t,d} = \dfrac{{N\_{t,d}{||D||} $$
 
 
 ### Inverse Document Frequency – idf
@@ -76,7 +76,7 @@ $$ idf_t = 1 + log\dfrac{N}{df_t} $$
 ### Tf-idf scoring
 We have defined both tf and idf, and now we can combine these to produce the ultimate score of a term t in document d. We represent the document as a vector, with each entry being the tf-idf weight of the corresponding term in the document. The tf-idf weight of a term t in document d is simply the multiplication of its tf by its idf:
 
-$$ tf\mbox{-}id{f_t}_d = {tf_t}_d \cdot idf_t $$
+$$ tf\mbox{-}idf\_{t,d} = tf\_{t,d} \cdot idf_t $$
 
 ### Cosine Similarity
 The similarity score between two vectors in a vector space is the the angle between them. If two documents are similar they will be close to each other in the vector space, having a small angle in between. This is called **Cosine Similarity**. To calculate cosine similarity We take the dot product of the vectors and the result is the cosine value of the angle between them. If we compute the cosine similarity between the query vector and all the document vectors, sort them in descending order, and select the documents with top similarity, we will obtain an ordered list of relevant documents to this query.
