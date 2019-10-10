@@ -51,6 +51,7 @@ We will now create the index of our dataset using Inverted Index, TF(Term freque
 Inverted Index
 An inverted index is a data structure that we build while parsing the documents that we are going to answer the search queries on. Given a query, we use the index to return the list of documents relevant for this query. The inverted index contains mappings from terms (words) to the documents that those terms appear in. Each vocabulary term is a key in the index whose value is its postings list. A term’s postings list is the list of documents that the term appears in.
 
+
 TF-IDF
 Tf-idf is a weighting scheme that assigns each term in a document a weight based on its term frequency (tf) and inverse document frequency (idf).  The terms with higher weight scores are considered to be more important. It’s one of the most popular weighting schemes in Information Retrieval.
 
@@ -58,7 +59,7 @@ Tf-idf is a weighting scheme that assigns each term in a document a weight based
 Term Frequency – tf
 Let’s first define how term frequency is calculated for a term t in document d. It is basically the number of occurrences of the term in the document.
 
-$$tf_{t,d} = N_{t,d}$$
+$$tf_t,d = N_t,d$$
 
 We can see that as a term appears more in the document it becomes more important, which is logical. However, there is a drawback, by using term frequencies we lose positional information. The ordering of terms doesn’t matter, instead the number of occurrences becomes important. This is known as the bag of words model, and it is widely used in document classification. In bag of words model, the document is represented as an unordered collection of words. However, it doesn’t turn to be a big loss. Of course we lose the semantic difference between “Bob likes Alice” and “Alice likes Bob”, but we still get the general idea.
 
