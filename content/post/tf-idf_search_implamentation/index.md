@@ -59,7 +59,7 @@ Tf-idf is a weighting scheme that assigns each term in a document a weight based
 Term Frequency – tf
 Let’s first define how term frequency is calculated for a term t in document d. It is basically the number of occurrences of the term in the document.
 
-$$ tf_td = N_td $$
+$$ {tf_t}_d = {N_t}_d $$
 
 We can see that as a term appears more in the document it becomes more important, which is logical. However, there is a drawback, by using term frequencies we lose positional information. The ordering of terms doesn’t matter, instead the number of occurrences becomes important. This is known as the bag of words model, and it is widely used in document classification. In bag of words model, the document is represented as an unordered collection of words. However, it doesn’t turn to be a big loss. Of course we lose the semantic difference between “Bob likes Alice” and “Alice likes Bob”, but we still get the general idea.
 
@@ -67,7 +67,7 @@ We can use a vector to represent the document in bag of words model, since the o
 
 While using term frequencies if we use pure occurrence counts, longer documents will be favored more. Consider two documents with exactly the same content but one being twice longer by concatenating with itself.  The tf weights of each word in the longer document will be twice the shorter one, although they essentially have the same content. To remedy this effect, we length normalize term frequencies. So, the term frequency of a term t in document D now becomes:
 
-tf_{td} = \dfrac{N_{td}}{||D||}  
+$$ {tf_t}_d} = \dfrac{N_{td}}{||D||}$$
 
 ||D|| is known as the Euclidean norm and is calculated by taking the square of each value in the document vector, summing them up, and taking the square root of the sum. After normalizing the document vector, the entries are the final term frequencies of the corresponding terms. The document vector is also a unit vector, having a length of 1 in the vector space.
 
