@@ -188,14 +188,19 @@ I used caching this to load the **index** whenever a client request is performed
 
 ## Stemming and Lemmatization (With vs Without)
 * Tried different combination of word reduction. Comparisons are listed below:
-|Type of reduction|Wordcount after reduction|
-|----|-----|
-|No reduction|9580|
-|Only NLTK's stopwords removal|9444|
-|Stopwords + Wordnet Lemmatizer|8515|
-|Stopwords + Porter Stemming|7097|
-|Stopwords + Porter Stemming + Lemmatization|7080|
-|Stopwords + Snowball Stemming|7057|
+[table]
+  [[row]]
+  data = ["Type of reduction", "Wordcount after reduction"]
+  [[row]]
+  data = ["Only NLTK's stopwords removal", "9444"]
+  [[row]]
+  data = ["Stopwords + Wordnet Lemmatizer", "8515"]
+  [[row]]
+  data = ["Stopwords + Porter Stemming", "7097"]
+  [[row]]
+  data = ["Stopwords + Porter Stemming + Lemmatization", "7070"]
+  [[row]]
+  data = ["Stopwords + Snowball Stemming", "7057"]
 
 * Without lemmatization and stemming my search engine was not returning any result for queries that doesn't exactly match the data sets. Like for '_Narrowed_', there was no result, although there was products with '_narrow_' term in the description.
 
