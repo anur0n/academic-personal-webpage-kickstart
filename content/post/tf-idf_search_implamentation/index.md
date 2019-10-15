@@ -77,8 +77,6 @@ We have defined both tf and idf, and now we can combine these to produce the ult
 
 $$ tf\mbox{-}idf\_{t,d} = tf\_{t,d} \cdot idf_t $$
 
-### Cosine Similarity
-The similarity score between two vectors in a vector space is the the angle between them. If two documents are similar they will be close to each other in the vector space, having a small angle in between. This is called **Cosine Similarity**. To calculate cosine similarity We take the dot product of the vectors and the result is the cosine value of the angle between them.
 
 ## Handling Query
 If we compute the cosine similarity between the query vector and all the document vectors, sort them in descending order, and select the documents with top similarity, we will obtain an ordered list of relevant documents to this query.
@@ -88,7 +86,9 @@ To Summarize these steps in sudo code:
 
   Term frequency calculation:
   <pre>
-  term-tf-doc = number of times term appears in doc / ||number of words in doc||
+  Normalization = sum(number of terms in doc)^2)
+  term-tf-doc = sqrtnumber of times term appears in doc / sqrt(Normalization)
+  
   </pre>
   Inverse document frequency for a term calculation:
   <pre>
@@ -162,7 +162,13 @@ def writeIndexToFile(self):
     file.close()
 ```
 
+### Highlighting the Query terms in result
+To highlight the query words in the result, following steps were done.
 
+- Split all terms in the doc
+- For each doc terms, applied reduction and checked if it is available in the query term list
+- If available replaced the **non reduced doc term** with  **<mark>non reduced doc term</mark>**
+- Used a dictionary to avoid replacing multiple time for same doc term
 
 ## Contributions
 
@@ -170,8 +176,7 @@ def writeIndexToFile(self):
 
 2. Applied **nltk's stopwords** to reduce terms (In the reference there was manual stopword list which had around 70 less words)
 
-#3. Applied cosine similarity.
-
+3. Applied Syntax Highlighting
 
 ## Challenges faced
 
