@@ -176,7 +176,7 @@ To highlight the query words in the result, following steps were done.
 
 2. Applied **nltk's stopwords** to reduce terms (In the reference there was manual stopword list which had around 70 less words)
 
-3. Applied Syntax Highlighting
+3. Applied query term Highlighting
 
 ## Challenges faced
 
