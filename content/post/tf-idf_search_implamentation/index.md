@@ -194,27 +194,27 @@ I used caching this to load the **index** whenever a client request is performed
     <th>Wordcount after reduction</th>
   </tr>
   <tr>
-      <td align = "center">No reduction</td>
+      <td>No reduction</td>
       <td align = "center">9580</td>
   </tr>
   <tr>
-      <td align = "center">Only NLTK's stopwords removal</td>
+      <td>Only NLTK's stopwords removal</td>
       <td align = "center">9444</td>
   </tr>
   <tr>
-      <td align = "center">Stopwords + Wordnet Lemmatizer</td>
+      <td>Stopwords + Wordnet Lemmatizer</td>
       <td align = "center">8515</td>
   </tr>
   <tr>
-      <td align = "center">Stopwords + Porter Stemming</td>
+      <td>Stopwords + Porter Stemming</td>
       <td align = "center">7097</td>
   </tr>
   <tr>
-      <td align = "center">Stopwords + Porter Stemming + Lemmatization</td>
+      <td>Stopwords + Porter Stemming + Lemmatization</td>
       <td align = "center">7080</td>
   </tr>
   <tr>
-      <td align = "center">Stopwords + Snowball Stemming</td>
+      <td>Stopwords + Snowball Stemming</td>
       <td align = "center">7057</td>
   </tr>
 </table>
