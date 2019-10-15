@@ -130,7 +130,7 @@ def createTfIdfIndex(self):
         norm = 0
         for term, posting in termDict.items():
           norm += len(posting)**2
-          norm = math.sqrt(norm)
+        norm = math.sqrt(norm)
 
         #calculate tf and df weights
         for term, posting in termDict.items():
@@ -170,7 +170,7 @@ def writeIndexToFile(self):
 
 2. Applied **nltk's stopwords** to reduce terms (In the reference there was manual stopword list which had around 70 less words)
 
-3. Applied cosine similarity.
+#3. Applied cosine similarity.
 
 
 ## Challenges faced
@@ -182,15 +182,27 @@ I used caching this to load the **index** whenever a client request is performed
 
 
 ## Stemming and Lemmatization (With vs Without)
+* Tried different combination of word reduction. Comparisons are listed below:
+|Type of reduction|Wordcount after reduction|
+|----|-----|
+|No reduction|9580|
+|Only NLTK's stopwords removal|9444|
+|Stopwords + Wordnet Lemmatizer|8515|
+|Stopwords + Porter Stemming|7097|
+|Stopwords + Porter Stemming + Lemmatization|7080|
+|Stopwords + Snowball Stemming|7057|
+
 * Without lemmatization and stemming my search engine was not returning any result for queries that doesn't exactly match the data sets. Like for '_Narrowed_', there was no result, although there was products with '_narrow_' term in the description.
 
-* Also without these pre-processing, there were around 15% more terms in the index, which increased the **index** file size by **50%**!!
+* Also without these pre-processing, there were around 25% more terms in the index, which increased the **index** file size by **50%**!! (6 MB without reduction, and ~4MB after reduction)
 
 
 #### Referrences
 
 *  http://www.ardendertat.com/2011/05/30/how-to-implement-a-search-engine-part-1-create-index/
 *  https://stackabuse.com/python-for-nlp-creating-tf-idf-model-from-scratch/
+*  https://www.youtube.com/watch?v=M-QRwEEZ9-8&t=226s
+*  https://www.youtube.com/watch?v=IIi6e5oDZ68&t=439s
 
 
 
