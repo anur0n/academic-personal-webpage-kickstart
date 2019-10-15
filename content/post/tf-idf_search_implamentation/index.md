@@ -188,6 +188,18 @@ I used caching this to load the **index** whenever a client request is performed
 
 ## Stemming and Lemmatization (With vs Without)
 * Tried different combination of word reduction. Comparisons are listed below:
+<table style="width:100%">
+<tr>
+<th>Type of reduction</th>
+  <th>Wordcount after reduction</th>
+</tr>
+
+  <tr>
+      <td>Only NLTK's stopwords removal</td>
+      <td>9444</td>
+  </tr>
+</table>
+
 [table]
   [[row]]
   data = ["Type of reduction", "Wordcount after reduction"]
