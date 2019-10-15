@@ -189,34 +189,33 @@ I used caching this to load the **index** whenever a client request is performed
 ## Stemming and Lemmatization (With vs Without)
 * Tried different combination of word reduction. Comparisons are listed below:
 <table style="width:100%">
-<tr>
-<th>Type of reduction</th>
-  <th>Wordcount after reduction</th>
-</tr>
-
   <tr>
-      <td>No reduction</td>
-      <td>9580</td>
+    <th>Type of reduction</th>
+    <th>Wordcount after reduction</th>
   </tr>
   <tr>
-      <td>Only NLTK's stopwords removal</td>
-      <td>9444</td>
+      <td align = "center">No reduction</td>
+      <td align = "center">9580</td>
   </tr>
   <tr>
-      <td>Stopwords + Wordnet Lemmatizer</td>
-      <td>8515</td>
+      <td align = "center">Only NLTK's stopwords removal</td>
+      <td align = "center">9444</td>
   </tr>
   <tr>
-      <td>Stopwords + Porter Stemming</td>
-      <td>7097</td>
+      <td align = "center">Stopwords + Wordnet Lemmatizer</td>
+      <td align = "center">8515</td>
   </tr>
   <tr>
-      <td>Stopwords + Porter Stemming + Lemmatization</td>
-      <td>7080</td>
+      <td align = "center">Stopwords + Porter Stemming</td>
+      <td align = "center">7097</td>
   </tr>
   <tr>
-      <td>Stopwords + Snowball Stemming</td>
-      <td>7057</td>
+      <td align = "center">Stopwords + Porter Stemming + Lemmatization</td>
+      <td align = "center">7080</td>
+  </tr>
+  <tr>
+      <td align = "center">Stopwords + Snowball Stemming</td>
+      <td align = "center">7057</td>
   </tr>
 </table>
 
