@@ -195,24 +195,31 @@ I used caching this to load the **index** whenever a client request is performed
 </tr>
 
   <tr>
+      <td>No reduction</td>
+      <td>9580</td>
+  </tr>
+  <tr>
       <td>Only NLTK's stopwords removal</td>
       <td>9444</td>
   </tr>
+  <tr>
+      <td>Stopwords + Wordnet Lemmatizer</td>
+      <td>8515</td>
+  </tr>
+  <tr>
+      <td>Stopwords + Porter Stemming</td>
+      <td>7097</td>
+  </tr>
+  <tr>
+      <td>Stopwords + Porter Stemming + Lemmatization</td>
+      <td>7080</td>
+  </tr>
+  <tr>
+      <td>Stopwords + Snowball Stemming</td>
+      <td>7057</td>
+  </tr>
 </table>
 
-[table]
-  [[row]]
-  data = ["Type of reduction", "Wordcount after reduction"]
-  [[row]]
-  data = ["Only NLTK's stopwords removal", "9444"]
-  [[row]]
-  data = ["Stopwords + Wordnet Lemmatizer", "8515"]
-  [[row]]
-  data = ["Stopwords + Porter Stemming", "7097"]
-  [[row]]
-  data = ["Stopwords + Porter Stemming + Lemmatization", "7070"]
-  [[row]]
-  data = ["Stopwords + Snowball Stemming", "7057"]
 
 * Without lemmatization and stemming my search engine was not returning any result for queries that doesn't exactly match the data sets. Like for '_Narrowed_', there was no result, although there was products with '_narrow_' term in the description.
 
