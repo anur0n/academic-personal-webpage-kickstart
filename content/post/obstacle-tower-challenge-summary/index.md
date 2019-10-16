@@ -30,7 +30,7 @@ draft: false
 #   Otherwise, set `projects = []`.
 projects: []
 ---
-
+\justify
 AI researchers have been using different game environments for a long time. Video games requires more frequent decision making, often in real time. So, from board games like checker and chess to Atari 2600 based Arcade Learning Environments (ALE) and doom based VizDoom have helped in the development and testing of AI Agents’ performance. But these have their own limitation and limited capabilities for developing generalized AI Agents. Like Atari has deterministic game levels, VizDoom has primitive graphics and limited randomization. Obstacle Tower Challenge is a new benchmark environment is specifically developed to overcome the limitations of previous game-based AI benchmarks, offering a broad and deep challenge. It provides following major features:
 
 
