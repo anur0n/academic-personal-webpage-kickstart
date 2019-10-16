@@ -35,7 +35,7 @@ Obstacle Tower Challenge
 AI researchers have been using different game environments for a long time. Video games requires more frequent decision making, often in real time. So, from board games like checker and chess to Atari 2600 based Arcade Learning Environments (ALE) and doom based VizDoom have helped in the development and testing of AI Agents’ performance. But these have their own limitation and limited capabilities for developing generalized AI Agents. Like Atari has deterministic game levels, VizDoom has primitive graphics and limited randomization. Obstacle Tower Challenge is a new benchmark environment is specifically developed to overcome the limitations of previous game-based AI benchmarks, offering a broad and deep challenge. It provides following major features:
 
 
-{{< figure src="static/img/posts/obstacle-tower-challenge/obstacle-environment.png" title="Figure 1: Examples of agent observations in the Obstacle Tower at different floor levels. Left: Early floor is rendered in the Ancient theme. Middle: Intermediate floor is rendered using the Moorish theme. Right: Later floor is rendered in Industrial theme." >}}
+{{< figure src="/img/posts/obstacle-tower-challenge/obstacle-environment.png" title="Figure 1: Examples of agent observations in the Obstacle Tower at different floor levels. Left: Early floor is rendered in the Ancient theme. Middle: Intermediate floor is rendered using the Moorish theme. Right: Later floor is rendered in Industrial theme." >}}
 
 -	High Visual Fidelity: Provides 3D environment with real-time lighting and shadows and much detailed textures
 
