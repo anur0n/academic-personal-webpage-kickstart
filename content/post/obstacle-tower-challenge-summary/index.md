@@ -76,3 +76,5 @@ It provides three possible evaluation schemes:
 
 Through all these environmental dynamicity Obstacle Tower challenge provides a meaningful challenge to current and future AI agents. This environment provides four axes of challenge for AI agents: vision, control, planning, and generalization. This benchmark combines all such axes of complexity.
 
+
+**Original Paper can be read here(https://arxiv.org/pdf/1902.01378.pdf)**
