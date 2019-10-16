@@ -1,7 +1,7 @@
 ---
 title: 'Obstacle Tower Challenge'
-subtitle: 'A short summary of the new AI agent benchmarking environment.'
-summary: A short summary of the new AI agent benchmarking environment.
+subtitle: 'A short summary on the new AI agent benchmarking environment.'
+summary: A short summary on the new AI agent benchmarking environment.
 authors:
 - admin
 tags:
@@ -45,7 +45,7 @@ Obstacle Tower Environment
 Its environment is generated procedurally at multiple levels of interaction. 
 
 Episode Dynamics:
-It consists of up to 100 floors and starting floor is zero. All floors of the environment are treated as a single finite episode in the RL context. Each floor contains at the least a starting and ending room. Each room can contain a puzzle to solve, enemies to defeat, obstacles to evade, or a key to open a locked door. The layout of the floors and the contents of the rooms within each floor becomes more complex at higher floors. Within an episode, agent can only go to higher floors, and not to return to lower floors.
+It consists of up to 100 floors and starting floor is zero. All floors of the environment are treated as a single finite episode. Each floor contains at the least a starting and ending room. Each room can contain a puzzle to solve, enemies to defeat, obstacles to evade, or a key to open a locked door. The layout of the floors and the contents of the rooms within each floor becomes more complex at higher floors. Within an episode, agent can only go to higher floors, and not to return to lower floors.
 The episode terminates when the agent collides with a hazard such as a pit or enemy, when the timer runs out, or when the agent arrives at the top floor of the environment. The timer is set at the beginning of the episode, and completing floors as well as collecting time orbs increase the time left to the agent. In this way a successful agent must learn a behavior which is a trade off between collecting orbs and quickly completing floors of the tower in order to arrive at the higher floors before the timer ends.
 
 It provides an image of the environment of size 168x168 RGB pixels and some other non-visual environment states like no of keys in possession of the Agent, the remaining time.
