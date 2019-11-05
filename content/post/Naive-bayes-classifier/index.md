@@ -57,6 +57,9 @@ Tf-idf is a weighting scheme that assigns each term in a document a weight based
 ### Term Frequency – tf
 Term Frequency is calculated for a term t in document d. It is basically the number of occurrences of the term in the document.
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
 $$ tf\_{t,d} = N\_{t,d} $$
 
 A term appears more in the document it becomes more important, which is logical. However, there is a drawback, by using term frequencies we lose positional information. The ordering of terms doesn’t matter, instead the number of occurrences becomes important. This is known as the bag of words model.
