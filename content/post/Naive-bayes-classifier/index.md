@@ -190,3 +190,6 @@ So we used **1** for our smoothing value. Which gives **98.6%** accuracy and **8
 
 
 #### **[Source codes](https://github.com/anur0n/FashionStoreSearch)**
+
+#### Read More
+*  [Implementing search engine using tf-idf](https://ashaduzzaman-rubel.netlify.com/post/tf-idf_search_implamentation/)
