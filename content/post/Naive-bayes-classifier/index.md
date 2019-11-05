@@ -4,13 +4,11 @@ title = "Text Classification using Naive Bayes Classifier"
 summary = "About implementation of Naive Bayes Text classifier to classify fashion products based on product description"
 +++
  
-Searching for something is an inevitable part now. So, let's see, the basics of implementing a search engine. Here we will search for Life Style products which will based on [this](https://www.kaggle.com/paramaggarwal/fashion-product-images-small) data set which contains information on thousands of life style products. We will see _How to create **Index** and **rank** the results we get from the search_
+Text classification plays an important role in information mining. Basically text classification is identifying the class based on some text (Description, Review etc). There are many algorithms for classification, but for text classification Naive Bayes classification gives overall good performance. I implemented a text classifier using Naive Bayes algorithm to classify the product category based on product description. The classifier is based on [this](https://www.kaggle.com/paramaggarwal/fashion-product-images-small) data set which contains information on thousands of life style products.
 
-But before that let's talk about the pre-processing of our data.
 
 ## Data Pre-processing
 The data set I choose had a csv file with products in the row. It had some small attributes in each column. To search over the properties and product description I combined all the properties and the description in one column. There were some rows with empty description filed. I removed those products.
-
 
 Next, I removed the most common words which itself doesn't carry any significance like 'a', 'an', 'to', 'for'. These are called stopwords. Next we will use [Lemmatization](https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html) (Finding the root word of a term) and [Stemming](https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html) (Trimming the last part of a word based on set of rule) to find similar words.
 
@@ -27,8 +25,6 @@ from nltk.stem import WordNetLemmatizer
 
 def prepareParams(self):
   self.stopwords = set(stopwords.words('english'))
-  self.dataFile = STYLE_WITH_DESC_N_TITLE
-  self.indexFile = INVERTED_IDX_FILE
   self.stemmer = PorterStemmer()
   self.lemmatizer = WordNetLemmatizer()
   
@@ -45,7 +41,10 @@ def getTerms(self, doc):
 ```
 
 ## Creating the index
-We will now create the index of our dataset using Inverted Index, TF(Term frequency) and IDF(Inverse Document Frequency)
+We will now create the index of our dataset using Inverted Index and then will precalculate the probabilities on the index based on Naive Bayes Algorithm
+
+### Naive Bayes Algorithm
+
 
 ### Inverted Index
 An inverted index is a data structure that we build while parsing the documents that we are going to answer the search queries on. Given a query, we use the index to return the list of documents relevant for this query. The inverted index contains mappings from terms (words) to the documents that those terms appear in. Each vocabulary term is a key in the index whose value is its postings list. A term’s postings list is the list of documents that the term appears in.
@@ -162,21 +161,13 @@ def writeIndexToFile(self):
     file.close()
 ```
 
-### Highlighting the Query terms in result
-To highlight the query words in the result, following steps were done.
-
-- Split all terms in the doc
-- For each doc terms, applied reduction and checked if it is available in the query term list
-- If available replaced the **non reduced doc term** with  **<mark>non reduced doc term</mark>**
-- Used a dictionary to avoid replacing multiple time for same doc term
-
 ## Contributions
 
-1. Applied **nltk's WordNetLemmatizer**
+1. Applied **nltk's PorterStemmer**
 
-2. Applied **nltk's stopwords** to reduce terms (In the reference there was manual stopword list which had around 70 less words)
+2. Applied **nltk's stopwords** to reduce terms
 
-3. Applied query term Highlighting
+3. Tried changing the smoothing parameter and evaluated accuracy, precision, recall and F1 score in the range of 100, 10, 1, 0.1, ..., 0.000000001 for smoothing value.
 
 ## Challenges faced
 
@@ -227,8 +218,11 @@ I used caching this to load the **index** whenever a client request is performed
 
 #### Referrences
 
-*  http://www.ardendertat.com/2011/05/30/how-to-implement-a-search-engine-part-1-create-index/
-*  https://stackabuse.com/python-for-nlp-creating-tf-idf-model-from-scratch/
+*  https://machinelearningmastery.com/naive-bayes-classifier-scratch-python/
+*  https://towardsdatascience.com/na%C3%AFve-bayes-from-scratch-using-python-only-no-fancy-frameworks-a1904b37222d
+*  https://towardsdatascience.com/unfolding-na%C3%AFve-bayes-from-scratch-2e86dcae4b01#08ef
+*  https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7
+*  https://towardsdatascience.com/multi-class-metrics-made-simple-part-ii-the-f1-score-ebe8b2c2ca1
 *  https://www.youtube.com/watch?v=M-QRwEEZ9-8&t=226s
 *  https://www.youtube.com/watch?v=IIi6e5oDZ68&t=439s
 
