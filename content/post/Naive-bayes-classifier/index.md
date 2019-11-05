@@ -43,9 +43,9 @@ def getTerms(self, doc):
 ### Naive Bayes Algorithm
 Naive Bayes algorithm uses Bayes theorem. It states that: The probability of a document d being in class c is computed as-
 
-$$ P(C \mid d) = P(c) . \prod_{k=1}^{n\_{d}} P(t\_{k} \mid c) $$
+$$ P(C \mid d) = P( c ) . \prod_{k=1}^{n\_{d}} P(t\_{k} \mid c) $$
 
-where $$ P(t\_{k} \mid c) $$ is the conditional probability of term $$ t\_{k} $$ occurring in a document of class c. P(c) is the prior probability of a document occurring in class c.
+where $$ P(t\_{k} \mid c) $$ is the conditional probability of term $$ t\_{k} $$ occurring in a document of class c. P( c ) is the prior probability of a document occurring in class c.
 
 ### Inverted Index
 An inverted index is a data structure that we build while parsing the documents that we are going to answer the search queries on. Given a query, we use the index to return the list of documents relevant for this query. The inverted index contains mappings from terms (words) to the documents that those terms appear in. Each vocabulary term is a key in the index whose value is its postings list. A term’s postings list is the list of documents that the term appears in.
