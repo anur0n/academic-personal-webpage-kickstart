@@ -1,7 +1,7 @@
 
 +++
-title = "Implementing search engine using TF-IDF"
-summary = "How I implemented a simple search engine using TF-IDF to search Lifestyle products"
+title = "Text Classification using Naive Bayes Classifier"
+summary = "About implementation of Naive Bayes Text classifier to classify fashion products based on product description"
 +++
  
 Searching for something is an inevitable part now. So, let's see, the basics of implementing a search engine. Here we will search for Life Style products which will based on [this](https://www.kaggle.com/paramaggarwal/fashion-product-images-small) data set which contains information on thousands of life style products. We will see _How to create **Index** and **rank** the results we get from the search_
