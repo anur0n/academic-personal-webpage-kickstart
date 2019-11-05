@@ -240,3 +240,6 @@ I used caching this to load the **index** whenever a client request is performed
 
 
 #### **[Source codes](https://github.com/anur0n/FashionStoreSearch)**
+
+#### Read More
+*  [Naive Bayes Text classifier](https://ashaduzzaman-rubel.netlify.com/post/naive-bayes-classifier/)
