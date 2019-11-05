@@ -6,6 +6,7 @@ summary = "About implementation of Naive Bayes Text classifier to classify fashi
  
 Text classification plays an important role in information mining. Basically text classification is identifying the class based on some text (Description, Review etc). There are many algorithms for classification, but for text classification Naive Bayes classification gives overall good performance. I implemented a text classifier using Naive Bayes algorithm to classify the product category based on product description. The classifier is based on [this](https://www.kaggle.com/paramaggarwal/fashion-product-images-small) data set which contains information on thousands of life style products.
 
+$$ {sim(q,r)} = \\vec{q} \\cdot \\vec{d} = \\sum_{t\ \\text{in both q and r}} w\_{t,q} \\times w\_{t,r}.$$
 
 ## Data Pre-processing
 The data set I choose had a csv file with products in the row. It had some small attributes in each column. To search over the properties and product description I combined all the properties and the description in one column. There were some rows with empty description filed. I removed those products.
