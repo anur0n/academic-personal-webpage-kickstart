@@ -43,128 +43,109 @@ def getTerms(self, doc):
 ### Naive Bayes Algorithm
 Naive Bayes algorithm uses Bayes theorem. It states that: The probability of a document d being in class c is computed as-
 
-$$ P(C \mid d) = P( c ) . \prod_{k=1}^{n\_{d}} P(t\_{k} \mid c) $$
+$$ P(c \mid d) = P( c ) . \prod_{k=1}^{n\_{d}} P(t\_{k} \mid c) $$
 
-where $$ P(t\_{k} \mid c) $$ is the conditional probability of term $$ t\_{k} $$ occurring in a document of class c. P( c ) is the prior probability of a document occurring in class c.
+where $$ P(t\_{k} \mid c) $$ is the conditional probability of term $$ t\_{k} $$ occurring in a document of class c. P( c ) is the prior probability of a document occurring in class c. The class with highest probability is selected as the result.
 
-### Inverted Index
-An inverted index is a data structure that we build while parsing the documents that we are going to answer the search queries on. Given a query, we use the index to return the list of documents relevant for this query. The inverted index contains mappings from terms (words) to the documents that those terms appear in. Each vocabulary term is a key in the index whose value is its postings list. A term’s postings list is the list of documents that the term appears in.
+To create the model we will need the term frequencies for each documents in each class.
 
+### Indexing
+For each class we will store each term with it's frequency for all the documents of that class. Given a query, we use the index to return the list of documents relevant for this query.
 
+```
+def addToIndex(self, products_of_category, category):
+    counter = 0  
+    for product in products_of_category: #for every word in preprocessed description
+      token_words = self.getTerms(product)
+      for token in token_words:
+        counter += 1
+        if not token in self.index[category]:
+          self.index[category][token] = 0
+        self.index[category][token]+=1 #increment in its count
 
+  def buildInvertedIndex(self):
+    self.index = np.array([defaultdict(int) for i in range(self.categories.shape[0])])
+    
+    for idx, category in enumerate(self.categories):
+      all_category_products = [x for x, label in zip(self.productDescriptions, self.labels) if label == category]
 
-### TF-IDF
-Tf-idf is a weighting scheme that assigns each term in a document a weight based on its term frequency (tf) and inverse document frequency (idf).  The terms with higher weight scores are considered to be more important. It’s one of the most popular weighting schemes in Information Retrieval.
+      desc = [category_product for category_product in all_category_products]
 
+      np.apply_along_axis(self.addToIndex,0, desc,idx)
+```
 
-### Term Frequency – tf
-Term Frequency is calculated for a term t in document d. It is basically the number of occurrences of the term in the document.
+### Precalculating the probabilities
+Now we will pre calculate the term probabilities using the formula above so that during classification request we can just get the data from this calculation.
+
+During this calculation of probabilities if some term doesn't occur in the index, then the whole probability will become 0 as it is multiplication. To avoid this, we will add a smoothing param = 1 to each term frequency. This is called **_add-one or Laplace smoothing_.**
+
+In above equation, many conditional probabilities are multiplied. This may result in a floating point underflow. To avoid this, instead of multiplying probabilities we will use **logarithm**. The class with the highest log probability score is still the most probable; log(xy) = log(x) + log(y)
+
+Following is the code for computing the probabilities
+```
+def precalcNBValues(self):
+    probability_classes = np.empty(self.categories.shape[0])
+    all_words = []
+    cat_word_counts = np.empty(self.categories.shape[0])
+
+    for idx, cat in enumerate(self.categories):
+        #Calculating prior probability p(c) for each class
+        all_category_products = [x for x, label in zip(self.productDescriptions, self.labels) if label == cat]
+        probability_classes[idx] = len(all_category_products) / len(self.labels)
+        
+        #Calculating total counts of all the words of each class 
+        cat_word_counts[idx] = np.sum(np.array(list(self.index[idx].values())))+self.smoothing # |v| is remaining to be added
+        
+        #get all words of this category                                
+        all_words+=self.index[idx].keys()
+                                                  
+    
+    #combine all words of every category & make them unique to get vocabulary -V- of entire training set
+    
+    self.vocab=np.unique(np.array(all_words))
+    self.vocab_length=self.vocab.shape[0]
+    # print(self.vocab_length)
+    #computing denominator value                                      
+    denoms=np.array([cat_word_counts[idx]+self.vocab_length+1 for idx,category in enumerate(self.categories)])
+
+    self.cats_info=[(self.index[idx],probability_classes[idx],denoms[idx]) for idx,cat in enumerate(self.categories)]
+    self.cats_info=np.array(self.cats_info)
+```
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-$$ tf\_{t,d} = N\_{t,d} $$
-
-A term appears more in the document it becomes more important, which is logical. However, there is a drawback, by using term frequencies we lose positional information. The ordering of terms doesn’t matter, instead the number of occurrences becomes important. This is known as the bag of words model.
-
-While using term frequencies if we use pure occurrence counts, longer documents will be favored more. So, we length normalize term frequencies. So, the term frequency of a term t in document D now becomes:
-
-$$ tf\_{t,d} = \dfrac{{N\_{t,d}{||D||} $$
 
 
-### Inverse Document Frequency – idf
-We can’t only use term frequencies to calculate the weight of a term in the document, because tf considers all terms equally important. However, some terms occur more rarely and they are more discriminative than others. The idf of a term is the number of documents in the corpus divided by the document frequency of a term.
+## Handling Classification Request
+For classification query we apply the same preprocessing on the terms then calculate probabilities using the above formula.
 
-$$ idf_t = 1 + log\dfrac{N}{df_t} $$
-
-### Tf-idf scoring
-We have defined both tf and idf, and now we can combine these to produce the ultimate score of a term t in document d. We represent the document as a vector, with each entry being the tf-idf weight of the corresponding term in the document. The tf-idf weight of a term t in document d is simply the multiplication of its tf by its idf:
-
-$$ tf\mbox{-}idf\_{t,d} = tf\_{t,d} \cdot idf_t $$
-
-
-## Handling Query
-If we compute the cosine similarity between the query vector and all the document vectors, sort them in descending order, and select the documents with top similarity, we will obtain an ordered list of relevant documents to this query.
-
-
-To Summarize these steps in sudo code:
-
-  Term frequency calculation:
-  <pre>
-  Normalization = sum(number of terms in doc)^2)
-  term-tf-doc = sqrtnumber of times term appears in doc / sqrt(Normalization)
-  
-  </pre>
-  Inverse document frequency for a term calculation:
-  <pre>
-  term-idf = 1 + log(total number of docs in the dataset / number of docs term occurs in)
-  </pre>
-  TF-IDF calculation:
-  <pre>
-  term-doc-score = term-tf-doc * term-idf
-  </pre>
-
-
-Following is the code used to prepare the index with TF-IDF
-
+Following code with comments will explain the steps:
 
 ```
-def createTfIdfIndex(self):
-    self.prepareParams()
-
-    with open(STYLE_WITH_DESC_N_TITLE, 'r', encoding='latin-1') as csvfile:
-      reader = csv.reader(csvfile)
-
-      for rowNo, row in enumerate((reader)):
-        docId = row[COL_INDEX_ID]
-        terms = self.getTerms(row[COL_INDEX_DESC_TITLE])
-        if terms == None:
-          continue
-
-        self.titleIndex[docId] = row[COL_INDEX_DISPLAY_NAME]
-        self.numberOfDocs += 1
-
-        termDict = {}
-        for position, term in enumerate(terms):
-          try:
-            termDict[term][1].append(position)
-          except:
-            termDict[term]=[docId, array('I',[position])]
-
-        # Normalize the doc
-        norm = 0
-        for term, posting in termDict.items():
-          norm += len(posting)**2
-        norm = math.sqrt(norm)
-
-        #calculate tf and df weights
-        for term, posting in termDict.items():
-          self.tf[term].append('%.4f' % (len(posting[1])/norm))
-          self.df[term] += 1
-
-        for term, posting in termDict.items():
-          self.index[term].append(posting)
-
-      self.writeIndexToFile()
+def classify(self,test_example):
+      likelihood_prob=np.zeros(self.categories.shape[0]) #to store probability w.r.t each class
       
-def writeIndexToFile(self):
-    '''write the inverted index to the file'''
-    file=open(self.indexFile, 'w')
-    print(self.numberOfDocs, file = file)
-    self.numberOfDocs = float(self.numberOfDocs)
+      terms = self.getTerms(test_example)
 
-    for term in self.index.keys():
-        postingList=[]
-        for posting in self.index[term]:
-            docID=posting[0]
-            positions=posting[1]
-            postingList.append(':'.join([str(docID) ,','.join(map(str,positions))]))
-        postingData = ';'.join(postingList)
-        tfData = ','.join(map(str, self.tf[term]))
-        idfData = '%4f'%(1+np.log(self.numberOfDocs / self.df[term]))
-
-        print('|'.join((term, postingData, tfData, idfData)), end="\n", file = file)
-    file.close()
+      for idx,cat in enumerate(self.categories): 
+                            
+          for test_token in terms: #split the test example and get p of each test word
+              #get total count of this test token from it's respective training dict to get numerator value  
+              test_token_counts=self.cats_info[idx][0].get(test_token,0)+self.smoothing
+              
+              #now get likelihood of this test_token word                              
+              test_token_prob=test_token_counts/float(self.cats_info[idx][2])
+              
+              #Use log to prevent underflow!
+              likelihood_prob[idx]+=np.log(test_token_prob)
+                                            
+      post_prob=np.empty(self.categories.shape[0])
+        
+      for idx,cat in enumerate(self.categories):
+          post_prob[idx]=likelihood_prob[idx]+np.log(self.cats_info[idx][1])
+    
+      return post_prob   
 ```
 
 ## Contributions
@@ -177,49 +158,23 @@ def writeIndexToFile(self):
 
 ## Challenges faced
 
-1. My data set had two version one was large(12GB), and another one was small (~300MB). But the smaller one didn't have the description of the products. While hosting in **pythonAnywhere** it only provides 512MB storage, while larger data set was **12GB** in size. To overcome this challenge, I parsed the large data set's json files for each product to extract the description and merged with smaller data set.
-
-2. When the code was hosted in **pythonAnywhere**, there was no starting entry point for the client request. I have precalculated the **index** file(Containing TF, IDF, Postings for all terms and documents). After that I was loading the **index** file in memory, so that when a new query request comes, the results can be returned quickly. But as there was no starting entry point for initial code to run, there was no way to load the **index** _Ahead-of-Time_. 
+1. When the code was hosted in **pythonAnywhere**, there was no starting entry point for the client request. I have precalculated the **index** . After that I was loading the **index** file in memory, so that when a new query request comes, the results can be returned quickly. But as there was no starting entry point for initial code to run, there was no way to load the **index** _Ahead-of-Time_. 
 I used caching this to load the **index** whenever a client request is performed first time after the backend is live. So during every next request, the **index** will remain loaded in memory.
 
-
-## Stemming and Lemmatization (With vs Without)
-* Tried different combination of word reduction. Comparisons are listed below:
-<table style="width:100%">
-  <tr>
-    <th>Type of reduction</th>
-    <th>Wordcount after reduction</th>
-  </tr>
-  <tr>
-      <td>No reduction</td>
-      <td align = "center">9580</td>
-  </tr>
-  <tr>
-      <td>Only NLTK's stopwords removal</td>
-      <td align = "center">9444</td>
-  </tr>
-  <tr>
-      <td>Stopwords + Wordnet Lemmatizer</td>
-      <td align = "center">8515</td>
-  </tr>
-  <tr>
-      <td>Stopwords + Porter Stemming</td>
-      <td align = "center">7097</td>
-  </tr>
-  <tr>
-      <td>Stopwords + Porter Stemming + Lemmatization</td>
-      <td align = "center">7080</td>
-  </tr>
-  <tr>
-      <td>Stopwords + Snowball Stemming</td>
-      <td align = "center">7057</td>
-  </tr>
-</table>
+2. After hosting the first part (Search engine) in **pythonAnywhere** there were not enough space left for second part (Classifier). I tried compressing the other files.
 
 
-* Without lemmatization and stemming my search engine was not returning any result for queries that doesn't exactly match the data sets. Like for '_Narrowed_', there was no result, although there was products with '_narrow_' term in the description.
 
-* Also without these pre-processing, there were around 25% more terms in the index, which increased the **index** file size by **50%**!! (6 MB without reduction, and ~4MB after reduction)
+## Evaluation
+In the dataset there were around 44000 items. For the classification purpose we used 60:40 split for Train:Test. We tried to tune the smoothing hyperparameter in range [100, 10, 1, 0.1, 0.01, ...., 0.0000000001] and found below result graph which shows accuracy, precision, recall and F1 mesures:
+
+{{< figure src="/img/posts/naiveBayesClassifier/evaluation_scores.png" title="Figure: Different scores for the classifier with different smoothing." >}}
+
+From the graphs we can see for lower smoothing values the the accuracy and precision increases upto 99% but recall and F1 score has the peak for smoothing value of 1.
+
+So we used **1** for our smoothing value. Which gives **98.6%** accuracy and **81%** F1 score. 
+
+
 
 
 #### Referrences
