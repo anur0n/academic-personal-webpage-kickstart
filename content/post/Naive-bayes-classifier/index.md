@@ -168,7 +168,7 @@ I used caching this to load the **index** whenever a client request is performed
 ## Evaluation
 In the dataset there were around 44000 items. For the classification purpose we used 60:40 split for Train:Test. We tried to tune the smoothing hyperparameter in range [100, 10, 1, 0.1, 0.01, ...., 0.0000000001] and found below result graph which shows accuracy, precision, recall and F1 mesures:
 
-{{< figure src="/img/posts/naiveBayesClassifier/evaluation_scores.png" title="Figure: Different scores for the classifier with different smoothing." >}}
+{{< figure src="/img/posts/naiveBayesClassifier/evaluation_scores.png" title="Figure: Different scores for the classifier with different smoothing on X-Axis." >}}
 
 From the graphs we can see for lower smoothing values the the accuracy and precision increases upto 99% but recall and F1 score has the peak for smoothing value of 1.
 
@@ -184,8 +184,6 @@ So we used **1** for our smoothing value. Which gives **98.6%** accuracy and **8
 *  https://towardsdatascience.com/unfolding-na%C3%AFve-bayes-from-scratch-2e86dcae4b01#08ef
 *  https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7
 *  https://towardsdatascience.com/multi-class-metrics-made-simple-part-ii-the-f1-score-ebe8b2c2ca1
-*  https://www.youtube.com/watch?v=M-QRwEEZ9-8&t=226s
-*  https://www.youtube.com/watch?v=IIi6e5oDZ68&t=439s
 
 
 
