@@ -21,8 +21,9 @@ organizations:
 bio: My research interests include Artificial Intelligence, Computer Vision.
 
 interests:
-- Artificial General Intelligence
 - Machine Learning
+- Computer Vision
+- Artificial General Intelligence
 - Intelligent Systems
 
 education:
@@ -70,4 +71,4 @@ user_groups:
 - Visitors
 ---
 
-Md Ashaduzzaman Rubel Mondol is a PhD student at the University of Texas at Arlington. He is also  Graduate Teaching Assistant. Before starting his PhD he worked in the software industry for about 7 and half years. His research interests include Intelligent Systems Development, Artificial General Intelligent.
+Md Ashaduzzaman Rubel Mondol is a PhD student at the University of Texas at Arlington. He is also  Graduate Teaching Assistant. Before starting his PhD he worked in the software industry for about 7 and half years. His research interests include Intelligent Systems Development, Artificial General Intelligent, Computer Vision.
