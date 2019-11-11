@@ -32,6 +32,13 @@ subtitle = ""
   name = "Java"
   #description = "80%"
   
+
+[[feature]]
+  icon = "python"
+  icon_pack = "fab"
+  name = "Python"
+  #description = "80%"
+  
 [[feature]]
   icon = "database"
   icon_pack = "fas"
