@@ -29,4 +29,6 @@ There will also be an option for image search which will be very convenient. Use
 {{< gallery title = "Initial designs">}}
 
 Read [How to implement a search engine](https://ashaduzzaman-rubel.netlify.com/post/tf-idf_search_implamentation/)
+
+Read [How to implement a Text classifier](https://ashaduzzaman-rubel.netlify.com/post/naive-bayes-classifier/)
  
