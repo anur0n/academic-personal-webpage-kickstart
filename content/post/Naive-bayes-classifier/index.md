@@ -150,11 +150,9 @@ def classify(self,test_example):
 
 ## Contributions
 
-1. Applied **nltk's PorterStemmer**
+1. Tried changing the smoothing parameter and evaluated accuracy, precision, recall and F1 score in the range of 100, 10, 1, 0.1, ..., 0.000000001 for smoothing value.
 
-2. Applied **nltk's stopwords** to reduce terms
-
-3. Tried changing the smoothing parameter and evaluated accuracy, precision, recall and F1 score in the range of 100, 10, 1, 0.1, ..., 0.000000001 for smoothing value.
+2. Applied **nltk's PorterStemmer** and **nltk's stopwords** to reduce terms
 
 ## Challenges faced
 
