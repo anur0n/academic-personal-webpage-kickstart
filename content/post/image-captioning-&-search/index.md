@@ -52,7 +52,8 @@ The model architecture is inspired by the Show, Attend and Tell paper.
  - The RNN (here GRU) attends over the image to predict the next word.
  
 ### Training 
-We first split our 30K data set in 80:20 ratio
+We first split our 30K data set in 80:20 ratio. Then follow below steps-
+
  - We load the extracted features stored in the respective .npy files and then pass those features through the encoder.
  - The encoder output, hidden state(initialized to 0) and the decoder input (which is the start token) is passed to the decoder.
  - The decoder returns the predictions and the decoder hidden state.
@@ -112,13 +113,22 @@ plot_attention(image, result, attention_plot)
 # opening the image
 Image.open(img_name_val[rid])
 ```
- ### Limitation of the model
+
+### Limitation of the model
  
  For some images the model fails to generate relevant captions and for some images it just generates repeated words.
  
  {{< figure src="/img/posts/img_captioning/fail_boy.jpg" title="Caption: a boy sits at a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and" >}}
  
  {{< figure src="/img/posts/img_captioning/fail_man_repeated.jpg" title="Caption: a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a" >}}
+
+## Image Search
+
+Now that we have our captioning model ready and evaluate function implemented, we use this model to generate caption for each of our 10K flickr images and create a mapping file of each images and there captions generated.
+After that we create a **TF-IDF** based search index file and use it to search for images with query texts.
+
+To search images with image, we generate a caption for the 'Query image' with this trained model and then use that caption text as query text for searching. For detail about search implementation check [this (Implementing search engine using TF-IDF)] (https://ashaduzzaman-rubel.netlify.com/post/tf-idf_search_implamentation/)
+
 
 
 ## Contributions
