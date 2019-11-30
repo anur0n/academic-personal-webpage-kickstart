@@ -33,7 +33,8 @@ Before training the model we will perform some preprocessing on the training dat
  - Tokenize the captions. This gives us a vocabulary of all of the unique words in the data.
  - Limit the vocabulary size to the top 5,000 words (to save memory). We'll replace all other words with the token "UNK" (unknown).
  - Create word-to-index and index-to-word mappings.
- - We pad all sequences to be the same length as the longest one.
+ - We pad all sequences to be the same length as the longest one with <start>, <end> tokens.
+
  ### Captionning Model
  The model architecture is inspired by the Show, Attend and Tell paper.
 
@@ -49,129 +50,62 @@ Before training the model we will perform some preprocessing on the training dat
  - Use teacher forcing to decide the next input to the decoder. Teacher forcing is the technique where the target word is passed as the next input to the decoder.
  - The final step is to calculate the gradients and apply it to the optimizer and backpropagate.
 
-
-### Inverted Index
-An inverted index is a data structure that we build while parsing the documents that we are going to answer the search queries on. Given a query, we use the index to return the list of documents relevant for this query. The inverted index contains mappings from terms (words) to the documents that those terms appear in. Each vocabulary term is a key in the index whose value is its postings list. A term’s postings list is the list of documents that the term appears in.
+{{< figure src="/img/posts/img_captioning/captioning_loss.png" title="Figure: Loss changes over epochs" >}}
 
 
-### TF-IDF
-Tf-idf is a weighting scheme that assigns each term in a document a weight based on its term frequency (tf) and inverse document frequency (idf).  The terms with higher weight scores are considered to be more important. It’s one of the most popular weighting schemes in Information Retrieval.
-
-
-### Term Frequency – tf
-Term Frequency is calculated for a term t in document d. It is basically the number of occurrences of the term in the document.
-
-$$ tf\_{t,d} = N\_{t,d} $$
-
-A term appears more in the document it becomes more important, which is logical. However, there is a drawback, by using term frequencies we lose positional information. The ordering of terms doesn’t matter, instead the number of occurrences becomes important. This is known as the bag of words model.
-
-While using term frequencies if we use pure occurrence counts, longer documents will be favored more. So, we length normalize term frequencies. So, the term frequency of a term t in document D now becomes:
-
-$$ tf\_{t,d} = \dfrac{{N\_{t,d}{||D||} $$
-
-
-### Inverse Document Frequency – idf
-We can’t only use term frequencies to calculate the weight of a term in the document, because tf considers all terms equally important. However, some terms occur more rarely and they are more discriminative than others. The idf of a term is the number of documents in the corpus divided by the document frequency of a term.
-
-$$ idf_t = 1 + log\dfrac{N}{df_t} $$
-
-### Tf-idf scoring
-We have defined both tf and idf, and now we can combine these to produce the ultimate score of a term t in document d. We represent the document as a vector, with each entry being the tf-idf weight of the corresponding term in the document. The tf-idf weight of a term t in document d is simply the multiplication of its tf by its idf:
-
-$$ tf\mbox{-}idf\_{t,d} = tf\_{t,d} \cdot idf_t $$
-
-
-## Handling Query
-If we compute the cosine similarity between the query vector and all the document vectors, sort them in descending order, and select the documents with top similarity, we will obtain an ordered list of relevant documents to this query.
-
-
-To Summarize these steps in sudo code:
-
-  Term frequency calculation:
-  <pre>
-  Normalization = sum(number of terms in doc)^2)
-  term-tf-doc = sqrtnumber of times term appears in doc / sqrt(Normalization)
-  
-  </pre>
-  Inverse document frequency for a term calculation:
-  <pre>
-  term-idf = 1 + log(total number of docs in the dataset / number of docs term occurs in)
-  </pre>
-  TF-IDF calculation:
-  <pre>
-  term-doc-score = term-tf-doc * term-idf
-  </pre>
-
-
-Following is the code used to prepare the index with TF-IDF
-
+### Caption Evaluation
+We now implement the caption evaluator function which similar to the training loop, but without teacher forcing. The input to the decoder at each time step is its previous predictions along with the hidden state and the encoder output. We stop predicting when the model predicts the end token and store the attention weights for every time step. Below is the implementation of evaluate function-
 
 ```
-def createTfIdfIndex(self):
-    self.prepareParams()
+def evaluate(image):
+    attention_plot = np.zeros((max_length, attention_features_shape))
 
-    with open(STYLE_WITH_DESC_N_TITLE, 'r', encoding='latin-1') as csvfile:
-      reader = csv.reader(csvfile)
+    hidden = decoder.reset_state(batch_size=1)
 
-      for rowNo, row in enumerate((reader)):
-        docId = row[COL_INDEX_ID]
-        terms = self.getTerms(row[COL_INDEX_DESC_TITLE])
-        if terms == None:
-          continue
+    temp_input = tf.expand_dims(load_image(image)[0], 0)
+    img_tensor_val = image_features_extract_model(temp_input)
+    img_tensor_val = tf.reshape(img_tensor_val, (img_tensor_val.shape[0], -1, img_tensor_val.shape[3]))
 
-        self.titleIndex[docId] = row[COL_INDEX_DISPLAY_NAME]
-        self.numberOfDocs += 1
+    features = encoder(img_tensor_val)
 
-        termDict = {}
-        for position, term in enumerate(terms):
-          try:
-            termDict[term][1].append(position)
-          except:
-            termDict[term]=[docId, array('I',[position])]
+    dec_input = tf.expand_dims([tokenizer.word_index['<start>']], 0)
+    result = []
 
-        # Normalize the doc
-        norm = 0
-        for term, posting in termDict.items():
-          norm += len(posting)**2
-        norm = math.sqrt(norm)
+    for i in range(max_length):
+        predictions, hidden, attention_weights = decoder(dec_input, features, hidden)
 
-        #calculate tf and df weights
-        for term, posting in termDict.items():
-          self.tf[term].append('%.4f' % (len(posting[1])/norm))
-          self.df[term] += 1
+        attention_plot[i] = tf.reshape(attention_weights, (-1, )).numpy()
 
-        for term, posting in termDict.items():
-          self.index[term].append(posting)
+        predicted_id = tf.argmax(predictions[0]).numpy()
+        result.append(tokenizer.index_word[predicted_id])
 
-      self.writeIndexToFile()
-      
-def writeIndexToFile(self):
-    '''write the inverted index to the file'''
-    file=open(self.indexFile, 'w')
-    print(self.numberOfDocs, file = file)
-    self.numberOfDocs = float(self.numberOfDocs)
+        if tokenizer.index_word[predicted_id] == '<end>':
+            return result, attention_plot
 
-    for term in self.index.keys():
-        postingList=[]
-        for posting in self.index[term]:
-            docID=posting[0]
-            positions=posting[1]
-            postingList.append(':'.join([str(docID) ,','.join(map(str,positions))]))
-        postingData = ';'.join(postingList)
-        tfData = ','.join(map(str, self.tf[term]))
-        idfData = '%4f'%(1+np.log(self.numberOfDocs / self.df[term]))
+        dec_input = tf.expand_dims([predicted_id], 0)
 
-        print('|'.join((term, postingData, tfData, idfData)), end="\n", file = file)
-    file.close()
+    attention_plot = attention_plot[:len(result), :]
+    return result, attention_plot
+
+# captions on the validation set
+rid = np.random.randint(0, len(img_name_val))
+image = img_name_val[rid]
+real_caption = ' '.join([tokenizer.index_word[i] for i in cap_val[rid] if i not in [0]])
+result, attention_plot = evaluate(image)
+
+print ('Real Caption:', real_caption)
+print ('Prediction Caption:', ' '.join(result))
+plot_attention(image, result, attention_plot)
+# opening the image
+Image.open(img_name_val[rid])
 ```
+ ### Limitation of the model
+ For some images the model fails to generate relevant captions and for some images it just generates repeated words.
+ 
+ {{< figure src="/img/posts/img_captioning/fail_boy.jpg" title="Caption: a boy sits at a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and" >}}
+ 
+ {{< figure src="/img/posts/img_captioning/fail_man_repeated.jpg" title="Caption: a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a" >}}
 
-### Highlighting the Query terms in result
-To highlight the query words in the result, following steps were done.
-
-- Split all terms in the doc
-- For each doc terms, applied reduction and checked if it is available in the query term list
-- If available replaced the **non reduced doc term** with  **<mark>non reduced doc term</mark>**
-- Used a dictionary to avoid replacing multiple time for same doc term
 
 ## Contributions
 
