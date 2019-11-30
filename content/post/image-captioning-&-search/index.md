@@ -18,16 +18,19 @@ The flickr 30K data set contains 30,000 images. But for my search engine impleme
 ## Caption generation
 We will use the MS-COCO dataset (Containng over 82,000 images and over 400,000 captions), preprocess and cache a subset of images using Inception V3, train an encoder-decoder model, and generates captions on new images using the trained model. We use a subset of 30,000 captions and around 20,000 images for our training.
 Before training the model we will perform some preprocessing on the training data set.
+
  ### Preparing dataset-
  - Download and extract the MS-COCO dataset
  - Store captions and image names in vectors and shuffle the vectors
  - Select first 30K captions from the shuffled vectors
+
  ### Extracting classification features with InceptionV3 model
  We will classify each image and extract features using the Pretrained (on Imagenet) Inception V3 model. We follow the steps below-
  - Convert the images into InceptionV3's expected format by Resizing the image to **299px x 299px**
  - Preprocess the images using the preprocess_input method to normalize the image so that it contains pixels in the range of -1 to 1 matching the format of the images used to train InceptionV3.
  - Create a tf.keras model where the output layer is the last convolutional layer in the InceptionV3 architecture. The shape of the output of this layer is 8x8x2048.
  - Pre-process each image with InceptionV3 and cache the output to disk in .npy files of each image.
+ 
  ### Preprocess and tokenize the captions
  We follow below pre-processing steps:
  - Tokenize the captions. This gives us a vocabulary of all of the unique words in the data.
@@ -42,6 +45,7 @@ Before training the model we will perform some preprocessing on the training dat
  - We squash that to a shape of (64, 2048).
  - This vector is then passed through the CNN Encoder (which consists of a single Fully connected layer).
  - The RNN (here GRU) attends over the image to predict the next word.
+ 
  ### Training
  - We load the extracted features stored in the respective .npy files and then pass those features through the encoder.
  - The encoder output, hidden state(initialized to 0) and the decoder input (which is the start token) is passed to the decoder.
