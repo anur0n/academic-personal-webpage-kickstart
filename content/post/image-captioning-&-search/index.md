@@ -7,48 +7,48 @@ summary = "Adding image search feature with generating caption for an uploaded i
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
  
-Searching for something is an inevitable part now. So, let's see, the basics of implementing a search engine. Here we will search for Life Style products which will based on [this](https://www.kaggle.com/paramaggarwal/fashion-product-images-small) data set which contains information on thousands of life style products. We will see _How to create **Index** and **rank** the results we get from the search_
+Image search can be a very useful feature for many applications. In this article let's look how we can implement an image search feature.
+In our search approach we will first generate caption for each image in our [dataset](https://www.kaggle.com/hsankesara/flickr-image-dataset). For caption generation we will follow [this](https://www.tensorflow.org/tutorials/text/image_captioning) tensorflow tutorial. Then we will apply **TF-IDF** indexing over the captions and implement searching.
 
 But before that let's talk about the pre-processing of our data.
 
 ## Data Pre-processing
-The data set I choose had a csv file with products in the row. It had some small attributes in each column. To search over the properties and product description I combined all the properties and the description in one column. There were some rows with empty description filed. I removed those products.
+The flickr 30K data set contains 30,000 images. But for my search engine implementation I randomly selected 10,000 images. These 10,000 images has been uploaded to [this](https://github.com/anur0n/flicker-dataset-for-img-captioning) repository searving as a file server.
 
+## Caption generation
+We will use the MS-COCO dataset (Containng over 82,000 images and over 400,000 captions), preprocess and cache a subset of images using Inception V3, train an encoder-decoder model, and generates captions on new images using the trained model. We use a subset of 30,000 captions and around 20,000 images for our training.
+Before training the model we will perform some preprocessing on the training data set.
+ ### Preparing dataset-
+ - Download and extract the MS-COCO dataset
+ - Store captions and image names in vectors and shuffle the vectors
+ - Select first 30K captions from the shuffled vectors
+ ### Extracting classification features with InceptionV3 model
+ We will classify each image and extract features using the Pretrained (on Imagenet) Inception V3 model. We follow the steps below-
+ - Convert the images into InceptionV3's expected format by Resizing the image to **299px x 299px**
+ - Preprocess the images using the preprocess_input method to normalize the image so that it contains pixels in the range of -1 to 1 matching the format of the images used to train InceptionV3.
+ - Create a tf.keras model where the output layer is the last convolutional layer in the InceptionV3 architecture. The shape of the output of this layer is 8x8x2048.
+ - Pre-process each image with InceptionV3 and cache the output to disk in .npy files of each image.
+ ### Preprocess and tokenize the captions
+ We follow below pre-processing steps:
+ - Tokenize the captions. This gives us a vocabulary of all of the unique words in the data.
+ - Limit the vocabulary size to the top 5,000 words (to save memory). We'll replace all other words with the token "UNK" (unknown).
+ - Create word-to-index and index-to-word mappings.
+ - We pad all sequences to be the same length as the longest one.
+ ### Captionning Model
+ The model architecture is inspired by the Show, Attend and Tell paper.
 
-Next, I removed the most common words which itself doesn't carry any significance like 'a', 'an', 'to', 'for'. These are called stopwords. Next we will use [Lemmatization](https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html) (Finding the root word of a term) and [Stemming](https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html) (Trimming the last part of a word based on set of rule) to find similar words.
+ - We already have the extracted features from the lower convolutional layer of InceptionV3 giving us a vector of shape (8, 8, 2048).
+ - We squash that to a shape of (64, 2048).
+ - This vector is then passed through the CNN Encoder (which consists of a single Fully connected layer).
+ - The RNN (here GRU) attends over the image to predict the next word.
+ ### Training
+ - We load the extracted features stored in the respective .npy files and then pass those features through the encoder.
+ - The encoder output, hidden state(initialized to 0) and the decoder input (which is the start token) is passed to the decoder.
+ - The decoder returns the predictions and the decoder hidden state.
+ - The decoder hidden state is then passed back into the model and the predictions are used to calculate the loss.
+ - Use teacher forcing to decide the next input to the decoder. Teacher forcing is the technique where the target word is passed as the next input to the decoder.
+ - The final step is to calculate the gradients and apply it to the optimizer and backpropagate.
 
-Following code applies these techniques:
-
-```
-import nltk
-nltk.download('stopwords')
-nltk.download('wordnet')
-
-from nltk.corpus import stopwords
-from nltk.stem import PorterStemmer
-from nltk.stem import WordNetLemmatizer
-
-def prepareParams(self):
-  self.stopwords = set(stopwords.words('english'))
-  self.dataFile = STYLE_WITH_DESC_N_TITLE
-  self.indexFile = INVERTED_IDX_FILE
-  self.stemmer = PorterStemmer()
-  self.lemmatizer = WordNetLemmatizer()
-  
-def getTerms(self, doc):
-  doc = doc.lower()
-  doc = re.sub(r'[^a-z0-9 ]',' ',doc) #put spaces instead of non-alphanumeric characters
-  terms = doc.split()
-
-  terms = [term for term in terms if term not in self.stopwords]
-  terms = [self.lemmatizer.lemmatize(term) for term in terms]
-  terms = [self.stemmer.stem(term) for term in terms]
-  return terms
-
-```
-
-## Creating the index
-We will now create the index of our dataset using Inverted Index, TF(Term frequency) and IDF(Inverse Document Frequency)
 
 ### Inverted Index
 An inverted index is a data structure that we build while parsing the documents that we are going to answer the search queries on. Given a query, we use the index to return the list of documents relevant for this query. The inverted index contains mappings from terms (words) to the documents that those terms appear in. Each vocabulary term is a key in the index whose value is its postings list. A term’s postings list is the list of documents that the term appears in.
@@ -230,10 +230,9 @@ I used caching this to load the **index** whenever a client request is performed
 
 #### Referrences
 
-*  http://www.ardendertat.com/2011/05/30/how-to-implement-a-search-engine-part-1-create-index/
-*  https://stackabuse.com/python-for-nlp-creating-tf-idf-model-from-scratch/
-*  https://www.youtube.com/watch?v=M-QRwEEZ9-8&t=226s
-*  https://www.youtube.com/watch?v=IIi6e5oDZ68&t=439s
+*  https://www.tensorflow.org/guide/keras/save_and_serialize
+*  https://www.tensorflow.org/tutorials/text/image_captioning
+*  https://github.com/tensorflow/tensorflow/blob/r1.13/tensorflow/contrib/eager/python/examples/generative_examples/image_captioning_with_attention.ipynb
 
 
 
