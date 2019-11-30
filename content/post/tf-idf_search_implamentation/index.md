@@ -67,7 +67,7 @@ A term appears more in the document it becomes more important, which is logical.
 
 While using term frequencies if we use pure occurrence counts, longer documents will be favored more. So, we length normalize term frequencies. So, the term frequency of a term t in document D now becomes:
 
-$$ tf\_{t,d} = \dfrac{{N\_{t,d}{||D||} $$
+$$ tf\_{t,d} = \dfrac{N\_{t,d}}{||D||} $$
 
 
 ### Inverse Document Frequency – idf
