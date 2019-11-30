@@ -13,18 +13,22 @@ In our search approach we will first generate caption for each image in our [dat
 But before that let's talk about the pre-processing of our data.
 
 ## Data Pre-processing
+
 The flickr 30K data set contains 30,000 images. But for my search engine implementation I randomly selected 10,000 images. These 10,000 images has been uploaded to [this](https://github.com/anur0n/flicker-dataset-for-img-captioning) repository searving as a file server.
 
 ## Caption generation
+
 We will use the MS-COCO dataset (Containng over 82,000 images and over 400,000 captions), preprocess and cache a subset of images using Inception V3, train an encoder-decoder model, and generates captions on new images using the trained model. We use a subset of 30,000 captions and around 20,000 images for our training.
 Before training the model we will perform some preprocessing on the training data set.
 
- ### Preparing dataset-
+ ### Preparing dataset
+ 
  - Download and extract the MS-COCO dataset
  - Store captions and image names in vectors and shuffle the vectors
  - Select first 30K captions from the shuffled vectors
 
  ### Extracting classification features with InceptionV3 model
+ 
  We will classify each image and extract features using the Pretrained (on Imagenet) Inception V3 model. We follow the steps below-
  - Convert the images into InceptionV3's expected format by Resizing the image to **299px x 299px**
  - Preprocess the images using the preprocess_input method to normalize the image so that it contains pixels in the range of -1 to 1 matching the format of the images used to train InceptionV3.
@@ -32,6 +36,7 @@ Before training the model we will perform some preprocessing on the training dat
  - Pre-process each image with InceptionV3 and cache the output to disk in .npy files of each image.
  
  ### Preprocess and tokenize the captions
+ 
  We follow below pre-processing steps:
  - Tokenize the captions. This gives us a vocabulary of all of the unique words in the data.
  - Limit the vocabulary size to the top 5,000 words (to save memory). We'll replace all other words with the token "UNK" (unknown).
@@ -39,6 +44,7 @@ Before training the model we will perform some preprocessing on the training dat
  - We pad all sequences to be the same length as the longest one with <start>, <end> tokens.
 
  ### Captionning Model
+ 
  The model architecture is inspired by the Show, Attend and Tell paper.
 
  - We already have the extracted features from the lower convolutional layer of InceptionV3 giving us a vector of shape (8, 8, 2048).
@@ -47,6 +53,7 @@ Before training the model we will perform some preprocessing on the training dat
  - The RNN (here GRU) attends over the image to predict the next word.
  
  ### Training
+ 
  - We load the extracted features stored in the respective .npy files and then pass those features through the encoder.
  - The encoder output, hidden state(initialized to 0) and the decoder input (which is the start token) is passed to the decoder.
  - The decoder returns the predictions and the decoder hidden state.
@@ -58,6 +65,7 @@ Before training the model we will perform some preprocessing on the training dat
 
 
 ### Caption Evaluation
+
 We now implement the caption evaluator function which similar to the training loop, but without teacher forcing. The input to the decoder at each time step is its previous predictions along with the hidden state and the encoder output. We stop predicting when the model predicts the end token and store the attention weights for every time step. Below is the implementation of evaluate function-
 
 ```
@@ -104,6 +112,7 @@ plot_attention(image, result, attention_plot)
 Image.open(img_name_val[rid])
 ```
  ### Limitation of the model
+ 
  For some images the model fails to generate relevant captions and for some images it just generates repeated words.
  
  {{< figure src="/img/posts/img_captioning/fail_boy.jpg" title="Caption: a boy sits at a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and" >}}
