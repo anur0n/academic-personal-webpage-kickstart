@@ -266,4 +266,5 @@ Now you can upload an image in pythonAnywhere and generate a caption with traine
 #### **[Source codes](https://github.com/anur0n/FashionStoreSearch)**
 
 #### Read More
+*  [Implementing search engine using TF-IDF](https://ashaduzzaman-rubel.netlify.com/post/tf-idf_search_implamentation/)
 *  [Naive Bayes Text classifier](https://ashaduzzaman-rubel.netlify.com/post/naive-bayes-classifier/)
