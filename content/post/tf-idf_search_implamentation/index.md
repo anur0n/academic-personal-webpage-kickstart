@@ -164,6 +164,17 @@ def writeIndexToFile(self):
         print('|'.join((term, postingData, tfData, idfData)), end="\n", file = file)
     file.close()
 ```
+### Phrase Query
+The matching documents for phrase query are the ones that contain all query terms in the specified order. We will use the positional information about the terms. 
+First we need the documents that all query terms appear in. We will again get the list of documents for each query term, but now we will take the intersection of them instead of union. 
+Then, we should check whether they are in correct order or not. For each document that contains all query terms, we will do the following operations. 
+ - Get positions of the query terms in the current document, and put each to a separate list. So, if there are n query terms, there will be n lists where each list contains the positions of the corresponding query term in the current document. 
+ - Leave the position list of the 1st query term as it is, subtract 1 from each element of the 2nd position list, subtract 2 from each element of the 3rd position list, …, subtract n-1 from each element of nth position list. Then intersect all the position lists.
+ - If the result of the intersection is non-empty, then all query terms appear in the current document in correct order, meaning this is a matching document.
+ - Perform these operations on all documents that every query term appears in.
+ 
+ The matching documents are the ones that have non-empty intersection.
+
 
 ### Highlighting the Query terms in result
 To highlight the query words in the result, following steps were done.
