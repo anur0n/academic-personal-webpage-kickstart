@@ -231,7 +231,7 @@ Now you can upload an image in pythonAnywhere and generate a caption with traine
 
  - I was strugling to run the caption generation offline, i.e. with trained models even when ran on Google Colab in a separate notebook file. It was challenging to find out the reason why the model was not working. First I saved weights of encoder and decoder. But still it failed to generate caption. Later I discovered that I need to save the attention model inside the decoder also.
  - The second challenge I faced when running on pythonAnywhere. Again it took a lot of time to find out the issue was due to CPU, GPU incompatibility. For which I already mentioned the solution above.
- - I found out a way to run the captioning model in pythonAnywhere 
+ - I found out a way to run the captioning model in pythonAnywhere wrote the approch above. Hope this helps others.
 
 
 #### Referrences
