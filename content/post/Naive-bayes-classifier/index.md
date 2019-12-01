@@ -191,3 +191,4 @@ So we used **1** for our smoothing value. Which gives **98.8%** accuracy and **~
 
 #### Read More
 *  [Implementing search engine using tf-idf](https://ashaduzzaman-rubel.netlify.com/post/tf-idf_search_implamentation/)
+*  [Implementing Image search feature and Caption generation](https://ashaduzzaman-rubel.netlify.com/post/image-captioning-search/)
