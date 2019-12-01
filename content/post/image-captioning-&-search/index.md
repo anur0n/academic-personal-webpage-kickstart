@@ -127,63 +127,111 @@ Image.open(img_name_val[rid])
 Now that we have our captioning model ready and evaluate function implemented, we use this model to generate caption for each of our 10K flickr images and create a mapping file of each images and there captions generated.
 After that we create a **TF-IDF** based search index file and use it to search for images with query texts.
 
-To search images with image, we generate a caption for the 'Query image' with this trained model and then use that caption text as query text for searching. For detail about search implementation check [this (Implementing search engine using TF-IDF)] (https://ashaduzzaman-rubel.netlify.com/post/tf-idf_search_implamentation/)
+To search images with image, we generate a caption for the 'Query image' with this trained model and then use that caption text as query text for searching. For detail about search implementation check [this (Implementing search engine using TF-IDF)] (https://ashaduzzaman-rubel.netlify.com/post/tf-idf_search_implamentation/) article.
 
 
+## Deploying Image Search/Image Captioning model in PythonAnywhere or other CPU only hosting platforms
 
-## Contributions
+The training of the captioning model above takes around 3 hours when run in Google Colab. So we need to use the pretrained models. To do that first we need to save all the trained model weights. We use tensorflow's save_weight(path_to_save, save_format='tf') method.
 
-1. Applied **nltk's WordNetLemmatizer**
+```
+decoder.save_weights('/content/decoder.gru', save_format='tf')
+encoder.save_weights('/content/encoder.gru', save_format='tf')
+decoder.attention.save_weights('/content/attention.gru', save_format='tf')
+```
+**Note that** We also need to save **_decoder.attention_** weights too. Otherwise it won't work.
 
-2. Applied **nltk's stopwords** to reduce terms (In the reference there was manual stopword list which had around 70 less words)
+Then, we also need to save the tokenizer and other meta-data the was changed during preprocessing and training. We use dictionary for meta-data and use pickle to save it.
+```
+with open('/content/tokenizer.gru.pickle', 'wb') as handle:
+    pickle.dump(tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-3. Applied query term Highlighting
+meta_dict = {}
+meta_dict['max_length'] = max_length
+meta_dict['attention_features_shape'] = attention_features_shape
+meta_dict['embedding_dim'] = embedding_dim
+meta_dict['units'] = units
+meta_dict['vocab_size'] = vocab_size
 
-## Challenges faced
-
-1. My data set had two version one was large(12GB), and another one was small (~300MB). But the smaller one didn't have the description of the products. While hosting in **pythonAnywhere** it only provides 512MB storage, while larger data set was **12GB** in size. To overcome this challenge, I parsed the large data set's json files for each product to extract the description and merged with smaller data set.
-
-2. When the code was hosted in **pythonAnywhere**, there was no starting entry point for the client request. I have precalculated the **index** file(Containing TF, IDF, Postings for all terms and documents). After that I was loading the **index** file in memory, so that when a new query request comes, the results can be returned quickly. But as there was no starting entry point for initial code to run, there was no way to load the **index** _Ahead-of-Time_. 
-I used caching this to load the **index** whenever a client request is performed first time after the backend is live. So during every next request, the **index** will remain loaded in memory.
-
-
-## Stemming and Lemmatization (With vs Without)
-* Tried different combination of word reduction. Comparisons are listed below:
-<table style="width:100%">
-  <tr>
-    <th>Type of reduction</th>
-    <th>Wordcount after reduction</th>
-  </tr>
-  <tr>
-      <td>No reduction</td>
-      <td align = "center">9580</td>
-  </tr>
-  <tr>
-      <td>Only NLTK's stopwords removal</td>
-      <td align = "center">9444</td>
-  </tr>
-  <tr>
-      <td>Stopwords + Wordnet Lemmatizer</td>
-      <td align = "center">8515</td>
-  </tr>
-  <tr>
-      <td>Stopwords + Porter Stemming</td>
-      <td align = "center">7097</td>
-  </tr>
-  <tr>
-      <td>Stopwords + Porter Stemming + Lemmatization</td>
-      <td align = "center">7080</td>
-  </tr>
-  <tr>
-      <td>Stopwords + Snowball Stemming</td>
-      <td align = "center">7057</td>
-  </tr>
-</table>
+with open('/content/meta.gru.pickle', 'wb') as handle:
+    pickle.dump(meta_dict, handle, protocol=pickle.HIGHEST_PROTOCOL)
+```
 
 
-* Without lemmatization and stemming my search engine was not returning any result for queries that doesn't exactly match the data sets. Like for '_Narrowed_', there was no result, although there was products with '_narrow_' term in the description.
+Now when generating caption for a new image we create the Encoder, Decoders that were defined in the image captioning models and load these saved weights to those models. Also we load the meta-dictionary.
 
-* Also without these pre-processing, there were around 25% more terms in the index, which increased the **index** file size by **50%**!! (6 MB without reduction, and ~4MB after reduction)
+```
+with open('/content/tokenizer.gru.pickle', 'rb') as handle:
+    tokenizer = pickle.load(handle)
+
+with open('/content/meta.gru.pickle', 'rb') as handle:
+    meta_dict = pickle.load(handle)
+
+max_length = meta_dict['max_length']
+attention_features_shape = meta_dict['attention_features_shape']
+embedding_dim = meta_dict['embedding_dim']
+units = meta_dict['units']
+vocab_size = meta_dict['vocab_size']
+
+encoder_new = CNN_Encoder(embedding_dim)
+decoder_new = RNN_Decoder(embedding_dim, units, vocab_size)
+
+image_model = tf.keras.applications.InceptionV3(include_top=False, 
+                                                weights='imagenet')
+
+new_input = image_model.input
+hidden_layer = image_model.layers[-1].output
+image_features_extract_model_new = tf.keras.Model(new_input, hidden_layer)
+
+encoder_new.load_weights('/content/encoder.gru')
+decoder_new.load_weights('/content/decoder.gru')
+decoder_new.attention.load_weights('/content/attention.gru')
+```
+
+This way we can save the trained model and load it on pythonAnywhere.
+
+But now there will be an issue. Our trained model may not generate captions properly. The problem here is due to below code in the Image captioning tutorial link-
+
+```
+def gru(units):
+  # If you have a GPU, we recommend using the CuDNNGRU layer (it provides a 
+  significant speedup).
+  if tf.test.is_gpu_available():
+    return tf.keras.layers.CuDNNGRU(units, 
+                                    return_sequences=True, 
+                                    return_state=True, 
+                                    recurrent_initializer='glorot_uniform')
+  else:
+    return tf.keras.layers.GRU(units, 
+                               return_sequences=True, 
+                               return_state=True, 
+                               recurrent_activation='sigmoid', 
+                               recurrent_initializer='glorot_uniform')
+```
+
+The problem is we trained our model in google Colab or other computer's with GPU it uses the **CuDNNGRU** layer. But when the model is loaded in pythonAnywhere or other CPU only (or with Cuda incompatible GPUs) machines it uses **GRU** layer. So our saved weights were based on CuDNNGRU model but loaded on GRU model. So the caption generation doesn't work.
+
+One solution is, when training use only **GRU** layer in Colab.
+
+```
+def gru(units):
+  return tf.keras.layers.GRU(units, 
+                               return_sequences=True, 
+                               return_state=True, 
+                               recurrent_activation='sigmoid', 
+                               recurrent_initializer='glorot_uniform')
+```
+
+Now save the weights and load again. It should work.
+
+Now you can upload an image in pythonAnywhere and generate a caption with trained model.
+
+
+## Challenges and Contributions
+
+ - I was strugling to run the caption generation offline, i.e. with trained models even when ran on Google Colab in a separate notebook file. It was challenging to find out the reason why the model was not working. First I saved weights of encoder and decoder. But still it failed to generate caption. Later I discovered that I need to save the attention model inside the decoder also.
+ - The second challenge I faced when running on pythonAnywhere. Again it took a lot of time to find out the issue was due to CPU, GPU incompatibility. For which I already mentioned the solution above.
+ - I found out a way to run the captioning model in pythonAnywhere 
 
 
 #### Referrences
