@@ -255,3 +255,4 @@ I used caching this to load the **index** whenever a client request is performed
 
 #### Read More
 *  [Naive Bayes Text classifier](https://ashaduzzaman-rubel.netlify.com/post/naive-bayes-classifier/)
+*  [Implementing Image search feature and Caption generation](https://ashaduzzaman-rubel.netlify.com/post/image-captioning-search/)
