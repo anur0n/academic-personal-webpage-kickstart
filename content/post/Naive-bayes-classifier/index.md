@@ -170,7 +170,7 @@ In the dataset there were around 44000 items. For the classification purpose we 
 
 From the graphs we can see for lower smoothing values the the accuracy and precision increases upto 99% but recall and F1 score has the peak for smoothing value of 1.
 
-So we used **1** for our smoothing value. Which gives **98.6%** accuracy and **81%** F1 score. 
+So we used **1** for our smoothing value. Which gives **98.8%** accuracy and **~78%** F1 score on the test set.
 
 
 
