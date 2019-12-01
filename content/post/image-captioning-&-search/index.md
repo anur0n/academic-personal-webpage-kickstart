@@ -157,6 +157,24 @@ with open('/content/meta.gru.pickle', 'wb') as handle:
     pickle.dump(meta_dict, handle, protocol=pickle.HIGHEST_PROTOCOL)
 ```
 
+After all saving, following files will be generated (names will vary depending on the name given during the saving)
+
+```
+attention.gru.data-00000-of-00002
+attention.gru.data-00001-of-00002
+attention.gru.index
+checkpoint
+decoder.gru.data-00000-of-00002
+decoder.gru.data-00001-of-00002
+decoder.gru.index
+encoder.gru.data-00000-of-00002
+encoder.gru.data-00001-of-00002
+encoder.gru.index
+meta.gru.pickle
+tokenizer.gru.pickle
+
+```
+
 Download the generated files and upload it to your pythonAnywhere project directory and load them in new encoder/decoders.
 
 Now when generating caption for a new image we create the Encoder, Decoders that were defined in the image captioning models and load these saved weights to those models. Also we load the meta-dictionary.
@@ -191,7 +209,7 @@ decoder_new.attention.load_weights('/content/attention.gru')
 
 This way we can save the trained model and load it on pythonAnywhere.
 
-But now there will be an issue. Our trained model may not generate captions properly. The problem here is due to below code in the Image captioning tutorial link-
+**But now there will be an issue. Our trained model may not generate captions properly.** The problem here is due to below code in the Image captioning tutorial link-
 
 ```
 def gru(units):
