@@ -164,7 +164,7 @@ I used caching this to load the **index** whenever a client request is performed
 
 
 ## Evaluation
-In the dataset there were around 44000 items. For the classification purpose we used 60:40 split for Train:Test. We tried to tune the smoothing hyperparameter in range [100, 10, 1, 0.1, 0.01, ...., 0.0000000001] and found below result graph which shows accuracy, precision, recall and F1 mesures:
+In the dataset there were around 44000 items. For the classification purpose we used 60:20:20 split for Train:Test:Validation. We tried to tune the smoothing hyperparameter in range [100, 10, 1, 0.1, 0.01, ...., 0.0000000001] and found below result graph which shows accuracy, precision, recall and F1 mesures:
 
 {{< figure src="/img/posts/naiveBayesClassifier/evaluation_scores.png" title="Figure: Different scores for the classifier with different smoothing on X-Axis." >}}
 
