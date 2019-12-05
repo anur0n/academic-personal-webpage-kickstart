@@ -200,6 +200,9 @@ To highlight the query words in the result, following steps were done.
 2. When the code was hosted in **pythonAnywhere**, there was no starting entry point for the client request. I have precalculated the **index** file(Containing TF, IDF, Postings for all terms and documents). After that I was loading the **index** file in memory, so that when a new query request comes, the results can be returned quickly. But as there was no starting entry point for initial code to run, there was no way to load the **index** _Ahead-of-Time_. 
 I used caching this to load the **index** whenever a client request is performed first time after the backend is live. So during every next request, the **index** will remain loaded in memory.
 
+3. PythonAnywhere restarts the web service after some interval. So my **Index** files again took long time when user hit the server.
+To overcome this issue, I applied **_Task Scheduler_** in pythonAnywhere, which periodically hit the site to ensure the indices are loaded if the site is kill.
+
 
 ## Stemming and Lemmatization (With vs Without)
 * Tried different combination of word reduction. Comparisons are listed below:
