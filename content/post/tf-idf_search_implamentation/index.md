@@ -187,11 +187,11 @@ To highlight the query words in the result, following steps were done.
 
 ## Contributions
 
-1. Applied **nltk's WordNetLemmatizer**
+1. Applied query term Highlighting
 
-2. Applied **nltk's stopwords** to reduce terms (In the reference there was manual stopword list which had around 70 less words)
+2. Applied **nltk's WordNetLemmatizer**
 
-3. Applied query term Highlighting
+3. Applied **nltk's stopwords** to reduce terms (In the reference there was manual stopword list which had around 70 less words)
 
 ## Challenges faced
 
