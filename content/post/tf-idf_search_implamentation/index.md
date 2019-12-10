@@ -89,8 +89,8 @@ To Summarize these steps in sudo code:
 
   Term frequency calculation:
   <pre>
-  Normalization = sum(number of terms in doc)^2)
-  term-tf-doc = sqrtnumber of times term appears in doc / sqrt(Normalization)
+  Normalization = sum(number of terms in doc)^2
+  term-tf-doc = number of times term appears in doc / sqrt(Normalization)
   
   </pre>
   Inverse document frequency for a term calculation:
