@@ -29,6 +29,7 @@ Before training the model we will perform some preprocessing on the training dat
 ### Extracting classification features with InceptionV3 model
  
 We will classify each image and extract features using the Pretrained (on Imagenet) Inception V3 model. We follow the steps below-
+
  - Convert the images into InceptionV3's expected format by Resizing the image to **299px x 299px**
  - Preprocess the images using the preprocess_input method to normalize the image so that it contains pixels in the range of -1 to 1 matching the format of the images used to train InceptionV3.
  - Create a tf.keras model where the output layer is the last convolutional layer in the InceptionV3 architecture. The shape of the output of this layer is 8x8x2048.
@@ -37,6 +38,7 @@ We will classify each image and extract features using the Pretrained (on Imagen
 ### Preprocess and tokenize the captions
  
 We follow below pre-processing steps:
+
  - Tokenize the captions. This gives us a vocabulary of all of the unique words in the data.
  - Limit the vocabulary size to the top 5,000 words (to save memory). We'll replace all other words with the token "UNK" (unknown).
  - Create word-to-index and index-to-word mappings.
