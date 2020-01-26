@@ -129,4 +129,6 @@ To export the individual mocaps, select ‘save as’ from the file menu and sav
 
 This video shows this whole process for Exporting the Motive Streaming to separate Characters.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TQQAbnMasSI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 These fbx files can be imported into unity to create user input controlled animations. 
