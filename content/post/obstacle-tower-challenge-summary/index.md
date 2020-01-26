@@ -5,6 +5,7 @@ summary: A short summary on the new AI agent benchmarking environment.
 authors:
 - admin
 tags:
+- Paper Reading
 # - Academic
 categories:
 # - Demo
