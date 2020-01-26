@@ -1,6 +1,6 @@
 ---
 title: 'Multiple Mocap character separation using Motion Builder'
-subtitle: 'A short summary on the new AI agent benchmarking environment.'
+# subtitle: ''
 summary: Optitrack's Motive doesn't provide option to separate characters(Actors) from recorded motion takes. This blog discusses an approach to use Motive recording takes and use Motion Builder to separate the  characters and export as individual .fbx files.
 
 authors:
@@ -14,7 +14,7 @@ tags:
 # - Academic
 categories:
 # - Demo
-date: "`r format(Sys.time(), '%d %B %Y')`" 
+date: "2020-01-01T10:00:00Z" 
 # "2020-01-01T10:00:00Z"
 lastmod: "`r format(Sys.time(), '%d %B %Y')`"
 # "2020-01-01T10:00:00Z"
@@ -38,49 +38,49 @@ draft: false
 #   Otherwise, set `projects = []`.
 projects: []
 ---
-The goal of this blog is to understand how to export individual mocap files from multi-skeleton mocap Motive videos and apply them to a model. You can also view a screen-recorded video of the tutorial.
+The goal of this blog is to help you with how to export individual mocap files from multi-skeleton mocap Motive videos and apply them to a model. You can also view a screen-recorded video of the tutorial at the end.
 
 ## Software used for the tutorial
-- Motive
+- [Motive] (https://optitrack.com/products/motive/)
 - Pre-recorded take
-- Motion Builder
-- Optitrack plugin for Motion Builder
-- Rigged character - Peggy for the purpose of this blog
+- [Motion Builder] (https://www.autodesk.com/products/motionbuilder/overview) (**MoBu** in short)
+- [Optitrack plugin for Motion Builder] (https://optitrack.com/motionbuilder-plugin/) (As of this writing time, Plugin supports till Motion Builder 2018)
+- Rigged character - [Peggy] (https://free3d.com/3d-model/peggy-sue-rigged-for-animation-45959.html) for the purpose of this blog
 
 ## Pre-recorded take
-For the purpose of our blog, we are using a pre-recorded take recorded using Motive software in 12 optitrack cameras in a motion capture setup. The take contains two actors fixed with active puck, for motion capture, interacting with a few objects such as a ball, a toy etc affixed with passive markers. The names of the two actors are Sanath and Rubel and their skeleton objects are named the same
+For the purpose of our blog, we are using a pre-recorded take recorded using Motive software in 12 optitrack cameras in a motion capture setup. The take contains two actors fixed with active puck, for motion capture, interacting with a few objects such as a ball, a toy etc affixed with passive markers. The names of the two actors are 'Sanath' and 'Rubel' and their skeleton objects are named the same.
 
 ## Motion Builder
 MotionBuilder is a 3D character animation software produced by Autodesk. A free version of the software can be downloaded with a student account. It is used for virtual cinematography, motion capture, and traditional keyframe animation. We are using Motion Builder to edit the recorded take from Motive and separate the characters.
 
 ## Optitrack plugin for Motion Builder
-We need the Optitrack’s Plugin for Motion Builder in order to stream MoCap data to Motion Builder. Install the plugin following the on-screen steps and restart  Motion Builder if it is already running. After the MotionBuilder plugin has been installed, three OptiTrack devices will be added to the MotionBuilder ‘Assets Browser’ under the ‘Device’ section. Follow this link for a more detailed usage guide.
+We need the Optitrack’s Plugin for Motion Builder in order to stream MoCap data to Motion Builder. Install the plugin following the on-screen steps and restart  Motion Builder if it is already running. After the MotionBuilder plugin has been installed, three OptiTrack devices will be added to the MotionBuilder _‘Assets Browser’_ under the _‘Device’_ section. Follow this [link](https://optitrack.com/public/documents/motion-builder-plugin-manual-v3.0.0.pdf) for a more detailed usage guide.
 
 ## Downloading a Rigged character
-For the purpose of this blog, we will be making use of a rigged character, Peggy Sue. This model has bone mapping that matches with Motion Builder’s [MoBu] bone naming rules. We can use any character, but if the bone mapping of the model doesn’t follow MoBu naming, each bone has to be mapped manually. 
+For the purpose of this blog, we will be making use of a rigged character, [Peggy Sue] (https://free3d.com/3d-model/peggy-sue-rigged-for-animation-45959.html). This model has bone mapping that matches with MoBu’s bone naming rules. We can use any character, but if the bone mapping of the model doesn’t follow MoBu naming, each bone has to be mapped manually. 
 When you choose to download, peggy is downloaded as a .rar file. Extract from the .rar file and open ‘Peggy.fbx’ 
 {{< figure src="/img/posts/mocap-separation/peggi-extract.png" title="Extracted files" >}}
 
 ## Streaming from MoCap
-Load the pre-recorded mocap video from which individual mocaps are to be exported onto MoBu. To stream the recorded take into Motion Builder, open Motive and make sure that the ‘Data Streaming’ settings are as follows. 
+Load the pre-recorded mocap video from which individual mocaps are to be exported onto MoBu. To stream the recorded take into Motion Builder, open Motive and make sure that the **‘Data Streaming’** settings are as follows. 
 
 {{< figure src="/img/posts/mocap-separation/motive-setting.png" title="Streaming settings in motive." >}}
 
-Go to ‘Edit’ mode. Make sure that the video is in ‘Loop mode’ and play the video. “Loop’ mode can be found at the bottom of the screen beside the video timescale
+Go to **‘Edit’** mode. Make sure that the video is in ‘Loop mode’ and play the video. “Loop’ mode can be found at the bottom of the screen beside the video timescale
 
 {{< figure src="/img/posts/mocap-separation/motive-player.png" title="Motive player." >}}
 
 
 ## Recording in MoBu
-Now, open Motion Builder. Download and install the Optitrack Plugin for Motive. Towards the bottom right of the screen from ‘Asset Browser’, select ‘Devices’ .
+Now, open Motion Builder. Download and install the Optitrack Plugin for Motive. Towards the bottom right of the screen from **‘Asset Browser’**, select **‘Devices’** .
 
 {{< figure src="/img/posts/mocap-separation/mobu-device-selection.png" >}}
 
-Drag ‘Optitrack Skeleton’ device in the Viewer or Navigator Hierarchy. This will add ‘I/O Optitrack Skeleton’ in the navigator. Click on ‘I/O devices’ and select ‘I/O Optitrack Skeleton’. Once the plugin interface is open, make sure that the ‘Multicast Interface’ in Motive ‘Data Streaming’ and ‘Local Address’ in MoBu (which is now 127.0.0.1) match. 
+Drag **‘Optitrack Skeleton’** device in the Viewer or Navigator Hierarchy. This will add **‘I/O Optitrack Skeleton’** in the navigator. Click on _‘I/O devices’_ and select _‘I/O Optitrack Skeleton’_. Once the plugin interface is open, make sure that the ‘Multicast Interface’ in Motive ‘Data Streaming’ and ‘Local Address’ in MoBu (which is now **127.0.0.1**) match. 
 
 {{< figure src="/img/posts/mocap-separation/optitrack-plugin-setting.png" >}}
 
-We set the plugin to Online by checking the box. It will show green when Motive is streaming and MoBu Plugin is connected. Check both the Live as well as the Recording option. The live option enables us to see the streaming data in the MoBu viewer. The Recording option enables us to record the streaming data inside MoBu. From the Model Building drop down we click on ‘create’ to create skeletons of the entities in the streaming data called Characters in the hierarchy. This step creates both characters as well as skeleton objects.
+We set the plugin to **Online** by checking the box. It will show green when Motive is streaming and MoBu Plugin is connected. Check both the **Live** as well as the **Recording** option. The live option enables us to see the streaming data in the MoBu viewer. The Recording option enables us to record the streaming data inside MoBu. From the Model Building drop down we click on **‘create’** to create skeletons of the entities in the streaming data called Characters in the hierarchy. This step creates both characters as well as skeleton objects.
 
 
 {{< figure src="/img/posts/mocap-separation/mobu-skeletons.png" >}}
@@ -131,4 +131,4 @@ This video shows this whole process for Exporting the Motive Streaming to separa
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TQQAbnMasSI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-These fbx files can be imported into unity to create user input controlled animations. 
+These fbx files can be imported into unity to create [user input controlled animations] (https://aishwarya.io/unity-control-an-animator).
