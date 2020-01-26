@@ -5,7 +5,8 @@ summary: Optitrack's Motive doesn't provide option to separate characters(Actors
 
 authors:
 - admin
-- [Aishwarya Pothula] (https://aishwarya.io)
+- AP:
+    # name:[Aishwarya Pothula] (https://aishwarya.io)
 
 tags:
 - Motion Builder
