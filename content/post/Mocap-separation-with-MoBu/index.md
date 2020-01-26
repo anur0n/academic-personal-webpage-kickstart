@@ -4,7 +4,6 @@ subtitle: 'A short summary on the new AI agent benchmarking environment.'
 summary: Optitrack's Motive doesn't provide option to separate characters(Actors) from recorded motion takes. This blog discusses an approach to use Motive recording takes and use Motion Builder to separate the  characters and export as individual .fbx files.
 
 authors:
-- admin
 - Aishwarya Pothula:
     name: Aishwarya Pothula
     url: https://aishwarya.io
