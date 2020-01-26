@@ -74,19 +74,21 @@ Go to ‘Edit’ mode. Make sure that the video is in ‘Loop mode’ and play t
 ## Recording in MoBu
 Now, open Motion Builder. Download and install the Optitrack Plugin for Motive. Towards the bottom right of the screen from ‘Asset Browser’, select ‘Devices’ .
 
+{{< figure src="/img/posts/mocap-separation/mobu-device-selection.png" >}}
 
 Drag ‘Optitrack Skeleton’ device in the Viewer or Navigator Hierarchy. This will add ‘I/O Optitrack Skeleton’ in the navigator. Click on ‘I/O devices’ and select ‘I/O Optitrack Skeleton’. Once the plugin interface is open, make sure that the ‘Multicast Interface’ in Motive ‘Data Streaming’ and ‘Local Address’ in MoBu (which is now 127.0.0.1) match. 
 
-
+{{< figure src="/img/posts/mocap-separation/optitrack-plugin-setting.png" >}}
 
 We set the plugin to Online by checking the box. It will show green when Motive is streaming and MoBu Plugin is connected. Check both the Live as well as the Recording option. The live option enables us to see the streaming data in the MoBu viewer. The Recording option enables us to record the streaming data inside MoBu. From the Model Building drop down we click on ‘create’ to create skeletons of the entities in the streaming data called Characters in the hierarchy. This step creates both characters as well as skeleton objects.
 
 
-
+{{< figure src="/img/posts/mocap-separation/mobu-skeletons.png" >}}
 
 
 Go to Motive and drag the seekbar to the start. Back in MotionBuilder, recording the data being streamed by clicking on the record button right below the display. Select ‘overwrite’ when asked whether to overwrite current take. Then click play button to start recording.
 
+{{< figure src="/img/posts/mocap-separation/mobu-recorder.png" >}}
 
 Wait for the whole mocap video being streamed into MoBu to be recorded and click on the square stop button. It might take MoBu a few minutes to generate the new recording.
 
@@ -95,16 +97,22 @@ Now, disable the Live Option in the Skeleton Device Optitrack plugin as we now h
 ## Putting Mocap Recording onto Model
 Once the recording is done, go to the ‘File’ menu and click on ‘Merge’. In the subsequent window choose ‘peggy.fbx’ [The rigged character]. You will then be presented with ‘Merge Options’. Deselect the existing take, right click on ‘Element’ in the ‘Scene’ block and click on ‘Append All Elements’. 
 
+{{< figure src="/img/posts/mocap-separation/peggi-import-1.png" >}}
+
+
 Then right-click on ‘Element’ near ‘Settings’ block and click on ‘Merge All Settings’. Click on ‘merge’ to finish merging. 
+
+{{< figure src="/img/posts/mocap-separation/peggi-import-2.png" >}}
 
 Once the merging is complete, we are able to see Peggy on the Motion Builder viewer. In the characters hierarchy in the Navigator we are able to see Peggy’s ‘character’ Object.
 
+{{< figure src="/img/posts/mocap-separation/peggi-tpose.png" >}}
 
 Select the character of whose mocap data you want to apply to Peggy. The character name will be the name you have from Motive. In the character settings, select input type as stance and check the active button. This will set the skeleton in T-Pose. 
 Then select Peggy’s character from the Character hierarchy and in the character settings select input type as character and select input source as the character whose mocap you want to apply. Make sure to check the ‘active’ box. Now, it looks like the Peggy character is superimposed on the skeleton and they are in sync.
 Then click on the ‘plot character’ option inside the character settings. From the pop-up select ‘skeleton’
 
-
+{{< figure src="/img/posts/mocap-separation/plot-char-settings.png" >}}
 
 And then click on plot. After plotting the characters, the active box might become unchecked, so you might need to recheck the active box. The ‘plot character’ enables the plotting of the Motive character or control rig animation to the model’s (Peggy) skeleton.
 
@@ -114,6 +122,7 @@ The next step is to again select ‘Rubel’ character or the character whose mo
 
 Now, when we click on the play button, we find that the ‘Rubel’s mocap is applied to Peggy.
 
+{{< figure src="/img/posts/mocap-separation/peggi-mapped.png" >}}
 
 ## Exporting Individual Mocap
 To export the individual mocaps, select ‘save as’ from the file menu and save . An fbx file containing the mocap applied to the model(peggy) is created. The same procedure is to be followed to  create MoCap->Model animation and extract the individual mocaps. 
@@ -121,57 +130,3 @@ To export the individual mocaps, select ‘save as’ from the file menu and sav
 This video shows this whole process for Exporting the Motive Streaming to separate Characters.
 
 These fbx files can be imported into unity to create user input controlled animations. 
-
-
-
-
-
-
-##################
-
-
-
-{{< figure src="/img/posts/obstacle-tower-challenge/obstacle-environment.png" title="Figure 1: Obstacle Tower at different floor levels." >}}
-
--	**High Visual Fidelity:** Provides 3D environment with real-time lighting and shadows and much detailed textures
-
- 
- {{< figure src="/img/posts/obstacle-tower-challenge/obstacle-floor-plan.png" title="Figure 2: Obstacle Tower floor plans." >}}
- 
--	**Procedurally generated rooms and floors:** Floors and rooms are procedurally generated, which requires generalization of agent to perform well.
--	**Physics Driven Interactions:** Interaction between Agent and other environment objects are controlled by real time 3D physics System.
--	**Procedurally Generated Visuals:** The visuals like textures, lighting, object geometry are different for different floors as well as in same floor in different times. Which also requires Agents to be generalized.
-
-## Obstacle Tower Environment
-Its environment is generated procedurally at multiple levels of interaction. 
-
-### Episode Dynamics:
-It consists of up to 100 floors and starting floor is zero. All floors of the environment are treated as a single finite episode. Each floor contains at the least a starting and ending room. Each room can contain a puzzle to solve, enemies to defeat, obstacles to evade, or a key to open a locked door. The layout of the floors and the contents of the rooms within each floor becomes more complex at higher floors. Within an episode, agent can only go to higher floors, and not to return to lower floors.
-The episode terminates when the agent collides with a hazard such as a pit or enemy, when the timer runs out, or when the agent arrives at the top floor of the environment. The timer is set at the beginning of the episode, and completing floors as well as collecting time orbs increase the time left to the agent. In this way a successful agent must learn a behavior which is a trade off between collecting orbs and quickly completing floors of the tower in order to arrive at the higher floors before the timer ends.
-
-It provides an image of the environment of size 168x168 RGB pixels and some other non-visual environment states like no of keys in possession of the Agent, the remaining time.
-
-It supports 54 possible actions with combination of forward/backward/no-op movement, left/right/no-op movement, clockwise/counterclockwise rotation of the camera/no-op, and no-op/jump.
-
-It can be configured to give Sparse Reward (+1 for completing a floor) or Dense Reward (+0.1 is provided for opening doors, solving puzzles, or picking up keys)
-
-### Procedural Generation of Floors:
-Each floor of the tower is procedurally generated with different lighting, textures, room layout and floor plan. This ensures that agents must have learned general purpose representations of the task at the levels of vision, low-level control, and high-level planning.
-
-Each floor can have different appearance with one of 5 themes (Ancient, Moorish, Industrial, Modern, and Future) and different lighting conditions.
-
-Floor layout is generated in two parts: mission graph and layout grid. Mission graph is generated using graph grammar technique and this graph is then transformed into a 2D layout grid. This is used for virtual scene generation.
-
-For Room layout generation a template based system is used. Different room types, such as Puzzle or Key have their own set of templates from which specific room configurations are drawn. In Puzzle room, agent must push a block from a starting location to a goal location, while avoiding intermediate obstacles. In the Key rooms, there is a key somewhere in the room, along with potential obstacles.
-
-
-## Evaluation Criteria:
-It provides three possible evaluation schemes:
--	 No Generalization : Evaluate the performance of the agent on a single, fixed version of the Obstacle Tower.
--	Weak Generalization: Agents should be trained on a fixed set of 100 seeds for the environment configurations. They should then be tested on a held-out set of five randomly selected tower configuration seeds not in the training set.
--	Strong Generalization: In addition to the requirements for weak generalization, agents should be tested on a held-out visual theme which is separate from the ones on which it was trained.
-
-Through all these environmental dynamicity Obstacle Tower challenge provides a meaningful challenge to current and future AI agents. This environment provides four axes of challenge for AI agents: vision, control, planning, and generalization. This benchmark combines all such axes of complexity.
-
-
-**[Original Paper can be read here](https://arxiv.org/pdf/1902.01378.pdf)**
