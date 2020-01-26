@@ -4,9 +4,8 @@ subtitle: 'A short summary on the new AI agent benchmarking environment.'
 summary: Optitrack's Motive doesn't provide option to separate characters(Actors) from recorded motion takes. This blog discusses an approach to use Motive recording takes and use Motion Builder to separate the  characters and export as individual .fbx files.
 
 authors:
-- Aishwarya Pothula:
-    name: Aishwarya Pothula
-    url: https://aishwarya.io
+- admin
+- Aishwarya Pothula
 
 tags:
 - Motion Builder
@@ -41,35 +40,38 @@ projects: []
 ---
 The goal of this blog is to understand how to export individual mocap files from multi-skeleton mocap Motive videos and apply them to a model. You can also view a screen-recorded video of the tutorial.
 
-Software used for the tutorial
-Motive
-Pre-recorded take
-Motion Builder
-Optitrack plugin for Motion Builder
-Rigged character - Peggy for the purpose of this blog
+## Software used for the tutorial
+- Motive
+- Pre-recorded take
+- Motion Builder
+- Optitrack plugin for Motion Builder
+- Rigged character - Peggy for the purpose of this blog
 
-Pre-recorded take
+## Pre-recorded take
 For the purpose of our blog, we are using a pre-recorded take recorded using Motive software in 12 optitrack cameras in a motion capture setup. The take contains two actors fixed with active puck, for motion capture, interacting with a few objects such as a ball, a toy etc affixed with passive markers. The names of the two actors are Sanath and Rubel and their skeleton objects are named the same
 
-Motion Builder
+## Motion Builder
 MotionBuilder is a 3D character animation software produced by Autodesk. A free version of the software can be downloaded with a student account. It is used for virtual cinematography, motion capture, and traditional keyframe animation. We are using Motion Builder to edit the recorded take from Motive and separate the characters.
 
-Optitrack plugin for Motion Builder
+## Optitrack plugin for Motion Builder
 We need the Optitrack’s Plugin for Motion Builder in order to stream MoCap data to Motion Builder. Install the plugin following the on-screen steps and restart  Motion Builder if it is already running. After the MotionBuilder plugin has been installed, three OptiTrack devices will be added to the MotionBuilder ‘Assets Browser’ under the ‘Device’ section. Follow this link for a more detailed usage guide.
 
-Downloading a Rigged character
+## Downloading a Rigged character
 For the purpose of this blog, we will be making use of a rigged character, Peggy Sue. This model has bone mapping that matches with Motion Builder’s [MoBu] bone naming rules. We can use any character, but if the bone mapping of the model doesn’t follow MoBu naming, each bone has to be mapped manually. 
 When you choose to download, peggy is downloaded as a .rar file. Extract from the .rar file and open ‘Peggy.fbx’ 
+{{< figure src="/img/posts/mocap-separatione/peggi-extract.png" title="Extracted files" >}}
 
-Streaming from MoCap
+## Streaming from MoCap
 Load the pre-recorded mocap video from which individual mocaps are to be exported onto MoBu. To stream the recorded take into Motion Builder, open Motive and make sure that the ‘Data Streaming’ settings are as follows. 
 
-
+{{< figure src="/img/posts/mocap-separatione/motive-setting.png" title="Streaming settings in motive." >}}
 
 Go to ‘Edit’ mode. Make sure that the video is in ‘Loop mode’ and play the video. “Loop’ mode can be found at the bottom of the screen beside the video timescale
 
+{{< figure src="/img/posts/mocap-separatione/motive-player.png" title="Motive player." >}}
 
-Recording in MoBu
+
+## Recording in MoBu
 Now, open Motion Builder. Download and install the Optitrack Plugin for Motive. Towards the bottom right of the screen from ‘Asset Browser’, select ‘Devices’ .
 
 
@@ -90,7 +92,7 @@ Wait for the whole mocap video being streamed into MoBu to be recorded and click
 
 Now, disable the Live Option in the Skeleton Device Optitrack plugin as we now have the take inside MoBu. We can also disable the plugin at this point
 
-Putting Mocap Recording onto Model
+## Putting Mocap Recording onto Model
 Once the recording is done, go to the ‘File’ menu and click on ‘Merge’. In the subsequent window choose ‘peggy.fbx’ [The rigged character]. You will then be presented with ‘Merge Options’. Deselect the existing take, right click on ‘Element’ in the ‘Scene’ block and click on ‘Append All Elements’. 
 
 Then right-click on ‘Element’ near ‘Settings’ block and click on ‘Merge All Settings’. Click on ‘merge’ to finish merging. 
@@ -113,7 +115,7 @@ The next step is to again select ‘Rubel’ character or the character whose mo
 Now, when we click on the play button, we find that the ‘Rubel’s mocap is applied to Peggy.
 
 
-Exporting Individual Mocap
+## Exporting Individual Mocap
 To export the individual mocaps, select ‘save as’ from the file menu and save . An fbx file containing the mocap applied to the model(peggy) is created. The same procedure is to be followed to  create MoCap->Model animation and extract the individual mocaps. 
 
 This video shows this whole process for Exporting the Motive Streaming to separate Characters.
