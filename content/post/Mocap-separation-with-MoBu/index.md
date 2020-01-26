@@ -59,16 +59,16 @@ We need the Optitrack’s Plugin for Motion Builder in order to stream MoCap dat
 ## Downloading a Rigged character
 For the purpose of this blog, we will be making use of a rigged character, Peggy Sue. This model has bone mapping that matches with Motion Builder’s [MoBu] bone naming rules. We can use any character, but if the bone mapping of the model doesn’t follow MoBu naming, each bone has to be mapped manually. 
 When you choose to download, peggy is downloaded as a .rar file. Extract from the .rar file and open ‘Peggy.fbx’ 
-{{< figure src="/img/posts/mocap-separatione/peggi-extract.png" title="Extracted files" >}}
+{{< figure src="/img/posts/mocap-separation/peggi-extract.png" title="Extracted files" >}}
 
 ## Streaming from MoCap
 Load the pre-recorded mocap video from which individual mocaps are to be exported onto MoBu. To stream the recorded take into Motion Builder, open Motive and make sure that the ‘Data Streaming’ settings are as follows. 
 
-{{< figure src="/img/posts/mocap-separatione/motive-setting.png" title="Streaming settings in motive." >}}
+{{< figure src="/img/posts/mocap-separation/motive-setting.png" title="Streaming settings in motive." >}}
 
 Go to ‘Edit’ mode. Make sure that the video is in ‘Loop mode’ and play the video. “Loop’ mode can be found at the bottom of the screen beside the video timescale
 
-{{< figure src="/img/posts/mocap-separatione/motive-player.png" title="Motive player." >}}
+{{< figure src="/img/posts/mocap-separation/motive-player.png" title="Motive player." >}}
 
 
 ## Recording in MoBu
