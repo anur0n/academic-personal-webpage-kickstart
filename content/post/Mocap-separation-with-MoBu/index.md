@@ -5,7 +5,7 @@ summary: Optitrack's Motive doesn't provide option to separate characters(Actors
 
 authors:
 - admin
-- Aishwarya Pothula
+- Aishwarya Pothula:
     name: Aishwarya Pothula
     url: https://aishwarya.io
 
