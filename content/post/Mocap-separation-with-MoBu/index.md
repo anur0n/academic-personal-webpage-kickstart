@@ -41,7 +41,7 @@ projects: []
 The goal of this blog is to help you with how to export individual mocap files from multi-skeleton mocap Motive videos and apply them to a model. You can also view a screen-recorded video of the tutorial at the end.
 
 ## Software used for the tutorial
-- Motive [https://optitrack.com/products/motive/]
+- [Motive][https://optitrack.com/products/motive/]
 - Pre-recorded take
 - Motion Builder (https://www.autodesk.com/products/motionbuilder/overview) (**MoBu** in short)
 - [Optitrack plugin for Motion Builder] (https://optitrack.com/motionbuilder-plugin/) (As of this writing time, Plugin supports till Motion Builder 2018)
