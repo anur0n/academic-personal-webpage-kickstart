@@ -41,11 +41,11 @@ projects: []
 The goal of this blog is to help you with how to export individual mocap files from multi-skeleton mocap Motive videos and apply them to a model. You can also view a screen-recorded video of the tutorial at the end.
 
 ## Software used for the tutorial
-- [Motive][https://optitrack.com/products/motive/]
+- [Motive](https://optitrack.com/products/motive/)
 - Pre-recorded take
-- Motion Builder (https://www.autodesk.com/products/motionbuilder/overview) (**MoBu** in short)
-- [Optitrack plugin for Motion Builder] (https://optitrack.com/motionbuilder-plugin/) (As of this writing time, Plugin supports till Motion Builder 2018)
-- Rigged character - [Peggy] (https://free3d.com/3d-model/peggy-sue-rigged-for-animation-45959.html) for the purpose of this blog
+- [Motion Builder](https://www.autodesk.com/products/motionbuilder/overview) (**MoBu** in short)
+- [Optitrack plugin for Motion Builder](https://optitrack.com/motionbuilder-plugin/) (As of this writing time, Plugin supports till Motion Builder 2018)
+- Rigged character - [Peggy](https://free3d.com/3d-model/peggy-sue-rigged-for-animation-45959.html) for the purpose of this blog
 
 ## Pre-recorded take
 For the purpose of our blog, we are using a pre-recorded take recorded using Motive software in 12 optitrack cameras in a motion capture setup. The take contains two actors fixed with active puck, for motion capture, interacting with a few objects such as a ball, a toy etc affixed with passive markers. The names of the two actors are 'Sanath' and 'Rubel' and their skeleton objects are named the same.
@@ -57,7 +57,7 @@ MotionBuilder is a 3D character animation software produced by Autodesk. A free 
 We need the Optitrack’s Plugin for Motion Builder in order to stream MoCap data to Motion Builder. Install the plugin following the on-screen steps and restart  Motion Builder if it is already running. After the MotionBuilder plugin has been installed, three OptiTrack devices will be added to the MotionBuilder _‘Assets Browser’_ under the _‘Device’_ section. Follow this [link](https://optitrack.com/public/documents/motion-builder-plugin-manual-v3.0.0.pdf) for a more detailed usage guide.
 
 ## Downloading a Rigged character
-For the purpose of this blog, we will be making use of a rigged character, [Peggy Sue] (https://free3d.com/3d-model/peggy-sue-rigged-for-animation-45959.html). This model has bone mapping that matches with MoBu’s bone naming rules. We can use any character, but if the bone mapping of the model doesn’t follow MoBu naming, each bone has to be mapped manually. 
+For the purpose of this blog, we will be making use of a rigged character, [Peggy Sue](https://free3d.com/3d-model/peggy-sue-rigged-for-animation-45959.html). This model has bone mapping that matches with MoBu’s bone naming rules. We can use any character, but if the bone mapping of the model doesn’t follow MoBu naming, each bone has to be mapped manually. 
 When you choose to download, peggy is downloaded as a .rar file. Extract from the .rar file and open ‘Peggy.fbx’ 
 {{< figure src="/img/posts/mocap-separation/peggi-extract.png" title="Extracted files" >}}
 
@@ -131,4 +131,4 @@ This video shows this whole process for Exporting the Motive Streaming to separa
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TQQAbnMasSI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-These fbx files can be imported into unity to create [user input controlled animations] (https://aishwarya.io/unity-control-an-animator).
+These fbx files can be imported into unity to create [user input controlled animations](https://aishwarya.io/unity-control-an-animator).
