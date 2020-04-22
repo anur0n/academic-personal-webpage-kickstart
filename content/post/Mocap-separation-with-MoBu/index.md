@@ -7,11 +7,6 @@ commentable : true  # Allow visitors to comment? Supported by the Page, Post, an
 comments : true
 share : true
 
-output:
-  html_document:
-    includes:
-       in_header: GA_Script.html
-
 authors:
 - admin
 - Aishwarya Pothula
