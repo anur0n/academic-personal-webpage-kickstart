@@ -3,7 +3,9 @@ title: 'Multiple Mocap character separation using Motion Builder'
 # subtitle: ''
 summary: Optitrack's Motive doesn't provide option to separate characters(Actors) from recorded motion takes. This blog discusses an approach to use Motive recording takes and use Motion Builder to separate the  characters and export as individual .fbx files.
 
-commentable: true  # Allow visitors to comment? Supported by the Page, Post, and Docs content types.
+commentable : true  # Allow visitors to comment? Supported by the Page, Post, and Docs content types.
+comments : true
+share : true
 
 output:
   html_document:
