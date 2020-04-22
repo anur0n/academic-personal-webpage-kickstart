@@ -71,4 +71,4 @@ user_groups:
 - Visitors
 ---
 
-Md Ashaduzzaman Rubel Mondol is a PhD student at the University of Texas at Arlington. He is also  Graduate Teaching Assistant. Before starting his PhD he worked in the software industry for about 7 and half years. His research interests include Intelligent Systems Development, Artificial General Intelligent, Computer Vision.
+I'm a PhD student at the University of Texas at Arlington and also Graduate Teaching Assistant as well. Before starting my PhD I worked in the software industry for about 7 and half years. My research interests include Intelligent Systems Development, Artificial General Intelligent, Computer Vision.
