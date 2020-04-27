@@ -122,7 +122,7 @@ For classification query we apply the same preprocessing on the terms then calcu
 
 Following code with comments will explain the steps:
 
-```
+```python
 def classify(self,test_example):
       likelihood_prob=np.zeros(self.categories.shape[0]) #to store probability w.r.t each class
       
