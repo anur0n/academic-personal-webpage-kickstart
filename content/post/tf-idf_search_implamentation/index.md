@@ -1,11 +1,13 @@
+---
+title : "Implementing search engine using TF-IDF"
+summary : "How I implemented a simple search engine using TF-IDF to search Lifestyle products"
+authors:
+- admin
 
-+++
-title = "Implementing search engine using TF-IDF"
-summary = "How I implemented a simple search engine using TF-IDF to search Lifestyle products"
-+++
- 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+lastmod: "`r format(Sys.time(), '%d %B %Y')`"
+
+---
+
  
 Searching for something is an inevitable part now. So, let's see, the basics of implementing a search engine. Here we will search for Life Style products which will based on [this](https://www.kaggle.com/paramaggarwal/fashion-product-images-small) data set which contains information on thousands of life style products. We will see _How to create **Index** and **rank** the results we get from the search_
 
@@ -106,7 +108,7 @@ To Summarize these steps in sudo code:
 Following is the code used to prepare the index with TF-IDF
 
 
-```
+```python
 def createTfIdfIndex(self):
     self.prepareParams()
 
