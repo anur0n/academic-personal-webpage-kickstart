@@ -82,7 +82,8 @@ During this calculation of probabilities if some term doesn't occur in the index
 In above equation, many conditional probabilities are multiplied. This may result in a floating point underflow. To avoid this, instead of multiplying probabilities we will use **logarithm**. The class with the highest log probability score is still the most probable; log(xy) = log(x) + log(y)
 
 Following is the code for computing the probabilities
-```
+
+```python
 def precalcNBValues(self):
     probability_classes = np.empty(self.categories.shape[0])
     all_words = []
