@@ -112,9 +112,5 @@ Here is the output of two enum (Main, PaperRod) values passed as FloatProperties
 
 # |  {{< figure src="/img/posts/unity-ml_scene_controlling_from_python/output_main.png" width=516 height=516>}} | {{< figure src="/img/posts/unity-ml_scene_controlling_from_python/output_paper_rod.png" width=516 height=516>}} |
 # |:-:|:-:|
-| Command           | Description                    |
-| ------------------| ------------------------------ |
-| `hugo`            | Build your website.            |
-| `hugo serve -w`   | View your website.             |
 
 Hope this helps someone.
