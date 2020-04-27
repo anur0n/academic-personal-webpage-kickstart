@@ -102,22 +102,16 @@ We initialize a **FloatPropertiesChannel** object. Then we set the scene value w
 Now we will pass this channel in the environment creation step-
 
 ```python
-env = UnityEnvironment(base_port = 5005, file_name=env_name, side_channels = [engine_configuration_channel, channel])
+env = UnityEnvironment(base_port = 5005, file_name=env_name, \
+      side_channels = [engine_configuration_channel, channel])
 ```
 
 We pass our channel as the side_channels argument. To learn about the details on how to start the environment with UnityML follow this documentations.
 
 Here is the output of two enum (Main, PaperRod) values passed as FloatPropertiesChannel.
 
-<table>
-  <tr>
-    <td><img src="/img/posts/unity-ml_scene_controlling_from_python/output_main.png" width=516 height=516></td>
-    <td><img src="/img/posts/unity-ml_scene_controlling_from_python/output_paper_rod.png" width=516 height=516></td>
-  </tr>
-  <tr>
-    <td>Output of MainScene</td>
-    <td>Output of PaperRodScene</td>
-  </tr>
- </table>
+|  {{< figure src="/img/posts/unity-ml_scene_controlling_from_python/output_main.png" width=516 height=516>}} | {{< figure src="/img/posts/unity-ml_scene_controlling_from_python/output_paper_rod.png" width=516 height=516>}} |
+|:-:|:-:|
+
 
 Hope this helps someone.
