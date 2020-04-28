@@ -70,13 +70,13 @@ A term appears more in the document it becomes more important, which is logical.
 
 While using term frequencies if we use pure occurrence counts, longer documents will be favored more. So, we length normalize term frequencies. So, the term frequency of a term t in document D now becomes:
 
-$$ tf_{t,d} = \frac{N\{t,d}}{||D||} $$
+$$ tf_{t,d} = \frac{N_{t,d}}{||D||} $$
 
 
 ### Inverse Document Frequency – idf
 We can’t only use term frequencies to calculate the weight of a term in the document, because tf considers all terms equally important. However, some terms occur more rarely and they are more discriminative than others. The idf of a term is the number of documents in the corpus divided by the document frequency of a term.
 
-$$ idf_{t} = 1 + log\frac{N}{df_{t}} $$
+$$ idf_{t} = 1 + log(\frac{N}{df_{t}}) $$
 
 ### Tf-idf scoring
 We have defined both tf and idf, and now we can combine these to produce the ultimate score of a term t in document d. We represent the document as a vector, with each entry being the tf-idf weight of the corresponding term in the document. The tf-idf weight of a term t in document d is simply the multiplication of its tf by its idf:
@@ -210,17 +210,12 @@ To overcome this issue, I applied **_Task Scheduler_** in pythonAnywhere, which 
 * Tried different combination of word reduction. Comparisons are listed below:
 
  | Type of reduction | Wordcount after reduction |
- | :------------------: | :------------------------------: |
+ | :------------------ | :------------------------------: |
  | No reduction | 9580 |
- | :------------------: | :------------------------------: |
  | Only NLTK's stopwords removal | 9444 |
- | :------------------: | :------------------------------: |
  | Stopwords + Wordnet Lemmatizer | 8515 |
- | :------------------: | :------------------------------: |
  | Stopwords + Porter Stemming | 7097 |
- | :------------------: | :------------------------------: |
  | Stopwords + Porter Stemming + Lemmatization | 7080 |
- | :------------------: | :------------------------------: |
  | Stopwords + Snowball Stemming | 7057 |
 
 * Without lemmatization and stemming my search engine was not returning any result for queries that doesn't exactly match the data sets. Like for '_Narrowed_', there was no result, although there was products with '_narrow_' term in the description.
