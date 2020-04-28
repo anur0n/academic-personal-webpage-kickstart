@@ -74,9 +74,8 @@ private void Start()
 
 Here we are just checking if the current scene is not the one we want to change with **_SceneManager.GetActiveScene()_**. If it is a different scene we are using the **_SceneManager.LoadScene_** method to load the scene with the exact scene names.
 
-```
 **Note**: It is important to call ‘**_Academy.Instance.Dispose()_**’. This ensures that the previous scene is cleared and the agent ‘**_Brain_**’ is reloaded and connected to the agent. Without this the agent doesn’t receive any call to AgentAction method.
-```
+
 
 That’s it. Easy way to change the scene from python API. Now, we just need to export the unity app. Be sure to include all your scenes when exporting through the build setting window _(File->Build Settings)_. To add scenes to the exported app/binary, add all the scenes (Scenes need to be added in the hierarchy window.
 
