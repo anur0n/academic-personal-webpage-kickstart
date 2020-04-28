@@ -83,7 +83,7 @@ Now we will pre calculate the term probabilities using the formula above so that
 
 During this calculation of probabilities if some term doesn't occur in the index, then the whole probability will become 0 as it is multiplication. To avoid this, we will add a smoothing param = 1 to each term frequency. This is called **_add-one or Laplace smoothing_.**
 
-In above equation, many conditional probabilities are multiplied. This may result in a floating point underflow. To avoid this, instead of multiplying probabilities we will use **logarithm**. The class with the highest log probability score is still the most probable; log(xy) = log(x) + log(y)
+In above equation, many conditional probabilities are multiplied. This may result in a floating point underflow. To avoid this, instead of multiplying probabilities we will use **logarithm**. The class with the highest log probability score is still the most probable; $ log(xy) = log(x) + log(y) $
 
 Following is the code for computing the probabilities
 
