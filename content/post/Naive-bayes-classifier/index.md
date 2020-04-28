@@ -49,7 +49,7 @@ Naive Bayes algorithm uses Bayes theorem. It states that: The probability of a d
 
 $$ P(c \mid d) = P( c ) . \prod_{k=1}^{n\_{d}} P(t\_{k} \mid c) $$
 
-where $$ P(t\_{k} \mid c) $$ is the conditional probability of term $$ t\_{k} $$ occurring in a document of class c. P( c ) is the prior probability of a document occurring in class c. The class with highest probability is selected as the result.
+where $ P(t\_{k} \mid c) $ is the conditional probability of term $ t\_{k} $ occurring in a document of class c. P( c ) is the prior probability of a document occurring in class c. The class with highest probability is selected as the result.
 
 To create the model we will need the term frequencies for each documents in each class.
 
