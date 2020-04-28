@@ -1,11 +1,12 @@
 
-+++
-title = "Implementing Image search feature and Caption generation"
-summary = "Adding image search feature with generating caption for an uploaded image and searching over other images based on the caption."
-+++
- 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
+---
+title : Implementing Image search feature and Caption generation
+summary : Adding image search feature with generating caption for an uploaded image and searching over other images based on the caption.
+authors:
+- admin
+math : true
+lastmod: "`r format(Sys.time(), '%d %B %Y')`"
+---
  
 Image search can be a very useful feature for many applications. In this article let's look how we can implement an image search feature.
 In our search approach we will first generate caption for each image in our [dataset](https://www.kaggle.com/hsankesara/flickr-image-dataset). For caption generation we will follow [this](https://www.tensorflow.org/tutorials/text/image_captioning) tensorflow tutorial. Then we will apply **TF-IDF** indexing over the captions and implement searching.
@@ -72,7 +73,7 @@ Below graph shows the loss changes over the epochs-
 
 We now implement the caption evaluator function which similar to the training loop, but without teacher forcing. The input to the decoder at each time step is its previous predictions along with the hidden state and the encoder output. We stop predicting when the model predicts the end token and store the attention weights for every time step. Below is the implementation of evaluate function-
 
-```
+```python
 def evaluate(image):
     attention_plot = np.zeros((max_length, attention_features_shape))
 
@@ -136,7 +137,7 @@ To search images with image, we generate a caption for the 'Query image' with th
 
 The training of the captioning model above takes around 3 hours when run in Google Colab. So we need to use the pretrained models. To do that first we need to save all the trained model weights. We use tensorflow's save_weight(path_to_save, save_format='tf') method.
 
-```
+```python
 decoder.save_weights('/content/decoder.gru', save_format='tf')
 encoder.save_weights('/content/encoder.gru', save_format='tf')
 decoder.attention.save_weights('/content/attention.gru', save_format='tf')
@@ -144,7 +145,7 @@ decoder.attention.save_weights('/content/attention.gru', save_format='tf')
 **Note that** We also need to save **_decoder.attention_** weights too. Otherwise it won't work.
 
 Then, we also need to save the tokenizer and other meta-data the was changed during preprocessing and training. We use dictionary for meta-data and use pickle to save it.
-```
+```python
 with open('/content/tokenizer.gru.pickle', 'wb') as handle:
     pickle.dump(tokenizer, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
@@ -181,7 +182,7 @@ Download the generated files and upload it to your pythonAnywhere project direct
 
 Now when generating caption for a new image we create the Encoder, Decoders that were defined in the image captioning models and load these saved weights to those models. Also we load the meta-dictionary.
 
-```
+```python
 with open('/content/tokenizer.gru.pickle', 'rb') as handle:
     tokenizer = pickle.load(handle)
 
@@ -213,7 +214,7 @@ This way we can save the trained model and load it on pythonAnywhere.
 
 **But now there will be an issue. Our trained model may not generate captions properly.** The problem here is due to below code in the Image captioning tutorial link-
 
-```
+```python
 def gru(units):
   # If you have a GPU, we recommend using the CuDNNGRU layer (it provides a 
   significant speedup).
@@ -234,7 +235,7 @@ The problem is we trained our model in google Colab or other computer's with GPU
 
 One solution is, when training use only **GRU** layer in Colab.
 
-```
+```python
 def gru(units):
   return tf.keras.layers.GRU(units, 
                                return_sequences=True, 
