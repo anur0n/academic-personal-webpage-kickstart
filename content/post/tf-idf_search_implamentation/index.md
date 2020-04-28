@@ -21,7 +21,7 @@ Next, I removed the most common words which itself doesn't carry any significanc
 
 Following code applies these techniques:
 
-```
+```python
 import nltk
 nltk.download('stopwords')
 nltk.download('wordnet')
@@ -63,24 +63,24 @@ Tf-idf is a weighting scheme that assigns each term in a document a weight based
 ### Term Frequency – tf
 Term Frequency is calculated for a term t in document d. It is basically the number of occurrences of the term in the document.
 
-$$ tf\_{t,d} = N\_{t,d} $$
+$$ tf_{t,d} = N_{t,d} $$
 
 A term appears more in the document it becomes more important, which is logical. However, there is a drawback, by using term frequencies we lose positional information. The ordering of terms doesn’t matter, instead the number of occurrences becomes important. This is known as the bag of words model.
 
 While using term frequencies if we use pure occurrence counts, longer documents will be favored more. So, we length normalize term frequencies. So, the term frequency of a term t in document D now becomes:
 
-$$ tf\_{t,d} = \dfrac{N\_{t,d}}{||D||} $$
+$$ tf_{t,d} = \frac{N\{t,d}}{||D||} $$
 
 
 ### Inverse Document Frequency – idf
 We can’t only use term frequencies to calculate the weight of a term in the document, because tf considers all terms equally important. However, some terms occur more rarely and they are more discriminative than others. The idf of a term is the number of documents in the corpus divided by the document frequency of a term.
 
-$$ idf_t = 1 + log\dfrac{N}{df_t} $$
+$$ idf_{t} = 1 + log\frac{N}{df_{t}} $$
 
 ### Tf-idf scoring
 We have defined both tf and idf, and now we can combine these to produce the ultimate score of a term t in document d. We represent the document as a vector, with each entry being the tf-idf weight of the corresponding term in the document. The tf-idf weight of a term t in document d is simply the multiplication of its tf by its idf:
 
-$$ tf\mbox{-}idf\_{t,d} = tf\_{t,d} \cdot idf_t $$
+$$ tf-idf_{t,d} = tf_{t,d} * idf_{t} $$
 
 
 ## Handling Query
@@ -90,19 +90,18 @@ If we compute the cosine similarity between the query vector and all the documen
 To Summarize these steps in sudo code:
 
   Term frequency calculation:
-  <pre>
+```
   Normalization = sum(number of terms in doc)^2
   term-tf-doc = number of times term appears in doc / sqrt(Normalization)
-  
-  </pre>
+```
   Inverse document frequency for a term calculation:
-  <pre>
+```
   term-idf = 1 + log(total number of docs in the dataset / number of docs term occurs in)
-  </pre>
+```
   TF-IDF calculation:
-  <pre>
+```
   term-doc-score = term-tf-doc * term-idf
-  </pre>
+```
 
 
 Following is the code used to prepare the index with TF-IDF
@@ -208,37 +207,18 @@ To overcome this issue, I applied **_Task Scheduler_** in pythonAnywhere, which 
 
 ## Stemming and Lemmatization (With vs Without)
 * Tried different combination of word reduction. Comparisons are listed below:
-<table style="width:100%">
-  <tr>
-    <th>Type of reduction</th>
-    <th>Wordcount after reduction</th>
-  </tr>
-  <tr>
-      <td>No reduction</td>
-      <td align = "center">9580</td>
-  </tr>
-  <tr>
-      <td>Only NLTK's stopwords removal</td>
-      <td align = "center">9444</td>
-  </tr>
-  <tr>
-      <td>Stopwords + Wordnet Lemmatizer</td>
-      <td align = "center">8515</td>
-  </tr>
-  <tr>
-      <td>Stopwords + Porter Stemming</td>
-      <td align = "center">7097</td>
-  </tr>
-  <tr>
-      <td>Stopwords + Porter Stemming + Lemmatization</td>
-      <td align = "center">7080</td>
-  </tr>
-  <tr>
-      <td>Stopwords + Snowball Stemming</td>
-      <td align = "center">7057</td>
-  </tr>
-</table>
-
+| Type of reduction | Wordcount after reduction |
+| :------------------: | :------------------------------: |
+| No reduction | 9580 |
+| :------------------: | :------------------------------: |
+| Only NLTK's stopwords removal | 9444 |
+| :------------------: | :------------------------------: |
+| Stopwords + Wordnet Lemmatizer | 8515 |
+| :------------------: | :------------------------------: |
+| Stopwords + Porter Stemming | 7097 |
+| :------------------: | :------------------------------: |
+| Stopwords + Porter Stemming + Lemmatization | 7080 |
+| Stopwords + Snowball Stemming | 7057 |
 
 * Without lemmatization and stemming my search engine was not returning any result for queries that doesn't exactly match the data sets. Like for '_Narrowed_', there was no result, although there was products with '_narrow_' term in the description.
 
