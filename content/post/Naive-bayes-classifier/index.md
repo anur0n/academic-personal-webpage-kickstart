@@ -117,10 +117,6 @@ def precalcNBValues(self):
     self.cats_info=np.array(self.cats_info)
 ```
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
 
 ## Handling Classification Request
 For classification query we apply the same preprocessing on the terms then calculate probabilities using the above formula.
