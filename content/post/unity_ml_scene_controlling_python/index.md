@@ -1,5 +1,5 @@
 ---
-title: 'Controlling UnityML environment Scenes for different experiments with python'
+title: 'Controlling Unity ML-agent environment Scenes for different experiments with python'
 # subtitle: ''
 summary: This article discusses ways to control the UnityML game/environment and switch scenes from python script.
 
