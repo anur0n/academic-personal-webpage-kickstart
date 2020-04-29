@@ -1,13 +1,13 @@
 ---
 title: 'Controlling Unity ML-agent environment Scenes for different experiments with python'
 # subtitle: ''
-summary: This article discusses ways to control the UnityML game/environment and switch scenes from python script.
+summary: This article discusses ways to control the Unity ML-agent based game/environment and switch scenes from python script.
 
 authors:
 - admin
 
 tags:
-- UnityML
+- Unity ML-agent
 - Environment Control
 # - Academic
 categories:
@@ -24,7 +24,7 @@ projects: []
 
 Suppose, our environment has multiple scenes to support different experiments in the same environment. Based on different configurations we want to load different scenes. One simple approach to handle this requirement is to **Build** different executables for different scenes.
 
-But I wanted to keep one single executable and control it programmatically from python script. So far, I couldn’t find a direct way to do this. Instead I used another API called ‘**Side Channels**’ provided by **UnityML**. Details about Side Channels can be found [here](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Python-API.md#communicating-additional-information-with-the-environment). 
+But I wanted to keep one single executable and control it programmatically from python script. So far, I couldn’t find a direct way to do this. Instead I used another API called ‘**Side Channels**’ provided by **Unity ML-agent**. Details about Side Channels can be found [here](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Python-API.md#communicating-additional-information-with-the-environment). 
 Basically side channels provide a communication channel. When the simulation/training is running, we can pass data between unity environment and python script. We can also create custom channels if we need more control following [this](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Custom-SideChannels.md).
 
 Let’s start with implementations in unity-
@@ -111,7 +111,7 @@ env = UnityEnvironment(base_port = 5005, file_name=env_name, \
                   side_channels = [engine_configuration_channel, channel])
 ```
 
-We pass our channel as the side_channels argument. To learn about the details on how to start the environment with UnityML follow this documentations.
+We pass our channel as the side_channels argument. To learn about the details on how to start the environment with ML-agent follow [this](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Python-API.md) documentations.
 
 Here is the output of two enum (Main, PaperRod) values passed as FloatPropertiesChannel.
 
