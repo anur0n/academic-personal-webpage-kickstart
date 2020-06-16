@@ -79,7 +79,7 @@ Here we are just checking if the current scene is not the one we want to change 
 
 That’s it. Easy way to change the scene from python API. Now, we just need to export the unity app. Be sure to include all your scenes when exporting through the build setting window _(File->Build Settings)_. To add scenes to the exported app/binary, add all the scenes (Scenes need to be added in the hierarchy window.
 
-{{< figure src="/img/posts/unity-ml_scene_controlling_from_python/build_window.png" title="Add scenes before building" align="center" >}}
+{{< figure src="build_window.png" title="Add scenes before building" align="center" >}}
 
 Then build the app binary.
 
@@ -116,7 +116,7 @@ We pass our channel as the side_channels argument. To learn about the details on
 Here is the output of two enum (Main, PaperRod) values passed as FloatPropertiesChannel.
 
 
-| {{< figure src="/img/posts/unity-ml_scene_controlling_from_python/output_main.png" title="MainScene output" width="516" height="516" >}} | {{< figure src="/img/posts/unity-ml_scene_controlling_from_python/output_paper_rod.png" title="PaperRodScene output" width="516" height="516" >}} |
+| {{< figure src="output_main.png" title="MainScene output" width="516" height="516" >}} | {{< figure src="output_paper_rod.png" title="PaperRodScene output" width="516" height="516" >}} |
 | :------------------: | :------------------------------: |
 
 Hope this helps someone.

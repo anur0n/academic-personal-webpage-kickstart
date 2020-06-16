@@ -1,5 +1,5 @@
 ---
-title: 'Obstacle Tower Challenge'
+title: 'Paper Summary: Obstacle Tower Challenge'
 subtitle: 'A short summary on the new AI agent benchmarking environment.'
 summary: A short summary on the new AI agent benchmarking environment.
 authors:
@@ -35,12 +35,12 @@ AI researchers have been using different game environments for a long time. Vide
 
 
 
-{{< figure src="/img/posts/obstacle-tower-challenge/obstacle-environment.png" title="Figure 1: Obstacle Tower at different floor levels." >}}
+{{< figure src="obstacle-environment.png" title="Figure 1: Obstacle Tower at different floor levels." >}}
 
 -	**High Visual Fidelity:** Provides 3D environment with real-time lighting and shadows and much detailed textures
 
  
- {{< figure src="/img/posts/obstacle-tower-challenge/obstacle-floor-plan.png" title="Figure 2: Obstacle Tower floor plans." >}}
+ {{< figure src="obstacle-floor-plan.png" title="Figure 2: Obstacle Tower floor plans." >}}
  
 -	**Procedurally generated rooms and floors:** Floors and rooms are procedurally generated, which requires generalization of agent to perform well.
 -	**Physics Driven Interactions:** Interaction between Agent and other environment objects are controlled by real time 3D physics System.

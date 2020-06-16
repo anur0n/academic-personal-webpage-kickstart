@@ -169,7 +169,7 @@ To overcome this issue, I applied **_Task Scheduler_** in pythonAnywhere, which 
 ## Evaluation
 In the dataset there were around 44000 items. For the classification purpose we used 60:20:20 split for Train:Test:Validation. We tried to tune the smoothing hyperparameter in range [100, 10, 1, 0.1, 0.01, ...., 0.0000000001] and found below result graph which shows accuracy, precision, recall and F1 mesures:
 
-{{< figure src="/img/posts/naiveBayesClassifier/evaluation_scores.png" title="Figure: Different scores for the classifier with different smoothing on X-Axis." >}}
+{{< figure src="evaluation_scores.png" title="Figure: Different scores for the classifier with different smoothing on X-Axis." >}}
 
 From the graphs we can see for lower smoothing values the the accuracy and precision increases upto 99% but recall and F1 score has the peak for smoothing value of 1.
 

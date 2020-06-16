@@ -66,7 +66,7 @@ We first split our 30K data set in 80:20 ratio. Then follow below steps-
 
 Below graph shows the loss changes over the epochs-
 
-{{< figure src="/img/posts/img_captioning/captioning_loss.png" title="Figure: Loss changes over epochs" >}}
+{{< figure src="captioning_loss.png" title="Figure: Loss changes over epochs" >}}
 
 
 ### Caption Evaluation
@@ -121,9 +121,9 @@ Image.open(img_name_val[rid])
  
  For some images the model fails to generate relevant captions and for some images it just generates repeated words.
  
- {{< figure src="/img/posts/img_captioning/fail_boy.jpg" title="Caption: a boy sits at a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and" >}}
+ {{< figure src="fail_boy.jpg" title="Caption: a boy sits at a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and a boxy and" >}}
  
- {{< figure src="/img/posts/img_captioning/fail_man_repeated.jpg" title="Caption: a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a" >}}
+ {{< figure src="fail_man_repeated.jpg" title="Caption: a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a man and a" >}}
 
 ## Image Search
 
