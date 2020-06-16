@@ -1,6 +1,6 @@
 ---
 title: Fashion Store
-summary: [Course Project] A web based application for searching and browsing lifestyle products. Users can search with text and image. 
+summary: A web based application as part of academic project for searching and browsing lifestyle products. Users can search with text and image. 
 tags:
 date: "2019-09-15T00:00:00Z"
 
