@@ -1,8 +1,8 @@
 ---
-title: SEDRo: A Simulated Environment for Developmental Robotics
+title: "SEDRo: A Simulated Environment for Developmental Robotics"
 authors:
 - Aishwarya Pothula
-- Md Ashaduzzaman Rubel Mondol
+- admin
 - Sanath Narasimhan
 - Sm Mazharul Islam
 - Deokgun Park
@@ -19,20 +19,29 @@ publishDate: "2020-09-03T00:00:00Z"
 publication_types: ["3"]
 
 # Publication name and optional abbreviated publication name.
-publication: ICDL 2020
-publication_short: ''
+publication: "ICDL 2020"
+publication_short: ""
 
 abstract: Even with impressive advances in application-specific models, we still lack knowledge about how to build a model that can learn in a human-like way and do multiple tasks. To learn in a human-like way, we need to provide a diverse experience that is comparable to humans. In this paper, we introduce our ongoing effort to build a simulated environment for developmental robotics (SEDRo). SEDRo provides diverse human experiences ranging from those of a fetus to a 12th-month-old. A series of simulated tests based on developmental psychology will be used to evaluate the progress of a learning model. We anticipate SEDRo to lower the cost of entry and facilitate research in the developmental robotics community.
 
 # Summary. An optional shortened abstract.
-summary: This describes our ongoing project for Simulated Environment for Developmental Robotics.
+summary: This presents our ongoing project for Simulated Environment for Developmental Robotics.
 
 tags:
-- Embodiment, Developmental Robotics, Baby Agent
-featured: true
+- Source Themes
+featured: false
 
-url_preprint : "https://arxiv.org/abs/2009.01810"
-
+# links:
+# - name: ""
+#   url: ""
+url_pdf: https://arxiv.org/pdf/2009.01810.pdf
+url_code: ''
+url_dataset: ''
+url_poster: ''
+url_project: ''
+url_slides: ''
+url_source: ''
+url_video: ''
 
 # Featured image
 # To use, add an image named `featured.jpg/png` to your page's folder. 
@@ -46,15 +55,14 @@ image:
 #   Simply enter your project's folder or file name without extension.
 #   E.g. `internal-project` references `content/project/internal-project/index.md`.
 #   Otherwise, set `projects: []`.
-# projects:
-# - artecture
+projects: []
 
 # Slides (optional).
 #   Associate this publication with Markdown slides.
 #   Simply enter your slide deck's filename without extension.
 #   E.g. `slides: "example"` references `content/slides/example/index.md`.
 #   Otherwise, set `slides: ""`.
-# slides: example
+slides: example
 ---
 
 {{% alert note %}}
@@ -65,4 +73,4 @@ Click the *Cite* button above to demo the feature to enable visitors to import p
 Click the *Slides* button above to demo Academic's Markdown slides feature.
 {{% /alert %}}
 
-Supplementary notes can be added here, including [code and math](https://sourcethemes.com/academic/docs/writing-markdown-latex/).
+---
