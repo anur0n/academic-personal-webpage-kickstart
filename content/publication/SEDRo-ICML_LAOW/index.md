@@ -31,7 +31,7 @@ tags:
 - Embodiment, Developmental Robotics, Baby Agent
 featured: true
 
-url_preprint = "https://arxiv.org/abs/2009.01810"
+url_preprint : "https://arxiv.org/abs/2009.01810"
 
 
 # Featured image
