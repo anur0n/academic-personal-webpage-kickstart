@@ -28,7 +28,7 @@ abstract: Even with impressive advances in application-specific models, we still
 summary: This presents our ongoing project for Simulated Environment for Developmental Robotics.
 
 tags:
-- Baby Agents, Developmental Robotics, AGI
+- ["Baby Agents", "Developmental Robotics", "AGI"]
 featured: true
 
 # links:
