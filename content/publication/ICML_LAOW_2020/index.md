@@ -1,5 +1,5 @@
 ---
-title: "SEDRo: A Simulated Environment for Developmental Robotics"
+title: "An Open-World Simulated Environment for Developmental Robotics"
 authors:
 - Sm Mazharul Islam
 - admin
