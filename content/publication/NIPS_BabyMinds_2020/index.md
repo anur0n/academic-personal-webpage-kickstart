@@ -1,5 +1,5 @@
 ---
-title: "SEDRo: A Simulated Environment for Developmental Robotics"
+title: "Modeling Social Interaction for Baby in Simulated Environment for Developmental Robotics"
 authors:
 - Aishwarya Pothula
 - admin
