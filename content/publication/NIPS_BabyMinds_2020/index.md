@@ -1,10 +1,8 @@
 ---
 title: "Modeling Social Interaction for Baby in Simulated Environment for Developmental Robotics"
 authors:
-- Aishwarya Pothula
 - admin
-- Sanath Narasimhan
-- Sm Mazharul Islam
+- Aishwarya Pothula
 - Deokgun Park
 date: "2021-01-05T00:00:00Z"
 doi: ""
