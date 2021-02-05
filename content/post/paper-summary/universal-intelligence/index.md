@@ -46,7 +46,7 @@ In the paper, they also reviewed many human intelligent test as well as machine 
  - **Test vs. Def**- Whether the proposal is of a test, more of a definition, or something in between.
 
 
-{{< figure src="test_comparison.png" title="Table : Machine intelligence test comparisons: ⬤ means “yes”, ● means “debatable”, · means “no”, and ? means unknown. " align="center" >}}
+{{< figure src="test_comparison.png" title="Table : Machine intelligence test comparisons: <sub>⬤<\sub> means “yes”, ● means “debatable”, · means “no”, and ? means unknown. " align="center" >}}
 
 **Limitation:** One major limitation is their formal definition is not practical yet because, that the Kolmogorov complexity function K is not computable  
 
