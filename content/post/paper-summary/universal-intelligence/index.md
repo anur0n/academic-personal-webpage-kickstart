@@ -22,11 +22,11 @@ This paper tried to address this issue. After reviewing many definitions of ‘_
 
 “_Intelligence measures an agent’s ability to achieve goals in a wide range of environments._”
 
-This definition works well with the concept of reinforcement learning mechanism. With this informal definition they came up with a formal definition for machines. The formal definition is:
+This definition works well with the concept of reinforcement learning mechanism. From this informal definition they came up with a formal definition for machines. The formal definition is:
 
 $$\Upsilon(\pi) := \sum_{\mu\epsilon E} 2^{-K(\mu)} V_\mu^\pi$$
 
-This is Universal Intelligence of the agent $\pi$. Where $V_\mu^\pi$ is the expected reward for agent $\pi$ in the environment defined by $\mu$. $K(\mu)$ is the Kolmogorov complexity of the environment $\mu$. And $2^{-K(\mu)}$ is the algorithmic probability distribution over the space of the environments.
+This is **_Universal Intelligence_** of the agent $\pi$. Where $V_\mu^\pi$ is the expected reward for agent $\pi$ in the environment defined by $\mu$. $K(\mu)$ is the Kolmogorov complexity of the environment $\mu$. And $2^{-K(\mu)}$ is the algorithmic probability distribution over the space of the environments.
 
 Basically, this equation performs weighted sums of the expected reward of an agent $\pi$, with weights being the inverse of the complexity of the environments. The more complex environments are less likely. The agent is evaluated over a wide range of environments and their achievements (rewards) are summed up. The more this value of universal intelligence the more intelligent the agent is.
 In the paper, they also reviewed many human intelligent test as well as machine intelligence tests. They nicely summarized the comparison of the machine tests according the following properties-
@@ -47,6 +47,9 @@ In the paper, they also reviewed many human intelligent test as well as machine 
 
 
 {{< figure src="test_comparison.png" title="Table : Machine intelligence test comparisons: ⬤ (bigger circle) means “yes”, ● (smaller circle) means “debatable”, · (dot) means “no”, and '?' means unknown. " align="center" >}}
+
+
+Overall, the authors nicely captured the major discussions about intelligence and gathered different tests and provided a formal definition or measurement scale for machine intelligence.
 
 **Limitation:** One major limitation is their formal definition is not practical yet because, that the Kolmogorov complexity function K is not computable  
 
