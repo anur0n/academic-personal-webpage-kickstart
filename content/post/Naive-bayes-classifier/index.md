@@ -5,7 +5,7 @@ summary : About implementation of Naive Bayes Text classifier to classify fashio
 authors:
 - admin
 math : true
-commentable: false
+comments: disabled
 lastmod: "`r format(Sys.time(), '%d %B %Y')`"
 ---
  
