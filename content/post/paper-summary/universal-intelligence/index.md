@@ -49,7 +49,7 @@ In the paper, they also reviewed many human intelligent test as well as machine 
 {{< figure src="test_comparison.png" title="Table : Machine intelligence test comparisons: ⬤ (bigger circle) means “yes”, ● (smaller circle) means “debatable”, · (dot) means “no”, and '?' means unknown. " align="center" >}}
 
 
-Overall, the authors nicely captured the major discussions about intelligence and gathered different tests and provided a formal definition or measurement scale for machine intelligence.
+**Good things:** Overall, the authors nicely captured the major discussions about intelligence and gathered different tests and provided a formal definition or measurement scale for machine intelligence.
 
 **Limitation:** One major limitation is their formal definition is not practical yet because, that the Kolmogorov complexity function K is not computable  
 
