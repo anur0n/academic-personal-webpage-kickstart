@@ -8,6 +8,7 @@ authors:
 tags:
 - Paper Reading
 draft: false
+math: true
 ---
 
 ### Summary
