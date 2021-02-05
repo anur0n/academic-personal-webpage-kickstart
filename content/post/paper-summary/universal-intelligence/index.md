@@ -16,6 +16,7 @@ This article summarizes the titled paper on [universal intelligence paper](https
 One problem of working with Artificial Intelligence is that there is no universally accepted definition of the term ‘**_Intelligence_**’. As R. J. Sternberg quoted-
 
 “_Viewed narrowly, there seem to be almost as many definitions of intelligence as there were experts asked to define it._”
+
 This paper tried to address this issue. After reviewing many definitions of ‘_Intelligence_’ they came up with an informal definition first –
 
 “_Intelligence measures an agent’s ability to achieve goals in a wide range of environments._”
@@ -44,7 +45,7 @@ In the paper, they also reviewed many human intelligent test as well as machine 
  - **Test vs. Def**- Whether the proposal is of a test, more of a definition, or something in between.
 
 
-{{< figure src="test_comparison.png" title="Machine intelligence test comparisons: &#2B24 means “yes”, &#25CF means “debatable”, · means “no”, and ? means unknown. " align="center" >}}
+{{< figure src="test_comparison.png" title="Table : Machine intelligence test comparisons: \u2B24 means “yes”, \u25CF means “debatable”, · means “no”, and ? means unknown. " align="center" >}}
 
 **Limitation:** One major limitation is their formal definition is not practical yet because, that the Kolmogorov complexity function K is not computable  
 
