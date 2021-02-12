@@ -14,7 +14,14 @@ math: false
 ### Summary
 This article summarizes the titled paper on [The Winograd Schema Challenge](https://cs.nyu.edu/faculty/davise/papers/WSKR2012.pdf)
 
-This paper proposes an alternative to turing test, but it follows Turing's idea to judge only the behaviour as measure of intelligence. One drawback of the Turing test is that the final judgement for the same set of questions and answers will vary for different judges. They tried to avoid such a case. This challenge will provide quantitive measure of the 'Intelligence'
+This paper proposes an alternative to turing test, but it follows Turing's idea to judge only the behaviour as measure of intelligence. One drawback of the Turing test is that the final judgement for the same set of questions and answers will vary for different judges. They tried to avoid such a case. This challenge will provide quantitive measure of the 'Intelligence'.
+
+This challenge is, as they claim, a variant of Recognizing Textual Entailment (RTE). The RTE provides set of questions which can be answered with yes/no only. This test asks whether a given sentence(A) 'Entails' the other given sentence (B). But in RTE the assumption about 'Entailment' was not proper. So, in winograd challenge the propose to generate questions using following 4 properties-
+
+ -  _Two parties are mentioned in a sentence by noun phrases. They can be two males, two females, two inanimate objects or two groups of people or objects._
+ - _A pronoun or possessive adjective is used in the sentence in reference to one of the parties, but is also of the right sort for the second party. In the case of males, it is “he/him/his”; for females, it is “she/her/her” for inanimate object it is “it/it/its,” and for groups it is “they/them/their.”_
+ - _The question involves determining the referent of the pronoun or possessive adjective. Answer 0 is always the first party mentioned in the sentence (but repeated from the sentence for clarity), and Answer 1 is the second party._
+ - _There is a word (called the special word) that appears in the sentence and possibly the question. When it is re- placed by another word (called the alternate word), every- thing still makes perfect sense, but the answer changes._
 
 
 **Good things:** 
