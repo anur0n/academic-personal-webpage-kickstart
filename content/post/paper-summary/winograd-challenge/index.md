@@ -21,9 +21,25 @@ This challenge is, as they claim, a variant of Recognizing Textual Entailment (R
  -  _Two parties are mentioned in a sentence by noun phrases. They can be two males, two females, two inanimate objects or two groups of people or objects._
  - _A pronoun or possessive adjective is used in the sentence in reference to one of the parties, but is also of the right sort for the second party. In the case of males, it is “he/him/his”; for females, it is “she/her/her” for inanimate object it is “it/it/its,” and for groups it is “they/them/their.”_
  - _The question involves determining the referent of the pronoun or possessive adjective. Answer 0 is always the first party mentioned in the sentence (but repeated from the sentence for clarity), and Answer 1 is the second party._
- - _There is a word (called the special word) that appears in the sentence and possibly the question. When it is re- placed by another word (called the alternate word), every- thing still makes perfect sense, but the answer changes._
+ - _There is a word (called the special word) that appears in the sentence and possibly the question. When it is replaced by another word (called the alternate word), every- thing still makes perfect sense, but the answer changes._
 
+The questions will have only 1 answer out of 2 given options. For Example- 
+ - The trophy doesn’t fit in the brown suitcase because it’s too big. What is too big?
+        Answer 0: the trophy 
+        Answer 1: the suitcase
+ - Joan made sure to thank Susan for all the help she had given. Who had given the help?
+        Answer 0: Joan 
+        Answer 1: Susan
 
+To avoid using statistical learning they used the 4th rule of using some special word and alternative word. If the alrernative word is used, the answer will change totally. Like the following example-
+    The trophy doesn’t fit in the brown suitcase because it’s too ⟨ ⟩. What is too ⟨ ⟩?
+    Answer 0: the trophy
+    Answer 1: the suitcase
+ 
+ ----------------------------
+    special: big
+    alternate: small
+    
 **Good things:** 
 
 **Limitation:**  
