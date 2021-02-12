@@ -28,17 +28,16 @@ The questions will have only 1 answer out of 2 given options. For Example-
         Answer 0: the trophy 
         Answer 1: the suitcase
  - Joan made sure to thank Susan for all the help she had given. Who had given the help?
-        Answer 0: Joan 
-        Answer 1: Susan
+    - Answer 0: Joan 
+    - Answer 1: Susan
 
 To avoid using statistical learning they used the 4th rule of using some special word and alternative word. If the alrernative word is used, the answer will change totally. Like the following example-
-    The trophy doesn’t fit in the brown suitcase because it’s too ⟨ ⟩. What is too ⟨ ⟩?
-    Answer 0: the trophy
-    Answer 1: the suitcase
- 
- ----------------------------
-    special: big
-    alternate: small
+- The trophy doesn’t fit in the brown suitcase because it’s too ⟨ ⟩. What is too ⟨ ⟩?
+    - Answer 0: the trophy
+    - Answer 1: the suitcase
+    ----
+    - special: big
+    - alternate: small
     
 **Good things:** 
 
