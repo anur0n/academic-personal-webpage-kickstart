@@ -41,5 +41,5 @@ To avoid using statistical learning they used the 4th rule of using some special
     
 **Good things:** This test doesn't require human judges. And it can be designed in a way that requires Knowledge and commonsense reasoning. They tried to ensure, that without reasoning, only statistical learnings are not enough
 
-**Limitation:** Even if this test is passed, the passing agent still can't do everything like human.
+**Limitation:** I'm skeptic about this challenge being the scale for intelligence. Even if this test is passed, the passing agent still mightn't be able to do everything like human.
 
