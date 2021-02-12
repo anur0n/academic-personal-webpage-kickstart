@@ -39,7 +39,7 @@ To avoid using statistical learning they used the 4th rule of using some special
     - special: big
     - alternate: small
     
-**Good things:** 
+**Good things:** This test doesn't require human judges. And it can be designed in a way that requires Knowledge and commonsense reasoning. They tried to ensure, that without reasoning, only statistical learnings are not enough
 
-**Limitation:**  
+**Limitation:** Even if this test is passed, the passing agent still can't do everything like human.
 
