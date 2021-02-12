@@ -14,9 +14,9 @@ math: false
 ### Summary
 This article summarizes the titled paper on [The Winograd Schema Challenge](https://cs.nyu.edu/faculty/davise/papers/WSKR2012.pdf)
 
-This paper proposes an alternative to turing test, but it follows Turing's idea to judge only the behaviour as measure of intelligence. One drawback of the Turing test is that the final judgement for the same set of questions and answers will vary for different judges. They tried to avoid such a case. This challenge will provide quantitive measure of the 'Intelligence'.
+This paper proposes an alternative to turing test, but it follows Turing's idea to judge only the behaviour as measure of intelligence. One drawback of the Turing test is that the final judgement for the same set of questions and answers will vary for different judges. They tried to avoid such a case. This challenge will provide quantitive measure of the '_Intelligence_'.
 
-This challenge is, as they claim, a variant of Recognizing Textual Entailment (RTE). The RTE provides set of questions which can be answered with yes/no only. This test asks whether a given sentence(A) 'Entails' the other given sentence (B). But in RTE the assumption about 'Entailment' was not proper. So, in winograd challenge the propose to generate questions using following 4 properties-
+This challenge is, as they claim, a variant of _Recognizing Textual Entailment **(RTE)**_. The RTE provides set of questions which can be answered with yes/no only. This test asks whether a given sentence(A) 'Entails' the other given sentence (B). But in RTE the assumption about 'Entailment' was not proper. So, in winograd challenge the propose to generate questions using following 4 properties-
 
  -  _Two parties are mentioned in a sentence by noun phrases. They can be two males, two females, two inanimate objects or two groups of people or objects._
  - _A pronoun or possessive adjective is used in the sentence in reference to one of the parties, but is also of the right sort for the second party. In the case of males, it is “he/him/his”; for females, it is “she/her/her” for inanimate object it is “it/it/its,” and for groups it is “they/them/their.”_
@@ -25,8 +25,8 @@ This challenge is, as they claim, a variant of Recognizing Textual Entailment (R
 
 The questions will have only 1 answer out of 2 given options. For Example- 
  - The trophy doesn’t fit in the brown suitcase because it’s too big. What is too big?
-        Answer 0: the trophy 
-        Answer 1: the suitcase
+    - Answer 0: the trophy 
+    - Answer 1: the suitcase
  - Joan made sure to thank Susan for all the help she had given. Who had given the help?
     - Answer 0: Joan 
     - Answer 1: Susan
