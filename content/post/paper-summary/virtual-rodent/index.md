@@ -20,7 +20,9 @@ In the paper they test the motor neural activity for four different activities w
 
 Their system architecture of the single network for all the tasks are as below-
 
-{{< figure src="rodent_architecture.png" title="_Fig: Egocentric visual image inputs are encoded into features via a small residual network and proprioceptive state observations are encoded via a small multi-layer perceptron. The features are passed into a recurrent LSTM module The core module is trained by backpropagation during training of the value function. The outputs of the core are also passed as features to the policy module (with the dashed arrow indicating no backpropagation along this path during training) along with shortcut paths from the proprioceptive observations as well as encoded features. The policy module consists of one or more stacked LSTMs (with or without skip connections) which then produce the actions via a stochastic policy._" align="center" >}}
+{{< figure src="rodent_architecture.png" title="Fig: System atchitecture" align="center" >}}
+
+Egocentric visual image inputs are encoded into features via a small residual network and proprioceptive state observations are encoded via a small multi-layer perceptron. The features are passed into a recurrent LSTM module. The core module is trained by backpropagation during training of the value function. The outputs of the core are also passed as features to the policy module (with the dashed arrow indicating no backpropagation along this path during training) along with shortcut paths from the proprioceptive observations as well as encoded features. The policy module consists of one or more stacked LSTMs (with or without skip connections) which then produce the actions via a stochastic policy
 
 Their analysis shows neural activities:
 
@@ -29,10 +31,13 @@ Their analysis shows neural activities:
 video examples of a single policy solving episodes of each task: [gaps](https://youtu.be/rFelC_YbeLE), [forage](https://youtu.be/vBIV1qJpJK8), [escape](https://youtu.be/6d0SX56Cn6Q), and [two-tap](https://youtu.be/lBKwHzO-z_0).
 
 ### Good Thing
-They use neuroscience techniques to understand neural net activities.
+This is a nice combination of neuroscience approaches and artificial neural nets. They use neuroscience techniques to understand neural net activities. In this approach all sensory input/outputs, neural activity is observable.
 
-### For our use
-We may use their approach to provide proprioceptor observations. Also, we their joint controlling mechanisms might be useful for our project.
+### Limitations for HLAI
+This platform so far tests only a few tasks. This approach may not be enough to discretize all the tasks of human and analyze. Also the approach only analized motor controls.
+
+###For our use
+#We may use their approach to provide proprioceptor observations. Also, we their joint controlling mechanisms might be useful for our project.
 
 
 
