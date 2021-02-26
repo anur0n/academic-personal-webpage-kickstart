@@ -36,11 +36,6 @@ This is a nice combination of neuroscience approaches and artificial neural nets
 ### Limitations for HLAI
 This platform so far tests only a few tasks. This approach may not be enough to discretize all the tasks of human and analyze. Also the approach only analized motor controls.
 
-###For our use
-#We may use their approach to provide proprioceptor observations. Also, we their joint controlling mechanisms might be useful for our project.
-
-
-
 Another blog about this paper can be found [here](https://spectrum.ieee.org/tech-talk/artificial-intelligence/machine-learning/ai-powered-rat-valuable-new-tool-neuroscience)
 
 ### Future Readings
