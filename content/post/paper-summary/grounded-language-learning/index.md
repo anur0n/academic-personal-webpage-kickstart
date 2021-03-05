@@ -13,7 +13,7 @@ math: false
 
 ### Summary
 
-This [pape](https://arxiv.org/pdf/1706.06551.pdf) proposes a language grounding model based on a simulated 3D environment. It used an existing 3D environment from Deepmind, and proposed a model to learn language (word-object/color/size mapping).
+This [paper](https://arxiv.org/pdf/1706.06551.pdf) proposes a language grounding model based on a simulated 3D environment. It used an existing 3D environment from Deepmind, and proposed a model to learn language (word-object/color/size mapping).
 
 **Simulated 3D World**
 The agent can move around in the environment and receives visual input and texial instruction to follow like- _pick the pink striped ladder_. The environment consists of one or two rooms with different shaped/colored objects of varied size as show in following figure. Objects and rooms are configured programmatically with random sampling.
