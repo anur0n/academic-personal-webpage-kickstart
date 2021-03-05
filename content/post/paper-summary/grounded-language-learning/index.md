@@ -34,7 +34,7 @@ The paper showed many experiments and showed promising results.
 {{< figure src="curriculum learning.png" title="Fig: Results of curriculum learning. It showed, agent performs better with training on previous level." align="center" >}}
     
 **Good things**
-They combined reinforcement learning and unsupervised networks to achieve language grounding. The agent to some extend learnd the semantics and were able to generalize well on new words.
+They combined reinforcement learning and unsupervised networks to achieve language grounding. The agent to some extend learnd the semantics and were able to generalize well on new words. Also they focused on continuous, noisy sensory input based environment, that human baby faces.
 
 **Limitation**
 The model still is dependent on the explicit rewards from the environment. Designing explicit rewards for more complex environment will be troublesome. Hence the model may not be applicable for human level AI.
