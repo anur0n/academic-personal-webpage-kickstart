@@ -16,3 +16,4 @@ image:
 ---
 
 ### Summary
+This book discusses different aspects about building a developmental robot. The author discusses all the concepts in a very easy to understand manner. In chapter 11 and 12 it discusses about the groundwork and developmental approach for growing a robot.
