@@ -11,8 +11,8 @@ draft: false
 featured: false
 image:
     focal_point: ""
-    placement: 2
-    preview_only: false
+    placement: 1
+    preview_only: true
 ---
 
 ### Summary
