@@ -33,5 +33,16 @@ In chapter 4, the author discuss memory functionality. Neurons are very slow com
 - stores patterns in an invariant form
 - stores patterns in a hierarchy
 
+**Prediction**
 
+The final important concept is _Prediction_, which the book disses in chapter 5. The brain only see patterns, and based on that pattern and memory, it predicts what would be the next sensory inputs. Based on previous experiences from memory, it predicts the immediate future events/sensory patterns. If some prediction doesn't match with the next sensory inputs, it becomes surprised and puts focus/attention on new experience.
 
+**My thoughts**
+
+The book presents interesting concept of hierarchical (More like heterarchi) predictive memory. Although in some points author presents his 'Belief' without actual findings. These ideas should be explored to build Human Level AI.
+
+Also, while reading about memory, I was thinking-
+
+How the memory is stored in invariant forms? Is it like the concept like hash(Not exactly)?
+
+How do we start thinking without sensory inputs, if everything is predictive based on sensory inputs?
