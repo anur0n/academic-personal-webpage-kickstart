@@ -46,3 +46,5 @@ Also, while reading about memory, I was thinking-
 How the memory is stored in invariant forms? Is it like the concept like hash(Not exactly)?
 
 How do we start thinking without sensory inputs, if everything is predictive based on sensory inputs?
+
+If we want to follow the connection like brain, how can we implement various connection between regions (Although universal algorithm)
