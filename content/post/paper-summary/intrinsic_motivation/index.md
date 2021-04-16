@@ -8,6 +8,7 @@ authors:
 tags:
 - Paper Reading
 draft: false
+math:true
 ---
 
 ### Summary
@@ -15,7 +16,9 @@ In [this](http://www.pyoudeyer.com/ims.pdf) paper, the author provides one mecha
 
 **IAC:**
 
-It has a memory to store all the experiences (in form of Vector exemplars) that the agent faces. When number of experiences reaches a threashold (e.g. 250), the region is split into two sub-regions based on the threshold on features. Basically this splitting works like a decision tree boundary. 
+It has a memory to store all the experiences (in form of Vector exemplars) that the agent faces. When number of experiences reaches a threashold (e.g. 250), the region is split into two sub-regions based on the threshold on features. Basically this splitting works like a decision tree boundary. The features are sensory inputs (_S(t)_), and motor outputs (_M(t)_). Combining these two _SM(t)_ is used as sensorymotor context.
 
 {{< figure src="feature_splitting.png" align="center" >}}
+
+For each region this system assigns a **Local** expert _E_. It is responsible for prediction of next sensory inputs _S(t+1)_ for that local region %R_n% based on _SM(t)_.
 
