@@ -27,4 +27,4 @@ The paper also presents two experiments with this system. One on virtual and one
 
 **My thoughts:**
 
-The idea about dividing the input space into smaller sub sections seems interesting. But assigning a local expert to predict only for that region seems limitation. What happens when there is multiple regions involved for a single action decision? Which expert will handle the bigger picture? Also for language or audio space, how will it work when temporal context is needed to understand current inputs?
+The idea about dividing the input space into smaller sub sections seems interesting. Also, the part of using decrease of error is interesting. But assigning a local expert to predict only for that region seems limitation. What happens when there is multiple regions involved for a single action decision? Which expert will handle the bigger picture? Also for language or audio space, how will it work when temporal context is needed to understand current inputs?
