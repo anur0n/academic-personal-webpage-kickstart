@@ -16,3 +16,6 @@ In [this](http://www.pyoudeyer.com/ims.pdf) paper, the author provides one mecha
 **IAC:**
 
 It has a memory to store all the experiences (in form of Vector exemplars) that the agent faces. When number of experiences reaches a threashold (e.g. 250), the region is split into two sub-regions based on the threshold on features. Basically this splitting works like a decision tree boundary. 
+
+{{< figure src="feature_splitting.png" align="center" >}}
+
