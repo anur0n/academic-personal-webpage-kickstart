@@ -30,7 +30,11 @@ SImilar to decoder as seen in figure 1, but has one additional sub layer for mas
 {{< figure src="attention.png" align="center"  title="Figure 2: Scaled Dot-Product attention (Left) and Milti-Headed attention (Right)">}}
 
 **Attention:**
-It is a quantitative score for the releavance of each word with respect to other words in the sentence.
+It is a quantitative score for the releavance of each word with respect to other words in the sentence. Multi-head attention allows the model to jointly attend to information from different representation subspaces at different positions. It also enables parallel processing by removing sequential dependencies.
 
+**Positional Encoding:**
+Since there is no recurrence or convolution in the network, to inject the positional information they applied positional encoding to the input (Embedding of original input) with following formula-
+$$ PE_{(pos,2i)} = sin(pos/1000^{2i/d_model}) $$
+$$ PE_{(pos,2i+1)} = cos(pos/1000^{2i/d_model}) $$
 
 **My thoughts:**
