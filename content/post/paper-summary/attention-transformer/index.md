@@ -38,4 +38,4 @@ $$ PE_{(pos,2i)} = sin(pos/1000^{2i/d_{model}}) $$
 $$ PE_{(pos,2i+1)} = cos(pos/1000^{2i/d_{model}}) $$
 
 **My thoughts:**
-Since they are removing sequential dependencies this model takes the whole input in parallel which made if faster to train. But I'm not clear how it can handle sequential dependent applications like when the whole history is needed to be considered (like- time series) like mentioned [here](https://www.tensorflow.org/tutorials/text/transformer).
+The paper proposed a totally novel approach for sequence modeling without RNN. Since they are removing sequential dependencies this model takes the whole input in parallel which made if faster to train. One thing I'm not clear how it can handle sequential dependent applications like when the whole history is needed to be considered (like- time series) like mentioned [here](https://www.tensorflow.org/tutorials/text/transformer) too.
