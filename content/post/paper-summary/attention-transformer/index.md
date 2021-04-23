@@ -15,9 +15,12 @@ math: true
 ### Summary
 This [paper](https://arxiv.org/pdf/1706.03762.pdf) presented the Transformer Network based on Self attention which is used build up NLP models like BERT or GPT.
 
+
 **Transformer Model architecture:**
+{{< figure src="model.png" align="center"  title="Figure 1: Transformer model Architecture">}}
+
+The model consists of Encoder and Decoder module.
 
 
-{{< figure src="model.png" align="center" >}}
 
 **My thoughts:**
