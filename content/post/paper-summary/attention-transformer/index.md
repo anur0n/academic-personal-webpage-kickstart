@@ -13,7 +13,7 @@ math: true
 ---
 
 ### Summary
-This [paper](https://arxiv.org/pdf/1706.03762.pdf) presented the Transformer Network based on Self attention which is used build up NLP models like BERT or GPT.
+This [paper](https://arxiv.org/pdf/1706.03762.pdf) presented the Transformer Network based on Self attention instead of RNN or CNN, which is used build up NLP models like BERT or GPT.
 
 
 **Transformer Model architecture:**
@@ -21,6 +21,16 @@ This [paper](https://arxiv.org/pdf/1706.03762.pdf) presented the Transformer Net
 
 The model consists of Encoder and Decoder module.
 
+**Encoder:**
+There are total 6 stack of identical layers. Every layer has a Multi-Head self-attention layer and a Feed-forward Layer. Each of these sub layers have residual connection. Each layer goes through layer normalization.
+
+**Decoder:**
+SImilar to decoder as seen in figure 1, but has one additional sub layer for masked attention layer. The masking makes sure the model doesn't see the future word positions.
+
+{{< figure src="attention.png" align="center"  title="Figure 2: Scaled Dot-Product attention (Left) and Milti-Headed attention (Right)">}}
+
+**Attention:**
+It is a quantitative score for the releavance of each word with respect to other words in the sentence.
 
 
 **My thoughts:**
