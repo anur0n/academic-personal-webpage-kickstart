@@ -18,3 +18,9 @@ He the discussed three levels of intelligence:
 - **Level 1**: In this level there is no individual learning. It is refined by evolution. (Ex- Earthworm). The problem with this kind is that, evolution is too slow.
 - **Level 2**: Animals in this level can learn from direct experience. And the learning can be refined based on rewards. (Ex-rats, dogs). The problem is they cannot pass their learning to next generation.
 - **Level 3**: In this level, the learning is possible from indirect experience too. Like using language. (Ex. Human). This learning can also be shared with others with language.
+
+He then presented formal definition of HLAI as:
+
+>An agent has a human-level artificial intelligence if _there exists a symbolic description for every feasible sensory input and agent action sequence_, such that the agent _can update the behavior policy equally_ whether it receives the symbolic description or it experience the sensory input and the action sequence itself.
+
+
