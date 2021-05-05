@@ -7,6 +7,6 @@ authors:
 - admin
 draft: false
 ---
-<iframe width="560" height="315" src="https://web.microsoftstream.com/video/666b2a1c-621b-4e5a-88b4-6642045cd95e" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="640" height="360" src="https://web.microsoftstream.com/embed/video/666b2a1c-621b-4e5a-88b4-6642045cd95e?autoplay=false&amp;showinfo=true" allowfullscreen style="border:none;"></iframe>
 
 The video is above.
