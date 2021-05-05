@@ -31,3 +31,18 @@ Dr. Park suggested that language acquisition is a function of environment and ca
 >Given the proper **environment**, if the agent can learn **language**, we can say it has a **capability** for human-like artificial intelligence. 
 
 {{< figure src="language_acq.png">}}
+
+He then proposed a simulated environment [SEDRo](https://arxiv.org/abs/2009.01810) for training and evaluating learning agent. SEDRo has three key characteristics:
+
+- Open-ended tasks with No reward: Because learning based on environment rewards is not transferable.
+- Human-like experience: Because we don't know what are the sufficient conditions necessary for HLAI. Only human babies achieve human level intelligence. Also learning based on human like experience makes agent behavior more interpretable.
+- Longitudinal development: Advanced skills require many combined basic skills. So learning in a timeline will ensure, the agent learns incrementally.
+
+SEDRo also provides tests based on developmental psychology experiments.
+
+### The Model:
+He proposed a modulated Heterarchical Prediction Memory (mHPM) model.
+
+{{< figure src="model.png">}}
+
+
