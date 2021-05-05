@@ -9,7 +9,7 @@ draft: false
 ---
 In our last class of Human Level Artificial Intelligence (HLAI), Professor Dr. Park presented on 'Towards Human Level AI'. He discussed on how we can approach towards building human level intelligent robot. The talk was divided in three parts - The theory, Test, and Model.
 
-**The theory**:
+### The theory
 In this part, he discussed related terms and background on intelligence. To build an _'Intelligent'_ agent we first need to define or understand clearly, what is _'Intelligence'_. Based on the [Universal Intelligence](https://arxiv.org/pdf/0712.3329.pdf) - 
 
 >Intelligence measures an agent’s ability to **achieve goals** in a **wide range of environments**.
@@ -23,4 +23,11 @@ He then presented formal definition of HLAI as:
 
 >An agent has a human-level artificial intelligence if _there exists a symbolic description for every feasible sensory input and agent action sequence_, such that the agent _can update the behavior policy equally_ whether it receives the symbolic description or it experience the sensory input and the action sequence itself.
 
+### The test (or task)
+There has been some 'Sufficient' tests proposed for evaluating HLAI like turing test, robot college student test, kitchen test, AI preschool test. But these tests were very difficult. And there has been some eaier but 'not sufficient' tests like Winograd schema challenge, imagenet challenge.
 
+Dr. Park suggested that language acquisition is a function of environment and capability of the agent. He then proposed the **Language Acquisition Test for HLAI** as-
+
+>Given the proper **environment**, if the agent can learn **language**, we can say it has a **capability** for human-like artificial intelligence. 
+
+{{< figure src="language_acq.png">}}
