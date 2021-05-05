@@ -12,4 +12,9 @@ In our last class of Human Level Artificial Intelligence (HLAI), Professor Dr. P
 **The theory**:
 In this part, he discussed related terms and background on intelligence. To build an _'Intelligent'_ agent we first need to define or understand clearly, what is _'Intelligence'_. Based on the [Universal Intelligence](https://arxiv.org/pdf/0712.3329.pdf) - 
 
->Intelligence measures an agent’s ability to achieve goals in a wide range of environments.
+>Intelligence measures an agent’s ability to **achieve goals** in a **wide range of environments**.
+
+He the discussed three levels of intelligence:
+- **Level 1**: In this level there is no individual learning. It is refined by evolution. (Ex- Earthworm). The problem with this kind is that, evolution is too slow.
+- **Level 2**: Animals in this level can learn from direct experience. And the learning can be refined based on rewards. (Ex-rats, dogs). The problem is they cannot pass their learning to next generation.
+- **Level 3**: In this level, the learning is possible from indirect experience too. Like using language. (Ex. Human). This learning can also be shared with others with language.
