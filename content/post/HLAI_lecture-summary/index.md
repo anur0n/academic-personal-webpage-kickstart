@@ -41,13 +41,28 @@ He then proposed a simulated environment [SEDRo](https://arxiv.org/abs/2009.0181
 SEDRo also provides tests based on developmental psychology experiments.
 
 ### The Model:
-He presented hierarchical prediction memory model.
+He proposed modulated Heterarchical Prediction Memory (mHPM) model.
+
+First, lets see hierarchical prediction memory model.
 
 {{< figure src="model.png">}}
 
 Higher layer provides context and lower layer provides summary. The autoregressor makes prediction based on the input from lower layer or sensory inputs and context from upper layer. The Pooler generates an abstract summary based on sequential inputs which is fed to the upper layer. When the lower layer learns from 4 cycles, the upper layer learns 1 cycle containing summary of 4 cycle lower layer summary. Each autoregressor and pooler in each layer learns and update locally.
 
-He then suggested that we can explor heterarchical connection with this predictive memory. Like shown below-
-
+He then suggested that we can explor heterarchical connection with this predictive memory to associate inputs/contexts from different regions. Like shown below-
 
 {{< figure src="heterarchical_model.png">}}
+
+Now for modulation the behavior is modulated based on some reward. As shown in picture below-
+
+{{< figure src="modulation.png">}}
+
+Then finally there needs to be some auxiliary module in the model-
+- Instinct (Pre-built behavior): weight agnostic models can be explored.
+- Reward Center (To guide behavior): Implemented like curiosity. No reward from environment.
+- Hippocampus as episodic memory writer: A loopy structure to repeatedly predict
+
+
+### Future experiment plan
+Finally he shared the current status and future experiment plan summarized below.
+{{< figure src="plan.png">}}
