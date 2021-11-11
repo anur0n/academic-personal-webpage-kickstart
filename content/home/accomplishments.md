@@ -2,7 +2,7 @@
 # Accomplishments widget.
 widget = "accomplishments"  # See https://sourcethemes.com/academic/docs/page-builder/
 headless = true  # This file represents a page section.
-active = false  # Activate this widget? true/false
+active = true  # Activate this widget? true/false
 weight = 50  # Order that this section will appear.
 
 title = "Accomplish&shy;ments"
@@ -39,13 +39,21 @@ date_format = "Jan 2006"
   description = "Formulated informed blockchain models, hypotheses, and use cases."
   
 [[item]]
-  organization = "DataCamp"
-  organization_url = "https://www.datacamp.com"
-  title = "Object-Oriented Programming in R: S3 and R6 Course"
-  url = ""
-  certificate_url = "https://www.datacamp.com"
-  date_start = "2017-07-01"
-  date_end = "2017-12-21"
+  organization = "Udemy"
+  organization_url = "https://www.udemy.com"
+  title = "Artificial Intelligence: Reinforcement Learning in Python"
+  url = "https://www.udemy.com/course/artificial-intelligence-reinforcement-learning-in-python/"
+  certificate_url = "https://www.udemy.com/certificate/UC-a1287471-29ab-4a1e-95d3-96c74cb00408/"
+  date_start = "2021-07-29"
+  description = ""
+  
+[[item]]
+  organization = "Udemy"
+  organization_url = "https://www.udemy.com"
+  title = "Advanced AI: Deep Reinforcement Learning in Python"
+  url = "https://www.udemy.com/course/artificial-intelligence-reinforcement-learning-in-python/"
+  certificate_url = "https://www.udemy.com/certificate/UC-a1287471-29ab-4a1e-95d3-96c74cb00408/"
+  date_start = "2021-07-29"
   description = ""
 
 +++
