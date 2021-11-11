@@ -71,4 +71,10 @@ user_groups:
 - Visitors
 ---
 
-I'm a PhD student at the University of Texas at Arlington and also Graduate Teaching Assistant as well. Before starting my PhD I worked in the software industry for about 7 and half years. My research interests include Intelligent Systems Development, Artificial General Intelligent, Computer Vision.
+I’m a PhD student at the University of Texas at Arlington. I'm also working as Graduate Teaching Assistant for Data Mining. I've completed my bachelor in Electrical and Telecommunication Engineering from Southeast University, Bangladesh. 
+
+Before starting my PhD I worked in the software industry for about 7 and half years on various projects (Mostly on mobile platform like android, iOS). 
+
+My research interest includes Intelligent Systems Development, Artificial Generalized Intelligence, Computer Vision. As my Ph.D. research, I'm focusing on developing simulated 3D environment to train and develop learning agent and evaluated using tests based on developmental psychology.
+
+I always look forward to learning more and testing myself with newer challenges...
