@@ -21,10 +21,9 @@ organizations:
 bio: My research interests include Artificial Intelligence, Computer Vision.
 
 interests:
+- Artificial Human Level Intelligence
 - Machine Learning
 - Computer Vision
-- Artificial General Intelligence
-- Intelligent Systems
 
 education:
   courses:
