@@ -30,7 +30,7 @@ education:
   - course: PhD in Computer Science
     institution: University of Texas at Arlington
     year: 2019-Present
-  - course: BSc in Electronis and Telecommunication Engineering
+  - course: BSc in Electronics and Telecommunication Engineering
     institution: Southeast University, Bangladesh
     year: 2012
 
